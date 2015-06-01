@@ -1,7 +1,7 @@
 # Cahier des charges fonctionnel
 
 ## 1 - Présentation générale du problème
-
+====
 ### 1.1 - Objectif du projet
 
 ### 1.2 - Contexte
@@ -21,18 +21,19 @@ Des notices sur le fonctionnement de la plateforme.
 
 #### 1.2.4 - Parties prenantes
 
- * Client : 
+ * **Client :** 
     * Le SIPHIF
- * MOA :  
+ * **MOA :**  
     * Daniel Alban (professeur)
     * Aurélien CHASSEREAU
- * MOE : 
+ * **MOE :** 
     * Jérome FESSY (professeur)
     * étudiants de L3 MIAGE  par apprentissage à l'université Paris Descartes  
  
 ### 1.3 - Enoncé du besoin
 
-La nouvelle plateforme doit donc permettre :
+La nouvelle plateforme doit donc permettre :  
+
  * Le dépôt des évaluations
  * L'analyse des évaluations
  * La consultation des évaluations
@@ -41,24 +42,24 @@ La nouvelle plateforme doit donc permettre :
  * Consultation du tableau prévisionnel d'éligibilité aux stages selon les voeux
 
 ## 2 - Expression fonctionnelle du besoin
-
+=====
 ### 2.1 - Fonctions de service et de contrainte
 
 #### 2.1.1 - Fonctions de service principales
 
-F1 : Gérer les comptes (internes, adhérents, administrateur).  
-F2 : Gérer les évaluations.  
-F3 : Analyser les évaluations.   
-F4 : Gérer les pré-choix.  
-F5 : Analyser les pré-choix.  
-F6 : Gérer le back-office (la liste des fonctionnalités sont à confirmer)  
+**F1 :** Gérer les comptes (internes, adhérents, administrateur).  
+**F2 :** Gérer les évaluations.  
+**F3 :** Analyser les évaluations.   
+**F4 :** Gérer les pré-choix.  
+**F5 :** Analyser les pré-choix.  
+**F6 :** Gérer le back-office (la liste des fonctionnalités sont à confirmer)  
 
 #### 2.1.2 - Fonctions de services complémentaires
 
 F7 : Possibilité de mettre à jour une évaluation.  
 F8 : Possibilité pour chaque interne de connaître le nombre de personnes ayant choisi les mêmes stages que ceux qu’il a renseignés (autres que le premier choix).  
 
-#### 2.1.3 -Contenu fournit par le client
+#### 2.1.3 - Contenu fournit par le client
 
 - L’ordre de passage des internes.
 - Les adhérents au SIPHIF, pour la consultation des évaluations.
@@ -78,14 +79,14 @@ Prise en compte du contenu fournit par le client.
 
 Prise en compte du nombre d'utilisateurs potentiels (288 adhérents inscrits au 1er mars 2015).
 
-### 2.2 -Critères d'appréciation
+### 2.2 - Critères d'appréciation
 
 La flexibilité de la plateforme au niveau de : la modification du questionnaire d'évaluation, de l'intégration des anciennes évaluations et de la possibilité de faire des statistiques sur les taux de participation aux évaluations/pré-choix.
 
 La simplicité de gestion pour les administrateurs au niveau : du renseignement du classement des choix pour chaque semestre et de la modification éventuelle des grilles d'évaluation.
 
 ## 3 - Cadre de réponse
-
+===
 ### 3.1 - Pour chaque fonction
 
 *****************************
@@ -94,9 +95,9 @@ La simplicité de gestion pour les administrateurs au niveau : du renseignement 
 **Mode de fonctionnement :**  
 
 Les internes doivent saisir une fiche d'information contenant :  
-Nom  
-Prénom  
-Mail  
+ * Nom  
+ * Prénom  
+ * Mail  
 
 Le reste des informations restent à définir.  
 
@@ -147,7 +148,7 @@ Toute évolution devra avoir un impact minimal sur l'existant.
 La navigation sur tablettes et smartphone est un bonus.
 
 ## 4 - Perspectives et estimations
-
+====
 ### 4.1 - Coût
 
 Les seuls coûts à supporter porteront sur l'infrastructure (serveurs, nom de domaine, base de données).
