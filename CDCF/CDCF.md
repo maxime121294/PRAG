@@ -1,7 +1,7 @@
 # Cahier des charges fonctionnel
-
+----
 ## 1 - Présentation générale du problème
-====
+----
 ### 1.1 - Objectif du projet
 
 ### 1.2 - Contexte
@@ -41,8 +41,9 @@ La nouvelle plateforme doit donc permettre :
  * Analyse des pré-choix
  * Consultation du tableau prévisionnel d'éligibilité aux stages selon les voeux
 
+---
 ## 2 - Expression fonctionnelle du besoin
-=====
+---
 ### 2.1 - Fonctions de service et de contrainte
 
 #### 2.1.1 - Fonctions de service principales
@@ -85,8 +86,9 @@ La flexibilité de la plateforme au niveau de : la modification du questionnaire
 
 La simplicité de gestion pour les administrateurs au niveau : du renseignement du classement des choix pour chaque semestre et de la modification éventuelle des grilles d'évaluation.
 
+---
 ## 3 - Cadre de réponse
-===
+---
 ### 3.1 - Pour chaque fonction
 
 *****************************
@@ -173,8 +175,9 @@ Le site doit être accessible à tout moment de la journée.
 Toute évolution devra avoir un impact minimal sur l'existant.
 La navigation sur tablettes et smartphone est un bonus.
 
+---
 ## 4 - Perspectives et estimations
-====
+---
 ### 4.1 - Coût
 
 Les seuls coûts à supporter porteront sur l'infrastructure (serveurs, nom de domaine, base de données).
