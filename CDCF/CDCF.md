@@ -115,26 +115,52 @@ Les administrateurs pourront modifier les grilles d'évaluations.
 **Fonction :** F3  
 **Objet :** Analyser les évaluations.  
 **Mode de fonctionnement :**  
+
+Le but de cette fonction est d'afficher des statistiques sur les évaluations : 
+
+ * Nombre d'évaluation au total
+ * Taux de participation
+ * Les moyennes des pourcentages
+
+Ces statistiques sont accessibles au administrateur seulement.
+
 *****************************
 **Fonction :** F4  
 **Objet :** Gérer les pré-choix.  
 **Mode de fonctionnement :**  
+
+Cette fonction gère l'affichage des choix de stage pour les internes, ainsi que l'ordonnacement des voeux.  
+
+L'interne ajoute des voeux par préférence décroissante, en renseignant le stage choisit.  
+
 *****************************
 **Fonction :** F5  
 **Objet :** Analyser les pré-choix.  
 **Mode de fonctionnement :**  
+
+Cette fonction permet de répartir les stages en fonction des choix et du classement des internes.  
+
+Elle n'est accessible qu'à l'administrateur.  
+
 *****************************
 **Fonction :** F6  
 **Objet :** Gérer le back-office (la liste des fonctionnalités sont à confirmer).  
 **Mode de fonctionnement :**  
+
+
 *****************************
 **Fonction :** F7  
 **Objet :** Possibilité de mettre à jour une évaluation.  
 **Mode de fonctionnement :**  
+
+Cette fonction permet à un interne ayant déjà fait l'évaluation d'un stage, de pouvoir la mettre à jour si l'interne refait ce stage.  
+
 *****************************
 **Fonction :** F8  
 **Objet :** Possibilité pour chaque interne de connaître le nombre de personnes ayant choisi les mêmes stages que ceux qu’il a renseignés (autres que le premier choix).  
 **Mode de fonctionnement :**  
+
+Lors du choix d'un voeu, cette foncytion affiche, en temps réel, le nombre d'interne ayant aussi fait ce choix de stage.  
 
 ### 3.2 - Pour l'ensemble du produit
 
@@ -164,4 +190,5 @@ La maintenance sera faites tout au long de l'exploitation de la plateforme par u
 
 ### 4.4 - Ergonomie
 
-La plateforme sera simple pour être utilisable par un personnel non spécialiste en informatique.
+La plateforme sera simple pour être utilisable par un personnel non spécialiste en informatique.  
+
