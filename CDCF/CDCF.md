@@ -46,17 +46,17 @@ La nouvelle plateforme doit donc permettre :
 
 #### 2.1.1 - Fonctions de service principales
 
-F1 : Gérer les comptes (internes, adhérents, administrateur).
-F2 : Gérer les évaluations.
-F3 : Analyser les évaluations. 
-F4 : Gérer les pré-choix.
-F5 : Analyser les pré-choix.
-F6 : Gérer le back-office (la liste des fonctionnalités sont à confirmer)
+F1 : Gérer les comptes (internes, adhérents, administrateur).  
+F2 : Gérer les évaluations.  
+F3 : Analyser les évaluations.   
+F4 : Gérer les pré-choix.  
+F5 : Analyser les pré-choix.  
+F6 : Gérer le back-office (la liste des fonctionnalités sont à confirmer)  
 
 #### 2.1.2 - Fonctions de services complémentaires
 
-F7 : Possibilité de mettre à jour une évaluation.
-F8 : Possibilité pour chaque interne de connaître le nombre de personnes ayant choisi les mêmes stages que ceux qu’il a renseignés (autres que le premier choix).
+F7 : Possibilité de mettre à jour une évaluation.  
+F8 : Possibilité pour chaque interne de connaître le nombre de personnes ayant choisi les mêmes stages que ceux qu’il a renseignés (autres que le premier choix).  
 
 #### 2.1.3 -Contenu fournit par le client
 
@@ -89,51 +89,51 @@ La simplicité de gestion pour les administrateurs au niveau : du renseignement 
 ### 3.1 - Pour chaque fonction
 
 *****************************
-Fonction : F1
-Objet : Gérer les comptes (internes, adhérents, administrateur).
-Mode de fonctionnement : 
+**Fonction :** F1  
+**Objet :** Gérer les comptes (internes, adhérents, administrateur).  
+**Mode de fonctionnement :**  
 
-Les internes doivent saisir une fiche d'information contenant :
-Nom
-Prénom
-Mail
+Les internes doivent saisir une fiche d'information contenant :  
+Nom  
+Prénom  
+Mail  
 
-Le reste des informations restent à définir.
+Le reste des informations restent à définir.  
 
-Il est a noter qu'un administrateur doit pouvoir donner un mot de passe servant à la gestion des droits (ne donne accès qu’aux pré-choix ou si adhésion, à la consultation des évaluations et aux pré-choix).
+Il est a noter qu'un administrateur doit pouvoir donner un mot de passe servant à la gestion des droits (ne donne accès qu’aux pré-choix ou si adhésion, à la consultation des évaluations et aux pré-choix).  
 *****************************
-Fonction : F2
-Objet : Gérer les évaluations.
-Mode de fonctionnement :
+**Fonction :** F2  
+**Objet :** Gérer les évaluations.  
+**Mode de fonctionnement :**  
 
 Cette fonction comprends la rédaction de l'évaluation par les internes selon une grille d'évaluation (cf annexe).
-A la fin de l’évaluation, l’interne reçoit par mail un mot de passe individuel d’accès temporaire qui lui permet d’accéder à la consultation des évaluations et au système de pré-choix.
+A la fin de l’évaluation, l’interne reçoit par mail un mot de passe individuel d’accès temporaire qui lui permet d’accéder à la consultation des évaluations et au système de pré-choix.  
 
-Les administrateurs pourront modifier les grilles d'évaluations.
+Les administrateurs pourront modifier les grilles d'évaluations.  
 *****************************
-Fonction : F3
-Objet : Analyser les évaluations.
-Mode de fonctionnement :
+**Fonction :** F3  
+**Objet :** Analyser les évaluations.  
+**Mode de fonctionnement :**  
 *****************************
-Fonction : F4
-Objet : Gérer les pré-choix.
-Mode de fonctionnement :
+**Fonction :** F4  
+**Objet :** Gérer les pré-choix.  
+**Mode de fonctionnement :**  
 *****************************
-Fonction : F5
-Objet : Analyser les pré-choix.
-Mode de fonctionnement :
+**Fonction :** F5  
+**Objet :** Analyser les pré-choix.  
+**Mode de fonctionnement :**  
 *****************************
-Fonction : F6
-Objet : Gérer le back-office (la liste des fonctionnalités sont à confirmer).
-Mode de fonctionnement :
+**Fonction :** F6  
+**Objet :** Gérer le back-office (la liste des fonctionnalités sont à confirmer).  
+**Mode de fonctionnement :**  
 *****************************
-Fonction : F7
-Objet : Possibilité de mettre à jour une évaluation.
-Mode de fonctionnement :
+**Fonction :** F7  
+**Objet :** Possibilité de mettre à jour une évaluation.  
+**Mode de fonctionnement :**  
 *****************************
-Fonction : F8
-Objet : Possibilité pour chaque interne de connaître le nombre de personnes ayant choisi les mêmes stages que ceux qu’il a renseignés (autres que le premier choix).
-Mode de fonctionnement :
+**Fonction :** F8  
+**Objet :** Possibilité pour chaque interne de connaître le nombre de personnes ayant choisi les mêmes stages que ceux qu’il a renseignés (autres que le premier choix).  
+**Mode de fonctionnement :**  
 
 ### 3.2 - Pour l'ensemble du produit
 
