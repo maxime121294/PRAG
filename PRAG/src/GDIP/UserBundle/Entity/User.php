@@ -16,7 +16,7 @@ class User extends BaseUser
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idUser", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -63,6 +63,12 @@ class User extends BaseUser
      * @ORM\Column(name="estAdherent", type="boolean")
      */
     private $estAdherent;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Account", cascade={"persist"})
+     * @ORM\JoinColumn(referencedColumnName="idAccount", nullable=false)
+    */
+    private $account;
 
 
     /**
@@ -211,5 +217,28 @@ class User extends BaseUser
     public function getEstAdherent()
     {
         return $this->estAdherent;
+    }
+
+    /**
+     * Set account
+     *
+     * @param \GDIP\UserBundle\Entity\Account $account
+     * @return User
+     */
+    public function setAccount(\GDIP\UserBundle\Entity\Account $account)
+    {
+        $this->account = $account;
+
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return \GDIP\UserBundle\Entity\Account 
+     */
+    public function getAccount()
+    {
+        return $this->account;
     }
 }
