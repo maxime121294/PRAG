@@ -2,12 +2,26 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>
+            {% block title %}SIPHIF{% endblock %}
+        </title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap-theme.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/front/css/style.css')}}">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico') }}" />
+
+        {# <script type="text/javascript" src="https://code.jquery.com/jquery.js"></script> #}
+        <script type="text/javascript" src="{{asset('bundles/front/js/jquery-2.1.4.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/front/js/bootstrap.min.js')}}"></script>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
