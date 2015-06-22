@@ -2,12 +2,47 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>
+            {% block title %}SIPHIF{% endblock %}
+        </title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap-theme.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/front/css/style.css')}}">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico') }}" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        {# <script type="text/javascript" src="https://code.jquery.com/jquery.js"></script> #}
+        <script type="text/javascript" src="{{asset('bundles/front/js/jquery-2.1.4.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/front/js/bootstrap.min.js')}}"></script>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+    <header>
+        <div class="container-fluid" id="header">
+            <div class="row">
+                <span>CECI EST LE HEADER</span>
+            </div>
+        </div>
+    </header>
+
+
+        {% block body %}
+        {% endblock %}
+            <div class="container-fluid" id="footer">
+                <div class="row" style="vertical-align: middle" >
+                    <div class="col-md-4" style="vertical-align: middle">© IUT Paris Descartes</div>
+                    <div class="col-md-4 text-center">Mentions Légales</div>
+                    <div class="col-md-4 text-right">
+                        <a href="https://www.facebook.com/bootsnipp"><i id="social" class="fa fa-facebook-square fa-3x"></i></a>
+                        <a href="https://twitter.com/bootsnipp"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
+                        <a href="mailto:bootsnipp@gmail.com"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
