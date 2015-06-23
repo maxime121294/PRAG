@@ -1,0 +1,22 @@
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+        <div class="alert alert-danger form-error" role="alert">
+            {% for error in errors %}
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{ error.message }} <br />
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{%- endblock form_widget_simple -%}
+
+{%- block textarea_widget -%}
+    <textarea  class="form-control"{{ block('widget_attributes') }}>{{ value }}</textarea>
+{%- endblock textarea_widget -%}
