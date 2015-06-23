@@ -8,7 +8,18 @@
 }
 
 #footer {
+    color: #9C2B53;
     vertical-align: middle;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 45px;
+}
+
+#footer div{
+    height: 45px;
+    line-height: 45px;
 }
 
 
@@ -26,8 +37,8 @@
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
 }
-/* 
-    Only Needed in Multi-Coloured Variation 
+/*
+    Only Needed in Multi-Coloured Variation
                                                */
 .social-fb:hover {
     color: #9C2B53;
