@@ -1,10 +1,35 @@
 #header {
+    position : relative;
     height: 125px;
 }
 
 #footer a {
     color: #9C2B53;
     text-decoration: none;
+}
+
+header {
+    border-bottom : 2px solid #9C2B53;
+}
+
+.vertical-middle {
+    vertical-align: middle;
+}
+
+.vertical-bottom {
+    width : 100%;
+}
+
+.text-header {
+    color: #9C2B53;
+    text-align : right;
+    font-style: italic;
+    font-size: 14px;
+    height : 125px;
+    background-repeat:no-repeat;
+    font-weight: bold;
+    background-image : url("../img/logosiphif.png");
+    padding-top : 105px;
 }
 
 #footer {
@@ -54,5 +79,5 @@
 }
 
 #footer {
-    background-color: #C2D2BD;
+    background-color: #ECECEC;
 }
