@@ -1,4 +1,5 @@
 #header {
+    position : relative;
     height: 125px;
 }
 
@@ -7,8 +8,43 @@
     text-decoration: none;
 }
 
-#footer {
+header {
+    border-bottom : 2px solid #9C2B53;
+}
+
+.vertical-middle {
     vertical-align: middle;
+}
+
+.vertical-bottom {
+    width : 100%;
+}
+
+.text-header {
+    color: #9C2B53;
+    text-align : right;
+    font-style: italic;
+    font-size: 14px;
+    height : 125px;
+    background-repeat:no-repeat;
+    font-weight: bold;
+    background-image : url("../img/logosiphif.png");
+    padding-top : 105px;
+}
+
+#footer {
+    color: #9C2B53;
+    vertical-align: middle;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 45px;
+}
+
+#footer div{
+    height: 45px;
+    line-height: 45px;
 }
 
 
@@ -26,8 +62,8 @@
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
 }
-/* 
-    Only Needed in Multi-Coloured Variation 
+/*
+    Only Needed in Multi-Coloured Variation
                                                */
 .social-fb:hover {
     color: #9C2B53;
@@ -43,5 +79,174 @@
 }
 
 #footer {
-    background-color: #C2D2BD;
+    background-color: #ECECEC;
+}
+
+#div-signin {
+    padding-top: 45px;
+}
+
+
+.form-signin {
+    border: none;
+    background-color : #ECECEC;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+     z-index: 2;
+ }
+
+.td-bold-colored {
+    color : #9D2B53;
+    font-weight: bold;
+}
+
+td {
+    /*font-weight: bold;*/
+}
+
+input[type=submit] {
+    background-color : #9D2B53;
+    border : none;
+    border-radius : 0;
+    color : #FFFFFF;
+    font-weight : normal;
+}
+
+input[type=submit]:hover {
+    background-color : #AB4A6C;
+    border : none;
+    border-radius : 0;
+    color : #FFFFFF;
+    font-weight : normal;
+}
+
+input[type=submit]:active {
+    background-color : #5C0A26;
+    border : none;
+    border-radius : 0;
+    color : #FFFFFF;
+}
+
+fieldset input[type=text] {
+    background-color : #FFFFFF;
+    border : none;
+    border-radius : 0;
+    color : #9A9A9A;
+    font-weight : 500;
+}
+
+.full-width {
+    width : 100%;
+}
+
+fieldset input[type=password] {
+    background-color : #FFFFFF;
+    border : none;
+    border-radius : 0;
+    color : #9A9A9A;
+    font-weight : 500;
+}
+
+
+/* Cachons la case à cocher */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+/* on prépare le label */
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+    position: relative; /* permet de positionner les pseudo-éléments */
+    padding-left: 25px; /* fait un peu d'espace pour notre case à venir */
+    cursor: pointer;    /* affiche un curseur adapté */
+}
+
+/* Aspect des checkboxes */
+/* :before sert à créer la case à cocher */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left:0; top: 2px;
+    width: 17px; height: 17px; /* dim. de la case */
+    border: 1px solid #999;
+    background: #fff;
+    border-radius: 0px; /* angles arrondis */
+}
+
+/* Aspect général de la coche */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+    content: '✔';
+    position: absolute;
+    top: 0; left: 4px;
+    font-size: 14px;
+    color: #999;
+    transition: all .1s; /* on prévoit une animation */
+}
+/* Aspect si "pas cochée" */
+[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0; /* coche invisible */
+    transform: scale(0); /* mise à l'échelle à 0 */
+}
+/* Aspect si "cochée" */
+[type="checkbox"]:checked + label:after {
+    opacity: 1; /* coche opaque */
+    transform: scale(1); /* mise à l'échelle 1:1 */
+}
+
+/* aspect désactivée */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+    box-shadow: none;
+    border-color: #999;
+    background-color: #fff;
+}
+/* styles de la coche (si cochée/désactivée) */
+[type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+}
+/* on style aussi le label quand désactivé */
+[type="checkbox"]:disabled + label {
+    color: #999;
+}
+
+.grey-link {
+    color : #9A9A9A;
+    font-size : 16px;
+}
+.grey-link:hover {
+    color : #404040;
+    font-size : 16px;
+    text-decoration : none;
+    font-weight : normal;
+}
+
+fieldset legend {
+    color : #9A9A9A;
+    margin : auto;
+    text-align : center;
+    border : none;
+    display : inline-block;
 }

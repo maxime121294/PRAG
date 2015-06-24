@@ -64,12 +64,17 @@ class User extends BaseUser
      */
     private $estAdherent;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Account", cascade={"persist"})
-     * @ORM\JoinColumn(referencedColumnName="idAccount", nullable=false)
-    */
-    private $account;
+    public function __construct()
+    {
+        parent::__construct();
+        parent::password = rand_string();
+    }
 
+    private function rand_string()
+    {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return substr(str_shuffle($chars),0, 10);
+    }
 
     /**
      * Get id
@@ -240,5 +245,74 @@ class User extends BaseUser
     public function getAccount()
     {
         return $this->account;
+    }
+
+    /**
+     * Set droitAcces
+     *
+     * @param boolean $droitAcces
+     * @return User
+     */
+    public function setDroitAcces($droitAcces)
+    {
+        $this->droitAcces = $droitAcces;
+
+        return $this;
+    }
+
+    /**
+     * Get droitAcces
+     *
+     * @return boolean 
+     */
+    public function getDroitAcces()
+    {
+        return $this->droitAcces;
+    }
+
+    /**
+     * Set droitConsultation
+     *
+     * @param boolean $droitConsultation
+     * @return User
+     */
+    public function setDroitConsultation($droitConsultation)
+    {
+        $this->droitConsultation = $droitConsultation;
+
+        return $this;
+    }
+
+    /**
+     * Get droitConsultation
+     *
+     * @return boolean 
+     */
+    public function getDroitConsultation()
+    {
+        return $this->droitConsultation;
+    }
+
+    /**
+     * Set droitEvaluation
+     *
+     * @param boolean $droitEvaluation
+     * @return User
+     */
+    public function setDroitEvaluation($droitEvaluation)
+    {
+        $this->droitEvaluation = $droitEvaluation;
+
+        return $this;
+    }
+
+    /**
+     * Get droitEvaluation
+     *
+     * @return boolean 
+     */
+    public function getDroitEvaluation()
+    {
+        return $this->droitEvaluation;
     }
 }
