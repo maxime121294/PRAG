@@ -20,12 +20,24 @@ security:
             security: false
 
         main:
-            anonymous: ~
-            pattern: ^/
+            pattern: .*
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
-            logout:       true
+                login_path: fos_user_security_login
+                use_forward: false
+                check_path: fos_user_security_check
+                failure_path: null
+                default_target_path: index
+                remember_me: true
+            remember_me:
+                key: %secret%
+                lifetime: 300000000
+                path: /
+                domain: ~
+            logout:
+                path: fos_user_security_logout
+                target: fos_user_security_login
             anonymous:    true
 
     access_control:

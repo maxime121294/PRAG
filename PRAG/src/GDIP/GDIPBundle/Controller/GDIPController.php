@@ -9,12 +9,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class GDIPController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/index", name="index")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        return $this->render('GDIPGDIPBundle:GDIP:index.html.twig');
     }
 
     /**
