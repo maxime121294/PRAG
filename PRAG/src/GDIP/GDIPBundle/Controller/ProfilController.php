@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ProfilController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/{name}")
      * @Template()
      */
     public function indexAction($name)

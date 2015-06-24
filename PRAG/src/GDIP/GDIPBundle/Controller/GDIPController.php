@@ -18,15 +18,6 @@ class GDIPController extends Controller
     }
 
     /**
-     * @Route("/profil/{name}")
-     * @Template()
-     */
-    public function profilAction($name)
-    {
-        return array('name' => $name);
-    }
-
-    /**
      * @Route("/adhesion")
      * @Template()
      */
