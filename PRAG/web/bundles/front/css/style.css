@@ -114,12 +114,21 @@ header {
      z-index: 2;
  }
 
+.td-bold-colored {
+    color : #9D2B53;
+    font-weight: bold;
+}
+
+td {
+    font-weight: bold;
+}
+
 input[type=submit] {
     background-color : #9D2B53;
     border : none;
     border-radius : 0;
     color : #FFFFFF;
-    font-weight : bold;
+    font-weight : normal;
 }
 
 input[type=submit]:hover {
@@ -127,7 +136,7 @@ input[type=submit]:hover {
     border : none;
     border-radius : 0;
     color : #FFFFFF;
-    font-weight : bold;
+    font-weight : normal;
 }
 
 input[type=submit]:active {
@@ -135,7 +144,7 @@ input[type=submit]:active {
     border : none;
     border-radius : 0;
     color : #FFFFFF;
-    font-weight : bold;
+    font-weight : normal;
 }
 
 fieldset legend {
