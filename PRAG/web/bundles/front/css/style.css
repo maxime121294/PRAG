@@ -119,7 +119,6 @@ input[type=submit] {
     border : none;
     border-radius : 0;
     color : #FFFFFF;
-    font-weight : bold;
 }
 
 input[type=submit]:hover {
@@ -127,7 +126,6 @@ input[type=submit]:hover {
     border : none;
     border-radius : 0;
     color : #FFFFFF;
-    font-weight : bold;
 }
 
 input[type=submit]:active {
@@ -135,7 +133,98 @@ input[type=submit]:active {
     border : none;
     border-radius : 0;
     color : #FFFFFF;
-    font-weight : bold;
+}
+
+fieldset input[type=text] {
+    background-color : #FFFFFF;
+    border : none;
+    border-radius : 0;
+    color : #9A9A9A;
+    font-weight : 500;
+}
+
+fieldset input[type=password] {
+    background-color : #FFFFFF;
+    border : none;
+    border-radius : 0;
+    color : #9A9A9A;
+    font-weight : 500;
+}
+
+
+/* Cachons la case à cocher */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+/* on prépare le label */
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+    position: relative; /* permet de positionner les pseudo-éléments */
+    padding-left: 25px; /* fait un peu d'espace pour notre case à venir */
+    cursor: pointer;    /* affiche un curseur adapté */
+}
+
+/* Aspect des checkboxes */
+/* :before sert à créer la case à cocher */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left:0; top: 2px;
+    width: 17px; height: 17px; /* dim. de la case */
+    border: 1px solid #999;
+    background: #fff;
+    border-radius: 0px; /* angles arrondis */
+}
+
+/* Aspect général de la coche */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+    content: '✔';
+    position: absolute;
+    top: 0; left: 4px;
+    font-size: 14px;
+    color: #999;
+    transition: all .1s; /* on prévoit une animation */
+}
+/* Aspect si "pas cochée" */
+[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0; /* coche invisible */
+    transform: scale(0); /* mise à l'échelle à 0 */
+}
+/* Aspect si "cochée" */
+[type="checkbox"]:checked + label:after {
+    opacity: 1; /* coche opaque */
+    transform: scale(1); /* mise à l'échelle 1:1 */
+}
+
+/* aspect désactivée */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+    box-shadow: none;
+    border-color: #999;
+    background-color: #fff;
+}
+/* styles de la coche (si cochée/désactivée) */
+[type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+}
+/* on style aussi le label quand désactivé */
+[type="checkbox"]:disabled + label {
+    color: #999;
+}
+
+.grey-link {
+    color : #9A9A9A;
+    font-size : 16px;
+}
+.grey-link:hover {
+    color : #404040;
+    font-size : 16px;
+    text-decoration : none;
 }
 
 fieldset legend {
