@@ -67,7 +67,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        parent::password = rand_string();
+        parent::setPlainPassword(rand_string());
     }
 
     private function rand_string()
