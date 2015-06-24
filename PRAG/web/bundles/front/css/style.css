@@ -88,7 +88,8 @@ header {
 
 
 .form-signin {
-    border: dashed;
+    border: none;
+    background-color : #ECECEC;
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -110,15 +111,37 @@ header {
     font-size: 16px;
 }
 .form-signin .form-control:focus {
-    z-index: 2;
+     z-index: 2;
+ }
+
+input[type=submit] {
+    background-color : #9D2B53;
+    border : none;
+    border-radius : 0;
+    color : #FFFFFF;
+    font-weight : bold;
 }
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+
+input[type=submit]:hover {
+    background-color : #AB4A6C;
+    border : none;
+    border-radius : 0;
+    color : #FFFFFF;
+    font-weight : bold;
 }
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+
+input[type=submit]:active {
+    background-color : #5C0A26;
+    border : none;
+    border-radius : 0;
+    color : #FFFFFF;
+    font-weight : bold;
+}
+
+fieldset legend {
+    color : #9A9A9A;
+    margin : auto;
+    text-align : center;
+    border : none;
+    display : inline-block;
 }
