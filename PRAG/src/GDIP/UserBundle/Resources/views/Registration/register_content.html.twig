@@ -24,7 +24,27 @@
                     <div class="form-group">
                         {{ form_label(form.username) }}
                         {{ form_widget(form.username) }}
-				        {{ form_errors(form.username) }}
+                        {{ form_errors(form.username) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.rangMembre) }}
+                        {{ form_widget(form.rangMembre) }}
+                        {{ form_errors(form.rangMembre) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.dateReussiteMembre) }}
+                        {{ form_widget(form.dateReussiteMembre) }}
+                        {{ form_errors(form.dateReussiteMembre) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.nbSemestreValide) }}
+                        {{ form_widget(form.nbSemestreValide) }}
+                        {{ form_errors(form.nbSemestreValide) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.estAdherent) }}
+                        {{ form_widget(form.estAdherent) }}
+                        {{ form_errors(form.estAdherent) }}
                     </div>
                  {#    <div class="form-group">
                         {{ form_label(form.plainPassword.first) }}
@@ -36,7 +56,7 @@
                         {{ form_widget(form.plainPassword.second) }}
 				        {{ form_errors(form.plainPassword.second) }}
                     </div> #}
-                    {{ form_rest(form) }}
+                    {{ form_widget(form._token) }}
                 </fieldset>
             </div>
             <input type="submit" class="btn btn-sm btn-success" id="_submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
