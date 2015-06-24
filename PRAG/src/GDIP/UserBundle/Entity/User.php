@@ -65,28 +65,6 @@ class User extends BaseUser
     private $estAdherent;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="droitAcces", type="boolean")
-     */
-    private $droitAcces;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="droitConsultation", type="boolean")
-     */
-    private $droitConsultation;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="droitEvaluation", type="boolean")
-     */
-    private $droitEvaluation;
-
-
-    /**
      * Get id
      *
      * @return integer 
