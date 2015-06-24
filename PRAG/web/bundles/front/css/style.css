@@ -154,6 +154,10 @@ fieldset input[type=text] {
     font-weight : 500;
 }
 
+.full-width {
+    width : 100%;
+}
+
 fieldset input[type=password] {
     background-color : #FFFFFF;
     border : none;
