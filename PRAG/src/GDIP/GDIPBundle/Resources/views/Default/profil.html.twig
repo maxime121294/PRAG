@@ -1,0 +1,59 @@
+{% extends 'GDIPUserBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="col-md-6 center-block">
+            <h2>Votre profil</h2><br>
+            <table class="table table-striped">
+
+                <tbody>
+                <tr>
+                    <td>Nom  </td>
+                    <td>Dupond</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Prénom  </td>
+                    <td>Jean</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Filière  </td>
+                    <td>Biologie Médicale</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Réussite au concours </td>
+                    <td>xx/xx/xx</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Semestres validés  </td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Classement </td>
+                    <td>6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Mail  </td>
+                    <td>jeanjean@gmail.com</td>
+                    <td><input type="submit" value="Modifier"> </td>
+                </tr>
+                <tr>
+                    <td>Mot de passe </td>
+                    {# Mot de passe non affiché pour éviter les problème de sécurité #}
+                    <td> ******* </td>
+                    <td><input type="submit" value="Modifier"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+{% endblock %}

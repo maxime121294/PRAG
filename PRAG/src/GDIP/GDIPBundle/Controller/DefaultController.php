@@ -16,4 +16,14 @@ class DefaultController extends Controller
     {
         return array('name' => $name);
     }
+
+
+    /**
+     * @Route("/profil/{name}")
+     * @Template()
+     */
+    public function profilAction($name)
+    {
+        return array('name' => $name);
+    }
 }
