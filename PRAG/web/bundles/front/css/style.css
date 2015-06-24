@@ -114,11 +114,21 @@ header {
      z-index: 2;
  }
 
+.td-bold-colored {
+    color : #9D2B53;
+    font-weight: bold;
+}
+
+td {
+    /*font-weight: bold;*/
+}
+
 input[type=submit] {
     background-color : #9D2B53;
     border : none;
     border-radius : 0;
     color : #FFFFFF;
+    font-weight : normal;
 }
 
 input[type=submit]:hover {
@@ -126,6 +136,7 @@ input[type=submit]:hover {
     border : none;
     border-radius : 0;
     color : #FFFFFF;
+    font-weight : normal;
 }
 
 input[type=submit]:active {
@@ -225,6 +236,7 @@ fieldset input[type=password] {
     color : #404040;
     font-size : 16px;
     text-decoration : none;
+    font-weight : normal;
 }
 
 fieldset legend {
