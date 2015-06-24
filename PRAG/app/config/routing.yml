@@ -1,12 +1,12 @@
 gdip_user:
     resource: "@GDIPUserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /GDIP/
 
 gdipgdip:
     resource: "@GDIPGDIPBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /GDIP/
 
 app:
     resource: "@AppBundle/Controller/"
