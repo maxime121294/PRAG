@@ -1,9 +1,8 @@
-{% extends 'GDIPUserBundle::layout.html.twig' %}
-
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <form role="form" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+    <div class="container" id="div-signin">
+    <form role="form " action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
             <div class="modal-body">
                 <fieldset>
                     <div class="form-group">
@@ -59,7 +58,9 @@
                     {{ form_widget(form._token) }}
                 </fieldset>
             </div>
-            <input type="submit" class="btn btn-sm btn-success" id="_submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
-    	</div>
+            <input type="submit" class="btn btn-sm" id="_submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
+
+
     </form>
+    </div>
 {% endblock %}
