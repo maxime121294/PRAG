@@ -250,3 +250,24 @@ fieldset legend {
     border : none;
     display : inline-block;
 }
+
+#navbar {
+    background-color: #9D2B53;
+}
+
+#navbar ul {
+    background-color: #9D2B53;
+}
+
+#navbar a {
+    color: white;
+}
+
+.active {
+    background-color: #9D2B53;
+}
+
+.navbar-default {
+    background-image: none;
+    background-color: #9D2B53;
+}
