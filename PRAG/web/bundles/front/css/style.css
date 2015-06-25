@@ -35,11 +35,15 @@ header {
 #footer {
     color: #9C2B53;
     vertical-align: middle;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     line-height: 45px;
+}
+
+#page-content {
+    padding-bottom : 60px;
 }
 
 #footer div{
