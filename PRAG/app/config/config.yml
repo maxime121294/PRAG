@@ -86,3 +86,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: GDIP\UserBundle\Entity\User
+    registration:
+        confirmation:
+            enabled: true
+        form:
+            type: GDIP_user_registration
+    from_email:
+        address:        no-reply@siphif.com
+        sender_name:    SIPHIF

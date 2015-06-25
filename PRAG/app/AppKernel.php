@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new GDIP\GDIPBundle\GDIPGDIPBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new GDIP\UserBundle\GDIPUserBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new GDIP\AdminBundle\GDIPAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
