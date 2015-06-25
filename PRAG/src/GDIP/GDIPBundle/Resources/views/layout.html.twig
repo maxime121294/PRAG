@@ -12,21 +12,22 @@
                 </button>
             </div>
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-8"><div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav text-center">
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Pré-choix d'affectation</a></li>
-                        <li><a href="#">Consulter les évaluations</a></li>
-                        <li><a href="#">Evaluation de stage</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                <div class="col-md-offset-3 col-md-8">
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav text-center">
+                            <li><a href="{{ path('index') }}">Accueil</a></li>
+                            <li><a href="{{ path('profil') }}">Profil</a></li>
+                            <li><a href="#">Pré-choix d'affectation</a></li>
+                            <li><a href="#">Consulter les évaluations</a></li>
+                            <li><a href="#">Evaluation de stage</a></li>
+                        </ul>
+                    </div>
                 </div>
             </dxiv>
-        </div><!--/.container-fluid -->
+        </div>
     </nav>
-    {% block test %}
-        {% endblock %}
+
+    {% block GDIP_body %}
+    {% endblock %}
 {% endblock %}
 
