@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block subject %}
+{% autoescape false %}
+{{ 'registration.email.subject'|trans({'%username%': user.prenomMembre, '%confirmationUrl%': confirmationUrl}) }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+
+Bonjour {{ user.prenomMembre }} !
+
+Pour valider votre compte utilisateur, merci de vous rendre sur {{ confirmationUrl }}
+
+Récapitulatif de vos identifiants:
+
+Email : {{ user.email }}
+Nom d'utilisateur : {{ user.username }}
+Mot de passe : {{ user.plainPassword }}
+
+Cordialement,
+L'équipe du SIPHIF.
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}
