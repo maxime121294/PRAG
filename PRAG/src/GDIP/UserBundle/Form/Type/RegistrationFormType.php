@@ -32,7 +32,8 @@ class RegistrationFormType extends AbstractType
             ->add('estAdherent', 'radio', array(
                 "label" => "Est adhérent",
                 "required" => true,
-            ));
+            ))
+            ->remove('plainPassword');
     }
 
     public function getParent()
