@@ -19,7 +19,8 @@
         <script type="text/javascript" src="{{asset('bundles/front/js/bootstrap.min.js')}}"></script>
     </head>
     <body>
-
+    <div class="page">
+        <div class="bloc-principal">
     <header>
         <div class="container-fluid" id="header">
             <div class="row">
@@ -34,6 +35,7 @@
         {% block body %}
         {% endblock %}
     </div>
+        </div>
     <div class="container-fluid" id="footer">
         <div class="row vertical-middle">
             <div class="col-md-4">© IUT Paris Descartes</div>
@@ -44,6 +46,7 @@
                 <a href="mailto:bureausiphif@googlegroups.com"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
             </div>
         </div>
+    </div>
     </div>
     {% block javascripts %}
     {% endblock %}
