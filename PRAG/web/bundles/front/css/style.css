@@ -16,8 +16,19 @@ header {
     vertical-align: middle;
 }
 
+html, body { height: 100% }
+
 .vertical-bottom {
     width : 100%;
+}
+
+.page {
+    min-height: 100%;
+    position: relative;
+}
+
+.bloc-principal {
+    padding-bottom: 45px;
 }
 
 .text-header {
@@ -40,6 +51,11 @@ header {
     left: 0;
     right: 0;
     line-height: 45px;
+    height: 45px;
+}
+
+#page-content {
+    padding-bottom : 60px;
 }
 
 #footer div{
