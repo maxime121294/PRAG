@@ -379,3 +379,30 @@ h2 {
 th {
     color: #9C2B53;
 }
+
+.page-adhesion h2 {
+    text-align: center;
+    padding-bottom: 14px;
+    font-style: italic;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.page-adhesion p {
+    font-weight: bold;
+    text-align: justify;
+}
+
+.page-adhesion .btn {
+    width: 200px;
+    background-color: #9d2b53;
+    float: right;
+    margin-top: 50px;
+    border-radius: 0;
+}
+
+.page-adhesion .btn a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+}
