@@ -77,4 +77,18 @@ class DefaultController extends Controller
                 'user' => $user
             ));
     }
+
+    /**
+     * @Route("/evaluation", name="evaluation")
+     * @Template()
+     */
+    public function evaluationAction()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('GDIPAdminBundle:Default:GestionEvaluation.html.twig',
+            array(
+                'user' => $user
+            ));
+    }
 }
