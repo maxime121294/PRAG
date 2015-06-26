@@ -1,6 +1,6 @@
 <?php
 
-namespace GDIP\GDIPBundle\Entity;
+namespace GDIP\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Actualite
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="GDIP\GDIPBundle\Entity\ActualiteRepository")
+ * @ORM\Entity(repositoryClass="GDIP\AdminBundle\Entity\ActualiteRepository")
  */
 class Actualite
 {

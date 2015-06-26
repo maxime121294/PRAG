@@ -1,6 +1,6 @@
 <?php
 
-namespace GDIP\GDIPBundle\Entity;
+namespace GDIP\AdminBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

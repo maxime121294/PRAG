@@ -70,7 +70,7 @@ class User extends BaseUser
 	private $stages;
 
     /**
-    * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\Actualite", mappedBy="utilisateurs", cascade={"remove", "persist"})
+    * @ORM\OneToMany(targetEntity="GDIP\AdminBundle\Entity\Actualite", mappedBy="utilisateurs", cascade={"remove", "persist"})
     */
     protected $actualites;
 

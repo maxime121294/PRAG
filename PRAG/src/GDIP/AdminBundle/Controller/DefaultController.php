@@ -69,20 +69,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/informations", name="informations")
-     * @Template()
-     */
-    public function informationsAction()
-    {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-        return $this->render('GDIPAdminBundle:Default:index.html.twig',
-            array(
-                'user' => $user
-            ));
-    }
-
-    /**
      * @Route("/utilisateur", name="utilisateur")
      * @Template()
      */
