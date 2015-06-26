@@ -63,6 +63,12 @@ class User extends BaseUser
      * @ORM\Column(name="estAdherent", type="boolean")
      */
     private $estAdherent;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\Stage", mappedBy="utilisateurs")
+	 */
+	private $stages;
+
 
     public function __construct()
     {
@@ -314,5 +320,38 @@ class User extends BaseUser
     public function getDroitEvaluation()
     {
         return $this->droitEvaluation;
+    }
+
+    /**
+     * Add stages
+     *
+     * @param \GDIP\GDIPBundle\Entity\Stage $stages
+     * @return User
+     */
+    public function addStage(\GDIP\GDIPBundle\Entity\Stage $stages)
+    {
+        $this->stages[] = $stages;
+
+        return $this;
+    }
+
+    /**
+     * Remove stages
+     *
+     * @param \GDIP\GDIPBundle\Entity\Stage $stages
+     */
+    public function removeStage(\GDIP\GDIPBundle\Entity\Stage $stages)
+    {
+        $this->stages->removeElement($stages);
+    }
+
+    /**
+     * Get stages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStages()
+    {
+        return $this->stages;
     }
 }
