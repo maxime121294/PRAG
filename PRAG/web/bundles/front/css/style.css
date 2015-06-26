@@ -297,3 +297,23 @@ fieldset legend {
 .dateActualite {
     text-indent: 3em;
 }
+
+.pencil {
+    padding-right: .25em;
+}
+
+.trash {
+   margin-right: 2em;
+}
+
+.plus {
+    margin-right: .5em;
+}
+
+.ajout-actualite {
+    font-weight: bolder;
+}
+
+h2 {
+    color: #9D2B53;
+}
