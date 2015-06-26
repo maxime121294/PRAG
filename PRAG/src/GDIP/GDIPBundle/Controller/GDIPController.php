@@ -16,6 +16,10 @@ class GDIPController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            return $this->redirect($this->generateUrl('statistiques'));
+        }
+
         return $this->render('GDIPGDIPBundle:GDIP:index.html.twig',
             array(
                 'user' => $user 
