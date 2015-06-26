@@ -1,32 +1,53 @@
 {% extends 'GDIPAdminBundle::layout.html.twig' %}
 
 {% block admin_body %}
-    <div class="container">
-        <canvas id="chart1" height="250" width="250">
+
+    <div class="container text-center">
+        <span class="stat_label">
+        <canvas id="chart1" height="200" width="200">
+            <div data-value="100">Oui</div>
+            <div data-value="0">Non</div>
+        </canvas>
+            <span>Nombre d'utilisateurs</span><br/>
+            <span>58</span>
+        </span>
+        <span class="stat_label">
+        <canvas id="chart2" height="200" width="200">
             <div data-value="78">Oui</div>
             <div data-value="22">Non</div>
         </canvas>
-        <i class="fa fa-child big_red_icon"></i>
-        <canvas id="chart2" height="250" width="250">
-            <div data-value="38">Oui</div>
-            <div data-value="62">Non</div>
+
+            <span>Taux d'adhérents</span><br/>
+            <span>39%</span>
+        </span>
+        <span class="stat_label">
+        <canvas id="chart3" height="200" width="200">
+            <div data-value="100">Oui</div>
+            <div data-value="0">Non</div>
         </canvas>
-        <i class="fa fa-building big_red_icon"></i>
-        <canvas id="chart3" height="250" width="250">
+
+            <span>Nombre de lieux de stage</span><br/>
+            <span>94</span>
+        </span>
+        <br/>
+        <span class="stat_label">
+        <canvas id="chart4" height="200" width="200">
             <div data-value="50">Oui</div>
             <div data-value="50">Non</div>
         </canvas>
-        <i class="fa fa-user big_red_icon"></i>
-        <canvas id="chart4" height="250" width="250">
-            <div data-value="50">Oui</div>
-            <div data-value="50">Non</div>
-        </canvas>
-        <i class="fa fa-copy big_red_icon"></i>
-        <canvas id="chart5" height="250" width="250">
+
+            <span>Taux de participation aux évaluations</span><br/>
+            <span>29%</span>
+        </span>
+        <span class="stat_label">
+        <canvas id="chart5" height="200" width="200">
             <div data-value="20">Oui</div>
             <div data-value="80">Non</div>
         </canvas>
-        <i class="fa fa-tachometer big_red_icon"></i>
+
+            <span>Taux de participation aux pré-choix</span><br/>
+            <span>17%</span>
+        </span>
     </div>
 {% endblock %}
 
@@ -38,6 +59,8 @@
         $('#chart3').donut();
         $('#chart4').donut();
         $('#chart5').donut();
+
+
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-36251023-1']);
         _gaq.push(['_setDomainName', 'jqueryscript.net']);
