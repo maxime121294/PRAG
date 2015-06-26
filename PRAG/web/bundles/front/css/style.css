@@ -327,7 +327,7 @@ fieldset legend {
    margin-right: 2em;
 }
 
-.plus {
+.plus, .import {
     margin-right: .5em;
 }
 
@@ -345,4 +345,8 @@ h2 {
     position:relative;
     left : -180px;
     top : -90px;
+}
+
+th {
+    color: #9C2B53;
 }
