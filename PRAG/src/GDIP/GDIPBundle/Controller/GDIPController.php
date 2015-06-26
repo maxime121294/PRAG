@@ -28,7 +28,7 @@ class GDIPController extends Controller
      */
     public function adhererAction()
     {
-
+        return $this->render('GDIPGDIPBundle:GDIP:adhesion.html.twig');
     }
 
     /**
