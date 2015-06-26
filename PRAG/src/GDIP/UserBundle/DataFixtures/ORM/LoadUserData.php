@@ -21,7 +21,7 @@ class LoadUserData implements FixtureInterface
         $userAdmin->setNbSemestreValide(1);
         $userAdmin->setEstAdherent(true);
         $userAdmin->setEnabled(true);
-        $userAdmin->setPlainPassword('');
+        $userAdmin->setPlainPassword('gdip');
         $userAdmin->setDateReussiteMembre(new \DateTime("now"));
         $userAdmin->setEmail('noreply.siphif@gmail.com');
         $userAdmin->setRoles(array('ROLE_ADMIN'));
