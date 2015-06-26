@@ -34,7 +34,7 @@
             </div>
         </div>
         {% if user is defined and is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="top-right-corner">{{ user.prenomMembre }} {{ user.nomMembre }} | {% if user.estAdherent %}Adhérent n°{{ user.id }} | Déconnexion {% else %}Non-adhérent (<a href="#">Souscrire ?</a>){% endif %}</div>
+            <div class="top-right-corner">{{ user.prenomMembre }} {{ user.nomMembre }} | {% if user.estAdherent %}Adhérent n°{{ user.id }} {% else %}Non-adhérent (<a href="#">Souscrire ?</a>){% endif %}  | <a class="a-alternative" href = "{{ logout_path('main') }}"><i class="glyphicon glyphicon-remove-circle"></i></p></a></div>
         {% endif %}
     </header>
 

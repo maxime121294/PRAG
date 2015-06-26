@@ -1,0 +1,7 @@
+{% extends 'GDIPGDIPBundle::layout.html.twig' %}
+
+{% block GDIP_body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('fos_user_registration_register') }}">Inscrire un nouvel utilisateur</a>
+	{% endif %}
+{% endblock %}
