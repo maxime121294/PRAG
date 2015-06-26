@@ -21,13 +21,22 @@ class DefaultController extends Controller
     	  ->getManager()
     	  ->getRepository('GDIPUserBundle:User');
 
-    	$members = $repository->findAll();
+    	$members = $repository->findByEnabled(true);
     	$nbMembers = count($members);
+
+    	$adherents = $repository->findByEstAdherent(true);
+    	$nbAdherents = count($adherents);
+    	$nbNonAdherents = $nbMembers - $nbAdherents;
+
+    	$statAdherents = $nbAdherents/$nbMembers*100;
 
         return $this->render('GDIPAdminBundle:Default:GestionStatistiques.html.twig',
             array(
                 'user' => $user,
                 'nbMembers' => $nbMembers,
+                'statAdherents' => $statAdherents,
+                'nbAdherents' => $nbAdherents,
+                'nbNonAdherents' => $nbNonAdherents,
             ));
     }
 

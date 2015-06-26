@@ -13,12 +13,12 @@
         </span>
         <span class="stat_label">
         <canvas id="chart2" height="200" width="200">
-            <div data-value="39">Oui</div>
-            <div data-value="61">Non</div>
+            <div data-value="{{ nbAdherents }}">Oui</div>
+            <div data-value="{{ nbNonAdherents }}">Non</div>
         </canvas>
 
             <span>Taux d'adhérents</span><br/>
-            <span class="stat_value">39%</span>
+            <span class="stat_value">{{ statAdherents }}%</span>
         </span>
         <span class="stat_label">
         <canvas id="chart3" height="200" width="200">
