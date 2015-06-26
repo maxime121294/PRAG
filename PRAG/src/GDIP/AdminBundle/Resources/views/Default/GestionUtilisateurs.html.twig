@@ -13,33 +13,24 @@
                             <th>Contact</th>
                             <th>Rang</th>
                             <th>Date de réussite du concours</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="center">
-                        <tr>
-                            <td>ARNE</td>
-                            <td>Alain</td>
-                            <td>Non</td>
-                            <td>aarne@contact.fr</td>
-                            <td>5</td>
-                            <td>01/01/2012</td>
-                            <td>
-                                <a href=""><i class="fa fa-trash-o fa-2x"></i></a>
-                                <a href=""><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>BIRT</td>
-                            <td>Bob</td>
-                            <td>Oui</td>
-                            <td>bbirt@contact.fr</td>
-                            <td>1</td>
-                            <td>01/01/2011</td>
-                            <td>
-                                <a href=""><i class="fa fa-trash-o fa-2x"></i></a>
-                                <a href=""><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                            </td>
-                        </tr>
+                        {% for member in members %}
+                            <tr>
+                                <td>{{ member.nomMembre }}</td>
+                                <td>{{ member.prenomMembre }}</td>
+                                <td>{% if member.estAdherent %}Oui{% else %}Non{% endif %}</td>
+                                <td>{{ member.email }}</td>
+                                <td>{{ member.rangMembre }}</td>
+                                <td>{{ member.DateReussiteMembre|date("d/m/Y") }}</td>
+                                <td>
+                                    <a href=""><i class="fa fa-trash-o fa-2x"></i></a>
+                                    <a href=""><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

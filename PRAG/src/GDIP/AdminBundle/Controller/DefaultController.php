@@ -72,9 +72,17 @@ class DefaultController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
+        $repository = $this
+    	  ->getDoctrine()
+    	  ->getManager()
+    	  ->getRepository('GDIPUserBundle:User');
+
+    	$members = $repository->findAll();
+
         return $this->render('GDIPAdminBundle:Default:GestionUtilisateurs.html.twig',
             array(
-                'user' => $user
+                'user' => $user,
+                'members' => $members
             ));
     }
 
