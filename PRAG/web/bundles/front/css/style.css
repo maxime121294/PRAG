@@ -293,3 +293,7 @@ fieldset legend {
     background-image: none;
     background-color: #9D2B53;
 }
+
+.dateActualite {
+    text-indent: 3em;
+}
