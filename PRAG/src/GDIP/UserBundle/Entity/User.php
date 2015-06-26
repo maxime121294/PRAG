@@ -69,6 +69,11 @@ class User extends BaseUser
 	 */
 	private $stages;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Actualite", mappedBy="utilisateurs", cascade={"remove", "persist"})
+    */
+    protected $actualites;
+
 
     public function __construct()
     {
@@ -353,5 +358,38 @@ class User extends BaseUser
     public function getStages()
     {
         return $this->stages;
+    }
+
+    /**
+     * Add actualites
+     *
+     * @param \GDIP\UserBundle\Entity\Actualite $actualites
+     * @return User
+     */
+    public function addActualite(\GDIP\UserBundle\Entity\Actualite $actualites)
+    {
+        $this->actualites[] = $actualites;
+
+        return $this;
+    }
+
+    /**
+     * Remove actualites
+     *
+     * @param \GDIP\UserBundle\Entity\Actualite $actualites
+     */
+    public function removeActualite(\GDIP\UserBundle\Entity\Actualite $actualites)
+    {
+        $this->actualites->removeElement($actualites);
+    }
+
+    /**
+     * Get actualites
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActualites()
+    {
+        return $this->actualites;
     }
 }
