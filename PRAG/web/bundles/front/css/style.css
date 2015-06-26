@@ -250,15 +250,15 @@ fieldset input[type=password] {
     color: #999;
 }
 
+/*Style de la barre d'information utilisateur */
 .top-right-corner {
     background-color: #9C2B53;
     position : absolute;
     top : 0;
-    left : 57%;
-    right : 25%;
+    right: 0;
     color : #ffffff;
     font-weight : normal;
-    font-size: medium;
+    font-size: small;
 }
 
 .grey-link {
