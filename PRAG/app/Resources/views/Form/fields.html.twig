@@ -14,7 +14,10 @@
 
 {%- block form_widget_simple -%}
     {%- set type = type|default('text') -%}
-    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }}
+            {% if value is not empty %}value="{{ value }}" {% endif %}
+            {% if type == "number" %} min = "0" {% endif %}
+            placeholder = "{{ label }}"/>
 {%- endblock form_widget_simple -%}
 
 {%- block textarea_widget -%}
