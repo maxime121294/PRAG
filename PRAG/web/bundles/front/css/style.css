@@ -1,4 +1,4 @@
-#header {
+﻿#header {
     position : relative;
     height: 125px;
 }
@@ -292,6 +292,13 @@ fieldset legend {
 .navbar-default {
     background-image: none;
     background-color: #9D2B53;
+}
+
+.input-border {
+    border-radius: 0px 0px 0px;
+    border : solid 1px #ECECEC;
+    background-color : white;
+    box-shadow : 0 0 0;
 }
 
 .dateActualite {
