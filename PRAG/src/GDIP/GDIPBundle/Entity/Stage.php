@@ -20,6 +20,24 @@ class Stage
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="Hopital")
+	* @ORM\JoinColumn(nullable=false)
+	*/
+	private $hopital;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="Poste")
+	* @ORM\JoinColumn(nullable=false)
+	*/
+	private $poste;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="Filiere")
+	* @ORM\JoinColumn(nullable=false)
+	*/
+	private $filiere;
 
 
     /**
