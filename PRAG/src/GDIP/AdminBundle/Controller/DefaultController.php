@@ -9,11 +9,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/stats")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('GDIPAdminBundle:Default:index.html.twig',
+            array(
+                'user' => $user 
+            ));
     }
 }
