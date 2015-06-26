@@ -14,7 +14,11 @@ class GDIPController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            return $this->redirect($this->generateUrl('statistiques'));
+        }
 
         return $this->render('GDIPGDIPBundle:GDIP:index.html.twig',
             array(
@@ -28,7 +32,7 @@ class GDIPController extends Controller
      */
     public function adhererAction()
     {
-
+        return $this->render('GDIPGDIPBundle:GDIP:adhesion.html.twig');
     }
 
     /**

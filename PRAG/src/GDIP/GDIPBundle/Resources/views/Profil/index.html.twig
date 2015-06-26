@@ -40,13 +40,12 @@
                 <tr>
                     <td class="td-bold-colored">Mail :</td>
                     <td>{{ user.email }}</td>
-                    <td><input type="submit" value="Modifier"> </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Mot de passe :</td>
-                    {# Mot de passe non affiché pour éviter les problème de sécurité #}
                     <td> ******* </td>
-                    <td><input type="submit" value="Modifier"></td>
+                    <td><a href="{{ path('fos_user_change_password') }}">Modifier</a></td>
                 </tr>
                 </tbody>
             </table>

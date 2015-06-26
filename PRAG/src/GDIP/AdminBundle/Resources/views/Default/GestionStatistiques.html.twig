@@ -1,0 +1,78 @@
+{% extends 'GDIPAdminBundle::layout.html.twig' %}
+
+{% block admin_body %}
+
+    <div class="container text-center">
+        <span class="stat_label">
+        <canvas id="chart1" height="200" width="200">
+            <div data-value="100">Oui</div>
+            <div data-value="0">Non</div>
+        </canvas>
+            <span>Nombre d'utilisateurs</span><br/>
+            <span class="stat_value">{{ nbMembers }}</span>
+        </span>
+        <span class="stat_label">
+        <canvas id="chart2" height="200" width="200">
+            <div data-value="{{ nbAdherents }}">Oui</div>
+            <div data-value="{{ nbNonAdherents }}">Non</div>
+        </canvas>
+
+            <span>Taux d'adhérents</span><br/>
+            <span class="stat_value">{{ statAdherents }}%</span>
+        </span>
+        <span class="stat_label">
+        <canvas id="chart3" height="200" width="200">
+            <div data-value="100">Oui</div>
+            <div data-value="0">Non</div>
+        </canvas>
+
+            <span>Nombre de lieux de stage</span><br/>
+            <span class="stat_value">94</span>
+        </span>
+        <br/>
+        <span class="stat_label">
+        <canvas id="chart4" height="200" width="200">
+            <div data-value="29">Oui</div>
+            <div data-value="71">Non</div>
+        </canvas>
+
+            <span>Taux de participation aux évaluations</span><br/>
+            <span class="stat_value">29%</span>
+        </span>
+        <span class="stat_label">
+        <canvas id="chart5" height="200" width="200">
+            <div data-value="17">Oui</div>
+            <div data-value="83">Non</div>
+        </canvas>
+
+            <span>Taux de participation aux pré-choix</span><br/>
+            <span class="stat_value">17%</span>
+        </span>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{asset('bundles/front/js/jquery.donut.js')}}"></script>
+    <script>
+        $('#chart1').donut();
+        $('#chart2').donut();
+        $('#chart3').donut();
+        $('#chart4').donut();
+        $('#chart5').donut();
+
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="../../../../../../web/bundles/front/js/jquery.donut.js"></script>
+{% endblock %}
+
