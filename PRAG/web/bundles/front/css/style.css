@@ -327,7 +327,7 @@ fieldset legend {
    margin-right: 2em;
 }
 
-.plus {
+.plus, .import {
     margin-right: .5em;
 }
 
@@ -337,4 +337,8 @@ fieldset legend {
 
 h2 {
     color: #9D2B53;
-}   
+}
+
+th {
+    color: #9C2B53;
+}
