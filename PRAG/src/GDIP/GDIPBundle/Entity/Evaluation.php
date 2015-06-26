@@ -27,6 +27,17 @@ class Evaluation
      * @ORM\Column(name="noteGenerale", type="float")
      */
     private $noteGenerale;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="Stage")
+	* @ORM\JoinColumn(nullable=false)
+	*/
+	private $stage;
+	
+	/**
+	* @ORM\ManyToMany(targetEntity="Question")
+	*/
+	private $questions;
 
 
     /**
@@ -60,5 +71,68 @@ class Evaluation
     public function getNoteGenerale()
     {
         return $this->noteGenerale;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set stage
+     *
+     * @param \GDIP\GDIPBundle\Entity\Stage $stage
+     * @return Evaluation
+     */
+    public function setStage(\GDIP\GDIPBundle\Entity\Stage $stage)
+    {
+        $this->stage = $stage;
+
+        return $this;
+    }
+
+    /**
+     * Get stage
+     *
+     * @return \GDIP\GDIPBundle\Entity\Stage 
+     */
+    public function getStage()
+    {
+        return $this->stage;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \GDIP\GDIPBundle\Entity\Question $questions
+     * @return Evaluation
+     */
+    public function addQuestion(\GDIP\GDIPBundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \GDIP\GDIPBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\GDIP\GDIPBundle\Entity\Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
     }
 }
