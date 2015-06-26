@@ -340,11 +340,35 @@ h2 {
 }
 
 .big_red_icon {
-    font-size : 120px;
-    color: #9D2B53;
-    position:relative;
-    left : -180px;
-    top : -90px;
+    font-size : 80px;
+    color: #bfadaa;
+}
+
+#chart1 {
+    background-image : url("../img/stat-user.png");
+}
+
+#chart2 {
+    background-image : url("../img/stat-adherent.png");
+}
+
+#chart3 {
+    background-image : url("../img/stat-stage.png");
+}
+
+#chart4 {
+    background-image : url("../img/stat-eval.png");
+}
+
+#chart5 {
+    background-image : url("../img/stat-choice.png");
+}
+
+.stat_label {
+    width: 200px;
+    display: inline-block;
+    color : #9D2B53;
+    font-size : 14px;
 }
 
 th {
