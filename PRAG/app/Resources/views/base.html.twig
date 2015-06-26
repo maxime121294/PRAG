@@ -19,7 +19,8 @@
         <script type="text/javascript" src="{{asset('bundles/front/js/bootstrap.min.js')}}"></script>
     </head>
     <body>
-
+    <div class="page">
+        <div class="bloc-principal">
     <header>
         <div class="container-fluid" id="header">
             <div class="row">
@@ -31,22 +32,24 @@
         </div>
         <div class="top-right-corner col-md-3">Jean Dupond | Non-adhérent (S'inscrire ?)</div>
     </header>
-
-
+    <div id="page-content">
         {% block body %}
         {% endblock %}
-            <div class="container-fluid" id="footer">
-                <div class="row vertical-middle">
-                    <div class="col-md-4">© IUT Paris Descartes</div>
-                    <div class="col-md-4 text-center">Mentions Légales</div>
-                    <div class="col-md-4 text-right">
-                        <a href="http://siphif.org/"><i id="social" class="fa fa-link fa-3x"></i></a>
-                        <a href="https://twitter.com/siphif"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
-                        <a href="mailto:bureausiphif@googlegroups.com"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
-                    </div>
-                </div>
+    </div>
+        </div>
+    <div class="container-fluid" id="footer">
+        <div class="row vertical-middle">
+            <div class="col-md-4">© IUT Paris Descartes</div>
+            <div class="col-md-4 text-center">Mentions Légales</div>
+            <div class="col-md-4 text-right">
+                <a href="http://siphif.org/"><i id="social" class="fa fa-link fa-3x"></i></a>
+                <a href="https://twitter.com/siphif"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
+                <a href="mailto:bureausiphif@googlegroups.com"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
             </div>
-        {% block javascripts %}
-        {% endblock %}
+        </div>
+    </div>
+    </div>
+    {% block javascripts %}
+    {% endblock %}
     </body>
 </html>

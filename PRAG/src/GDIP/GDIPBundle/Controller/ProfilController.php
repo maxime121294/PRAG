@@ -13,12 +13,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ProfilController extends Controller
 {
     /**
-     * @Route("/{name}")
+     * @Route("/", name="profil")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('GDIPGDIPBundle:Profil:index.html.twig',
+            array(
+                'user' => $user 
+            ));
     }
 
     /**
