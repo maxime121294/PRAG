@@ -250,6 +250,17 @@ fieldset input[type=password] {
     color: #999;
 }
 
+.top-right-corner {
+    background-color: #9C2B53;
+    position : absolute;
+    top : 0;
+    left : 57%;
+    right : 25%;
+    color : #ffffff;
+    font-weight : normal;
+    font-size: medium;
+}
+
 .grey-link {
     color : #9A9A9A;
     font-size : 16px;

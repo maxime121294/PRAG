@@ -1,7 +1,6 @@
 {% extends 'GDIPGDIPBundle::layout.html.twig' %}
 
-{% block test %}
-
+{% block GDIP_body %}
     <div class="container">
         <div class="col-md-6 center-block">
             <h2>Votre profil</h2><br>
@@ -9,13 +8,13 @@
 
                 <tbody>
                 <tr>
-                    <td class="td-bold-colored">Nom:</td>
-                    <td>Dupond</td>
+                    <td class="td-bold-colored">Nom :</td>
+                    <td>{{ user.nomMembre }}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Prénom :</td>
-                    <td>Jean</td>
+                    <td>{{ user.prenomMembre }}</td>
                     <td></td>
                 </tr>
                 <tr>
@@ -25,35 +24,31 @@
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Réussite au concours :</td>
-                    <td>xx/xx/xx</td>
+                    <td>{{ user.dateReussiteMembre|date("d/m/Y") }}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Semestres validés :</td>
-                    <td>3</td>
+                    <td>{{ user.nbSemestreValide }}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Classement :</td>
-                    <td>6</td>
+                    <td>{{ user.rangMembre }}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Mail :</td>
-                    <td>jeanjean@gmail.com</td>
-                    <td><input type="submit" value="Modifier"> </td>
+                    <td>{{ user.email }}</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="td-bold-colored">Mot de passe :</td>
-                    {# Mot de passe non affiché pour éviter les problème de sécurité #}
                     <td> ******* </td>
-                    <td><input type="submit" value="Modifier"></td>
+                    <td><a href="{{ path('fos_user_change_password') }}">Modifier</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
 {% endblock %}
