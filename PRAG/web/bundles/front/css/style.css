@@ -337,4 +337,12 @@ fieldset legend {
 
 h2 {
     color: #9D2B53;
-}   
+}
+
+.big_red_icon {
+    font-size : 120px;
+    color: #9D2B53;
+    position:relative;
+    left : -180px;
+    top : -90px;
+}

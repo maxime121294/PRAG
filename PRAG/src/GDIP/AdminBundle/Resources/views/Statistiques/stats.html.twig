@@ -2,7 +2,54 @@
 
 {% block admin_body %}
     <div class="container">
-        CECI EST LA PAGE DES STATISTIQUES PUTAIN !
-        </div>
+        <canvas id="chart1" height="250" width="250">
+            <div data-value="78">Oui</div>
+            <div data-value="22">Non</div>
+        </canvas>
+        <i class="fa fa-child big_red_icon"></i>
+        <canvas id="chart2" height="250" width="250">
+            <div data-value="38">Oui</div>
+            <div data-value="62">Non</div>
+        </canvas>
+        <i class="fa fa-building big_red_icon"></i>
+        <canvas id="chart3" height="250" width="250">
+            <div data-value="50">Oui</div>
+            <div data-value="50">Non</div>
+        </canvas>
+        <i class="fa fa-user big_red_icon"></i>
+        <canvas id="chart4" height="250" width="250">
+            <div data-value="50">Oui</div>
+            <div data-value="50">Non</div>
+        </canvas>
+        <i class="fa fa-copy big_red_icon"></i>
+        <canvas id="chart5" height="250" width="250">
+            <div data-value="20">Oui</div>
+            <div data-value="80">Non</div>
+        </canvas>
+        <i class="fa fa-tachometer big_red_icon"></i>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{asset('bundles/front/js/jquery.donut.js')}}"></script>
+    <script>
+        $('#chart1').donut();
+        $('#chart2').donut();
+        $('#chart3').donut();
+        $('#chart4').donut();
+        $('#chart5').donut();
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="../../../../../../web/bundles/front/js/jquery.donut.js"></script>
+{% endblock %}
+
