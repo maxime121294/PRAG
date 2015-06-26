@@ -141,7 +141,7 @@ td {
     /*font-weight: bold;*/
 }
 
-input[type=submit] {
+.red_button {
     background-color : #9D2B53;
     border : none;
     border-radius : 0;
@@ -149,7 +149,7 @@ input[type=submit] {
     font-weight : normal;
 }
 
-input[type=submit]:hover {
+.red_button:hover {
     background-color : #AB4A6C;
     border : none;
     border-radius : 0;
@@ -157,14 +157,14 @@ input[type=submit]:hover {
     font-weight : normal;
 }
 
-input[type=submit]:active {
+.red_button:active {
     background-color : #5C0A26;
     border : none;
     border-radius : 0;
     color : #FFFFFF;
 }
 
-fieldset input[type=text] {
+.white_input {
     background-color : #FFFFFF;
     border : none;
     border-radius : 0;
@@ -175,15 +175,6 @@ fieldset input[type=text] {
 .full-width {
     width : 100%;
 }
-
-fieldset input[type=password] {
-    background-color : #FFFFFF;
-    border : none;
-    border-radius : 0;
-    color : #9A9A9A;
-    font-weight : 500;
-}
-
 
 /* Cachons la case à cocher */
 [type="checkbox"]:not(:checked),
