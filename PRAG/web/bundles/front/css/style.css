@@ -1,4 +1,4 @@
-#header {
+﻿#header {
     position : relative;
     height: 125px;
 }
@@ -299,4 +299,8 @@ fieldset legend {
     border : solid 1px #ECECEC;
     background-color : white;
     box-shadow : 0 0 0;
+}
+
+.dateActualite {
+    text-indent: 3em;
 }
