@@ -273,6 +273,11 @@ fieldset legend {
     display : inline-block;
 }
 
+.a-alternative {
+    font-size: large;
+    color: ivory;
+}
+
 #navbar {
     background-color: #9D2B53;
 }
