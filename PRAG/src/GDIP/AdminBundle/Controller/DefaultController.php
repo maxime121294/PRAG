@@ -30,7 +30,7 @@ class DefaultController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:Questionnaire:questionnaire.html.twig',
+        return $this->render('GDIPAdminBundle:GestionQuestionnaire:questionnaire.html.twig',
             array(
                 'user' => $user
             ));
