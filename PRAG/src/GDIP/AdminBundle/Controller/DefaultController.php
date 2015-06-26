@@ -16,7 +16,7 @@ class DefaultController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:Statistiques:stats.html.twig',
+        return $this->render('GDIPAdminBundle:Default:GestionStatistiques.html.twig',
             array(
                 'user' => $user 
             ));
@@ -30,7 +30,7 @@ class DefaultController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:GestionQuestionnaire:questionnaire.html.twig',
+        return $this->render('GDIPAdminBundle:Default:GestionQuestions.html.twig',
             array(
                 'user' => $user
             ));
@@ -44,7 +44,7 @@ class DefaultController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:GestionStage:stage.html.twig',
+        return $this->render('GDIPAdminBundle:Default:GestionStage.html.twig',
             array(
                 'user' => $user
             ));
@@ -72,7 +72,7 @@ class DefaultController extends Controller
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:GestionUtilisateur:utilisateur.html.twig',
+        return $this->render('GDIPAdminBundle:Default:GestionUtilisateurs.html.twig',
             array(
                 'user' => $user
             ));
