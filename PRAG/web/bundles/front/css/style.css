@@ -278,6 +278,13 @@ fieldset legend {
     color: ivory;
 }
 
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0px;
+  /*border: 1px solid;*/
+}
+
 #navbar {
     background-color: #9D2B53;
 }
