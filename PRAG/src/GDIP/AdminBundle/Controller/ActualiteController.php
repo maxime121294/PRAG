@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use GDIP\AdminBundle\Entity\Actualite;
 use GDIP\AdminBundle\Form\ActualiteType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Actualite controller.
@@ -102,31 +103,6 @@ class ActualiteController extends Controller
     }
 
     /**
-     * Finds and displays a Actualite entity.
-     *
-     * @Route("/{id}", name="actualite_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('GDIPAdminBundle:Actualite')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Actualite entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
      * Displays a form to edit an existing Actualite entity.
      *
      * @Route("/{id}/edit", name="actualite_edit")
@@ -207,27 +183,24 @@ class ActualiteController extends Controller
     /**
      * Deletes a Actualite entity.
      *
-     * @Route("/{id}", name="actualite_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{id}", name="actualite_delete")
+     * @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('GDIPAdminBundle:Actualite')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('GDIPAdminBundle:Actualite')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Actualite entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Actualite entity.');
         }
 
-        return $this->redirect($this->generateUrl('actualite'));
+        $em->remove($entity);
+        $em->flush();
+
+        $success['success'] = "success"; 
+
+        return new JsonResponse($success);
     }
 
     /**
