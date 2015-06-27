@@ -18,14 +18,14 @@
                             </tr>
                         </thead>
                         <tbody class="center">
-                            {% for member in members %}
+                            {% for entity in entities %}
                                 <tr>
-                                    <td>{{ member.nomMembre|upper }}</td>
-                                    <td>{{ member.prenomMembre|capitalize }}</td>
-                                    <td>{% if member.estAdherent %}Oui{% else %}Non{% endif %}</td>
-                                    <td>{{ member.email }}</td>
-                                    <td>{{ member.rangMembre }}</td>
-                                    <td>{{ member.DateReussiteMembre|date("d/m/Y") }}</td>
+                                    <td>{{ entity.nomMembre|upper }}</td>
+                                    <td>{{ entity.prenomMembre|capitalize }}</td>
+                                    <td>{% if entity.estAdherent %}Oui{% else %}Non{% endif %}</td>
+                                    <td>{{ entity.email }}</td>
+                                    <td>{{ entity.rangMembre }}</td>
+                                    <td>{{ entity.DateReussiteMembre|date("d/m/Y") }}</td>
                                     <td>
                                         <a href=""><i class="fa fa-pencil-square-o fa-2x"></i></a>
                                         <a href=""><i class="fa fa-trash-o fa-2x"></i></a>

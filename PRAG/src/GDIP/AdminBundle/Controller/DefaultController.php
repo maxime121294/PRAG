@@ -81,12 +81,12 @@ class DefaultController extends Controller
     	  ->getManager()
     	  ->getRepository('GDIPUserBundle:User');
 
-    	$members = $repository->findAll();
+    	$entities = $repository->findAll();
 
         return $this->render('GDIPAdminBundle:Default:GestionUtilisateurs.html.twig',
             array(
                 'user' => $user,
-                'members' => $members
+                'entities' => $entities
             ));
     }
 
