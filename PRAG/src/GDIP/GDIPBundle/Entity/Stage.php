@@ -22,6 +22,13 @@ class Stage
     private $id;
 	
 	/**
+     * @var integer
+     *
+     * @ORM\Column(name="places", type="integer")
+     */
+    private $nbPlaces;
+	
+	/**
 	* @ORM\ManyToOne(targetEntity="Hopital")
 	* @ORM\JoinColumn(nullable=false)
 	*/

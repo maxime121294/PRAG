@@ -74,6 +74,11 @@ class User extends BaseUser
 	* @ORM\JoinColumn(nullable=true)
 	*/
 	private $filiere;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\PreChoix", mappedBy="utilisateur")
+    */
+    private $listePreChoix;
 
     /**
     * @ORM\OneToMany(targetEntity="GDIP\AdminBundle\Entity\Actualite", mappedBy="utilisateurs", cascade={"remove", "persist"})
