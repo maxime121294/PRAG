@@ -159,7 +159,7 @@ td {
     /*font-weight: bold;*/
 }
 
-.red_button .red_button:visited {
+.red_button, .red_button:visited {
     background-color : #9D2B53;
     border : none;
     border-radius : 0;
