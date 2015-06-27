@@ -3,6 +3,21 @@
     height: 125px;
 }
 
+a, a:visited{
+    color: #9C2B53;
+
+}
+
+a:hover {
+    color: #AB4A6C;
+
+}
+
+a:active {
+    color: #5C0A26;
+
+}
+
 #footer a {
     color: #9C2B53;
     text-decoration: none;
@@ -141,7 +156,7 @@ td {
     /*font-weight: bold;*/
 }
 
-.red_button {
+.red_button .red_button:visited {
     background-color : #9D2B53;
     border : none;
     border-radius : 0;
