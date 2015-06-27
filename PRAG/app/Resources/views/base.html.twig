@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        {% if user is defined and is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if user is defined and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <div class="top-right-corner">{{ user.prenomMembre|capitalize }} {{ user.nomMembre|upper }} | {% if user.estAdherent %}Adhérent n°{{ user.id }} {% else %}Non-adhérent (<a href="#">Souscrire ?</a>){% endif %}  |  <a class="a-alternative" href= "{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i></a></div>
         {% endif %}
     </header>

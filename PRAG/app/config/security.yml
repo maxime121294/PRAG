@@ -32,7 +32,7 @@ security:
                 remember_me: true
             remember_me:
                 key: %secret%
-                lifetime: 300000000
+                lifetime: 31536000 # 365 jours en secondes
                 path: /
                 domain: ~
             logout:
@@ -45,4 +45,4 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/GDIP, role: ROLE_USER }
         - { path: ^/register/$, role: ROLE_ADMIN }
-        - { path: ^/GDIP/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/, role: ROLE_ADMIN }
