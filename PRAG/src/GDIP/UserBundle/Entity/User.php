@@ -68,6 +68,12 @@ class User extends BaseUser
 	 * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\Stage", mappedBy="utilisateurs")
 	 */
 	private $stages;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="GDIP\GDIPBundle\Entity\Filiere")
+	* @ORM\JoinColumn(nullable=true)
+	*/
+	private $filiere;
 
     /**
     * @ORM\OneToMany(targetEntity="GDIP\AdminBundle\Entity\Actualite", mappedBy="utilisateurs", cascade={"remove", "persist"})
@@ -391,5 +397,28 @@ class User extends BaseUser
     public function getActualites()
     {
         return $this->actualites;
+    }
+
+    /**
+     * Set filiere
+     *
+     * @param \GDIP\GDIPBundle\Entity\Filiere $filiere
+     * @return User
+     */
+    public function setFiliere(\GDIP\GDIPBundle\Entity\Filiere $filiere)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return \GDIP\GDIPBundle\Entity\Filiere 
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
     }
 }
