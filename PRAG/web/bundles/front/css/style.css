@@ -299,6 +299,11 @@ fieldset legend {
     background-color: #9D2B53;
 }
 
+.fond-gris {
+    background-color: #ECECEC;
+	height: 500px;
+}
+
 .input-border {
     border-radius: 0px 0px 0px;
     border : solid 1px #ECECEC;
