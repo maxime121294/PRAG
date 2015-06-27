@@ -30,7 +30,7 @@ class DefaultController extends Controller
 
     	$statAdherents = $nbAdherents/$nbMembers*100;
 
-        return $this->render('GDIPAdminBundle:Default:GestionStatistiques.html.twig',
+        return $this->render('GDIPAdminBundle:Default:statistiques.html.twig',
             array(
                 'user' => $user,
                 'nbMembers' => $nbMembers,

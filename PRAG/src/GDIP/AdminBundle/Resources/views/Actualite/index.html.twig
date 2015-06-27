@@ -15,23 +15,23 @@
                             <a href="{{ path('actualite_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil-square-o pencil fa-2x"></i></a>
                             <a href="" id="delete{{ entity.id }}"><i class="fa fa-trash-o trash fa-2x"></i></a>
                         </p>
+                        <script type="text/javascript">
+                            $('#delete{{ entity.id }}').click(function(event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    url: '{{ path("actualite_delete", {"id" : entity.id}) }}',
+                                    dataType: 'json',
+                                    success: function(data)
+                                    {
+                                        $('#actualite{{ entity.id }}').animate({ height: 0, opacity: 0, margin: 0 }, 'slow', function(){
+                                            $('#actualite{{ entity.id }}').remove();
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
 
-                    <script type="text/javascript">
-                        $('#delete{{ entity.id }}').click(function(event) {
-                            event.preventDefault();
-                            $.ajax({
-                                url: '{{ path("actualite_delete", {"id" : entity.id}) }}',
-                                dataType: 'json',
-                                success: function(data)
-                                {
-                                    $('#actualite{{ entity.id }}').animate({ height: 0, opacity: 0, margin: 0 }, 'slow', function(){
-                                        $('#actualite{{ entity.id }}').remove();
-                                    });
-                                }
-                            });
-                        });
-                    </script>
                 {% endfor %}
             </div>
             <div class="container-fluid">
