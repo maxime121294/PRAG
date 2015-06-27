@@ -25,14 +25,16 @@
                                 dataType: 'json',
                                 success: function(data)
                                 {
-                                    $('#actualite{{ entity.id }}').animate({ height: 0, opacity: 0, margin: 0 }, 'slow');
+                                    $('#actualite{{ entity.id }}').animate({ height: 0, opacity: 0, margin: 0 }, 'slow', function(){
+                                        $('#actualite{{ entity.id }}').remove();
+                                    });
                                 }
                             });
                         });
                     </script>
                 {% endfor %}
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <p class="ajout-donnees">
                     <a href="{{ path('actualite_new') }}"><i class="fa fa-plus fa-2x plus"></i>CREER UNE ACTUALITE</a>
                 </p>
