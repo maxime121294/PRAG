@@ -38,6 +38,12 @@ class Stage
 	* @ORM\JoinColumn(nullable=false)
 	*/
 	private $filiere;
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="GDIP\UserBundle\Entity\User", inversedBy="stages")
+	 * @ORM\JoinColumn(name="id_user", referencedColumnName="idUser")
+	 */
+	private $utilisateurs;
 
 
     /**
@@ -117,5 +123,28 @@ class Stage
     public function getFiliere()
     {
         return $this->filiere;
+    }
+
+    /**
+     * Set utilisateurs
+     *
+     * @param \GDIP\UserBundle\Entity\User $utilisateurs
+     * @return Stage
+     */
+    public function setUtilisateurs(\GDIP\UserBundle\Entity\User $utilisateurs = null)
+    {
+        $this->utilisateurs = $utilisateurs;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \GDIP\UserBundle\Entity\User 
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 }

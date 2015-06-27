@@ -19,8 +19,8 @@
                     <tbody class="center">
                         {% for member in members %}
                             <tr>
-                                <td>{{ member.nomMembre }}</td>
-                                <td>{{ member.prenomMembre }}</td>
+                                <td>{{ member.nomMembre|upper }}</td>
+                                <td>{{ member.prenomMembre|capitalize }}</td>
                                 <td>{% if member.estAdherent %}Oui{% else %}Non{% endif %}</td>
                                 <td>{{ member.email }}</td>
                                 <td>{{ member.rangMembre }}</td>

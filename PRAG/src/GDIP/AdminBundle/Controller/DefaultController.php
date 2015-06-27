@@ -30,7 +30,7 @@ class DefaultController extends Controller
 
     	$statAdherents = $nbAdherents/$nbMembers*100;
 
-        return $this->render('GDIPAdminBundle:Default:GestionStatistiques.html.twig',
+        return $this->render('GDIPAdminBundle:Default:statistiques.html.twig',
             array(
                 'user' => $user,
                 'nbMembers' => $nbMembers,
@@ -63,20 +63,6 @@ class DefaultController extends Controller
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         return $this->render('GDIPAdminBundle:Default:GestionStage.html.twig',
-            array(
-                'user' => $user
-            ));
-    }
-
-    /**
-     * @Route("/informations", name="informations")
-     * @Template()
-     */
-    public function informationsAction()
-    {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-        return $this->render('GDIPAdminBundle:Default:index.html.twig',
             array(
                 'user' => $user
             ));
