@@ -30,14 +30,22 @@ class DefaultController extends Controller
 
     	$statAdherents = $nbAdherents/$nbMembers*100;
 
-        return $this->render('GDIPAdminBundle:Default:statistiques.html.twig',
-            array(
+        $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('GDIPGDIPBundle:Stage');
+
+        $stages = $repository->findAll();
+        $nbStages = count($stages);
+
+        return array(
                 'user' => $user,
                 'nbMembers' => $nbMembers,
                 'statAdherents' => $statAdherents,
                 'nbAdherents' => $nbAdherents,
                 'nbNonAdherents' => $nbNonAdherents,
-            ));
+                'nbStages' => $nbStages,
+            );
     }
 
     /**
