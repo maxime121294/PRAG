@@ -32,7 +32,10 @@ header {
     vertical-align: middle;
 }
 
-html, body { height: 100%; background-color : #ECECEC; }
+html, body { 
+	height: 100%; 
+	background-color : #ECECEC; 
+}
 
 .vertical-bottom {
     width : 100%;
@@ -72,7 +75,7 @@ html, body { height: 100%; background-color : #ECECEC; }
 }
 
 #page-content {
-    padding-bottom : 60px;
+    padding-bottom : 3px;
 }
 
 #footer div{
@@ -293,6 +296,13 @@ fieldset legend {
     color: ivory;
 }
 
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0px;
+  /*border: 1px solid;*/
+}
+
 #navbar {
     background-color: #9D2B53;
 }
@@ -316,7 +326,7 @@ fieldset legend {
 
 .fond-gris {
     background-color: #ECECEC;
-	height: 500px;
+	height:600px;
 }
 
 .input-border {
