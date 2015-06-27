@@ -15,16 +15,16 @@ class LoadUserData implements FixtureInterface
     {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
-        $userAdmin->setPrenomMembre('admin');
-        $userAdmin->setNomMembre('admin');
+        $userAdmin->setPrenomMembre('Super');
+        $userAdmin->setNomMembre('Admin');
         $userAdmin->setRangMembre(0);
-        $userAdmin->setNbSemestreValide(1);
+        $userAdmin->setNbSemestreValide(0);
         $userAdmin->setEstAdherent(true);
         $userAdmin->setEnabled(true);
         $userAdmin->setPlainPassword('gdip');
         $userAdmin->setDateReussiteMembre(new \DateTime("now"));
         $userAdmin->setEmail('noreply.siphif@gmail.com');
-        $userAdmin->setRoles(array('ROLE_ADMIN'));
+        $userAdmin->setRoles(array('ROLE_SUPER_ADMIN'));
 
         $manager->persist($userAdmin);
         $manager->flush();
