@@ -3,17 +3,22 @@
     height: 125px;
 }
 
-a, a:visited{
+#mainblock a {
     color: #9C2B53;
 
 }
 
-a:hover {
+#mainblock a:visited {
+    color: #9C2B53;
+
+}
+
+#mainblock a:hover {
     color: #AB4A6C;
 
 }
 
-a:active {
+#mainblock a:active {
     color: #5C0A26;
 
 }
