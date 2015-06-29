@@ -453,3 +453,37 @@ th {
     font-size: 25px;
     color: #fff;
 }
+
+h4 {
+    color: #9C2B53;
+}
+
+.gestion-admin-eval {
+    margin-top: 2em;
+}
+
+.gestion-admin-eval-gauche {
+    margin-left: 5em;
+}
+
+.selectpicker {
+    margin-bottom: 1em;
+}
+
+.gestion-admin-eval-service {
+    border-style: solid;
+    border-color: #9C2B53;
+    background-color: rgb(205, 71, 118);
+    margin-bottom: 1em;
+    width: 60%;
+    margin-left: 0%;
+}
+
+.gestion-admin-eval-service p {
+    color: #ffffff;
+    margin-top: .5em;
+}
+
+.white {
+    color:#ffffff !important;
+}
