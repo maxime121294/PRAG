@@ -37,9 +37,17 @@ class EvaluationController extends Controller
      * @Route("/consultation/voir")
      * @Template()
      */
-    public function voirEvaluationAction()
+    public function voirEvaluationAction($idEval)
     {
+		$em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
+        $evaluation = $em->getRepository('GDIPGDIPBundle:Evaluation')->find($idEval);
+		
+		return array(
+            'evaluation' => $evaluation,
+            'user' => $user
+        );
     }
 
     /**

@@ -35,6 +35,18 @@
     });
                 </script>
 <ul id="draggablePanelList" class="list-unstyled">
+
+	{% for prechoix in entities %}
+		<li class="panel panel-info">
+        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+        <div class="panel-body">
+            DES : BACTERIOLOGIE<br>
+            Hopital : Cochin<br>
+            Service : virologie<br>
+			Admission Possible : {{ prechoix.admisProb }}
+        </div>
+    </li>
+    {% endfor %}
     <li class="panel panel-info">
         <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
         <div class="panel-body">
