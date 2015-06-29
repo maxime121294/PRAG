@@ -487,3 +487,7 @@ h4 {
 .white {
     color:#ffffff !important;
 }
+
+#draggablePanelList .panel-heading {
+    cursor: move;
+}
