@@ -1,7 +1,7 @@
 {% extends 'GDIPAdminBundle::layout.html.twig' %}
 
 {% block admin_body %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="span5">
                 <table class="table table-striped table-condensed">
@@ -13,6 +13,7 @@
                             <th>Service</th>
                             <th>Chef de service</th>
                             <th>Nb postes</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +47,7 @@
             <a href=""><i class="fa fa-plus fa-2x plus"></i></a>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <p class="ajout-donnees import" align="right">
             <a href=""><i class="fa fa-plus fa-2x plus"></i></a>
             IMPORTER LISTE
