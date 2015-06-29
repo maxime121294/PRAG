@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class EvaluationController extends Controller
 {
     /**
-     * @Route("/consultation", name="consultation")
+     * @Route("/consultation")
      * @Template()
 	 * @Security("has_role('ROLE_ADHERENT')")
      */
@@ -40,6 +40,19 @@ class EvaluationController extends Controller
     public function voirEvaluationAction()
     {
 
+    }
+
+    /**
+     * @Route("/voir")
+     * @Template()
+     */
+    public function voirAction()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        return $this->render('GDIPGDIPBundle:Evaluation:voir.html.twig',
+            array(
+            'user' => $user
+        ));
     }
 
     /**

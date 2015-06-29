@@ -111,4 +111,18 @@ class DefaultController extends Controller
                 'user' => $user
             ));
     }
+
+    /**
+     * @Route("/consulterEvaluation", name="consulterEvaluation")
+     * @Template()
+     */
+    public function evaluationConsultationAction()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('GDIPAdminBundle:Default:ConsultationEvaluation.html.twig',
+            array(
+                'user' => $user
+            ));
+    }
 }
