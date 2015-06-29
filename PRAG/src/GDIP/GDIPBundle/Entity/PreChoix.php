@@ -12,14 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PreChoix
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
      * @var integer
@@ -38,12 +30,14 @@ class PreChoix
 	/**
 	 * @ORM\ManyToOne(targetEntity="Stage")
 	 * @ORM\JoinColumn(nullable=true)
+	 * @ORM\Id
 	 */
 	private $stage;
 	
 	/**
      * @ORM\ManyToOne(targetEntity="GDIP\UserBundle\Entity\User", inversedBy="listePreChoix")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="idUser")
+	 * @ORM\Id
     */
     private $utilisateur;
 	
@@ -81,5 +75,74 @@ class PreChoix
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set admisProb
+     *
+     * @param boolean $admisProb
+     * @return PreChoix
+     */
+    public function setAdmisProb($admisProb)
+    {
+        $this->admisProb = $admisProb;
+
+        return $this;
+    }
+
+    /**
+     * Get admisProb
+     *
+     * @return boolean 
+     */
+    public function getAdmisProb()
+    {
+        return $this->admisProb;
+    }
+
+    /**
+     * Set stage
+     *
+     * @param \GDIP\GDIPBundle\Entity\Stage $stage
+     * @return PreChoix
+     */
+    public function setStage(\GDIP\GDIPBundle\Entity\Stage $stage)
+    {
+        $this->stage = $stage;
+
+        return $this;
+    }
+
+    /**
+     * Get stage
+     *
+     * @return \GDIP\GDIPBundle\Entity\Stage 
+     */
+    public function getStage()
+    {
+        return $this->stage;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \GDIP\UserBundle\Entity\User $utilisateur
+     * @return PreChoix
+     */
+    public function setUtilisateur(\GDIP\UserBundle\Entity\User $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \GDIP\UserBundle\Entity\User 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

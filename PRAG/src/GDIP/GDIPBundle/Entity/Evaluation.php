@@ -141,4 +141,27 @@ class Evaluation
     {
         return $this->questions;
     }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \GDIP\UserBundle\Entity\User $utilisateur
+     * @return Evaluation
+     */
+    public function setUtilisateur(\GDIP\UserBundle\Entity\User $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \GDIP\UserBundle\Entity\User 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
 }

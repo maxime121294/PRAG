@@ -41,11 +41,14 @@ class GDIPController extends Controller
      */
     public function preChoixAction()
     {
+        $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPGDIPBundle:GDIP:pre-choix.html.twig',
-            array(
-                'user' => $user
-            ));
+        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')->findAll();
+
+        return array(
+            'entities' => $entities,
+            'user' => $user
+        );
     }
 }

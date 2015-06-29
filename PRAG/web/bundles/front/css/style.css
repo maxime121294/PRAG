@@ -1,4 +1,4 @@
-﻿﻿#header {
+﻿#header {
     position : relative;
     height: 125px;
 }
@@ -488,6 +488,33 @@ h4 {
     color:#ffffff !important;
 }
 
+.eval-categ-question {
+    background-color: rgb(205, 71, 118);
+    color: #ffffff;
+}
+
+.eval-question {
+    color: #9C2B53;
+}
+
 #draggablePanelList .panel-heading {
     cursor: move;
+}
+
+.inline {
+    display: inline;
+    margin-right: 1em;
+}
+
+.admin-aside {
+    padding: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.admin-aside-contenu {
+    background-color: rgb(205, 71, 118);
+    text-align: center  ;
+    margin-right: 0%;
+    margin-left: 0%;
 }
