@@ -27,6 +27,12 @@ class Service
      * @ORM\Column(name="libelleService", type="string", length=255)
      */
     private $libelleService;
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="Domaine")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $domaine;
 
 
     /**
