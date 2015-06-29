@@ -79,6 +79,11 @@ class User extends BaseUser
 	 * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\PreChoix", mappedBy="utilisateur")
     */
     private $listePreChoix;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\Evaluation", mappedBy="utilisateur")
+    */
+    private $listeEvaluation;
 
     /**
     * @ORM\OneToMany(targetEntity="GDIP\AdminBundle\Entity\Actualite", mappedBy="utilisateurs", cascade={"remove", "persist"})

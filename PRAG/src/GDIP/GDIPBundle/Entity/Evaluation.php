@@ -35,6 +35,12 @@ class Evaluation
 	private $stage;
 	
 	/**
+     * @ORM\ManyToOne(targetEntity="GDIP\UserBundle\Entity\User", inversedBy="listeEvaluation")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="idUser")
+    */
+    private $utilisateur;
+	
+	/**
 	* @ORM\ManyToMany(targetEntity="Question")
 	*/
 	private $questions;

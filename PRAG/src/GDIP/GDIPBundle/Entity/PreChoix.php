@@ -38,7 +38,7 @@ class PreChoix
      * @ORM\ManyToOne(targetEntity="GDIP\UserBundle\Entity\User", inversedBy="listePreChoix")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="idUser")
     */
-    private $listePreChoix;
+    private $utilisateur;
 	
 	
 
