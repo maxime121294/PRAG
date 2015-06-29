@@ -5,22 +5,26 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="container-fluid gestion-admin-eval-gauche">
-                    <select class="selectpicker" data-size="4" style="display: block">
-                        <!-- trié dans ordre alpha -->
-                        <option>Bactériologie</option>
-                        <option>Biochimie</option>
-                        <option>Urologie</option>
-                        <option>Virologie</option>
-                    </select>
-                    <select class="selectpicker" data-size="4" style="display: block">
-                        <!-- trié dans ordre alpha -->
-                        <option>Cochin</option>
-                        <option>Pierre et Marie Curie</option>
-                        <option>Trousseau</option>
-                        <option>Lariboisière</option>
-                        <option>Saint-Louis</option>
-                        <option>Américain</option>
-                    </select>
+                    <div class="bs-docs-example">
+                        <select class="selectpicker" data-size="3" style="display: block">
+                            <!-- trié dans ordre alpha -->
+                            <option>Bactériologie</option>
+                            <option>Biochimie</option>
+                            <option>Urologie</option>
+                            <option>Virologie</option>
+                        </select>
+                    </div>
+                    <div class="bs-docs-example">
+                        <select class="selectpicker" data-size="3" style="display: block">
+                            <!-- trié dans ordre alpha -->
+                            <option>Cochin</option>
+                            <option>Pierre et Marie Curie</option>
+                            <option>Trousseau</option>
+                            <option>Lariboisière</option>
+                            <option>Saint-Louis</option>
+                            <option>Américain</option>
+                        </select>
+                    </div>
                     <h4>Résultats :</h4>
                     <div class="container-fluid">
                         <div class="container-fluid gestion-admin-eval-service">
@@ -64,4 +68,12 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            $('.selectpicker').selectpicker();
+            $('.scrollMe .dropdown-menu').scrollyou();
+            prettyPrint();
+        };
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js" />
 {% endblock %}
