@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EvaluationController extends Controller
 {
     /**
-     * @Route("/consultation", name="consultation")
+     * @Route("/consultation")
      * @Template()
      */
     public function consultationAction()
@@ -27,6 +27,19 @@ class EvaluationController extends Controller
             'entities' => $entities,
             'user' => $user
         );
+    }
+
+    /**
+     * @Route("/voir")
+     * @Template()
+     */
+    public function voirAction()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        return $this->render('GDIPGDIPBundle:Evaluation:voir.html.twig',
+            array(
+            'user' => $user
+        ));
     }
 
     /**
