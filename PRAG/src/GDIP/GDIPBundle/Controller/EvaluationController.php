@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EvaluationController extends Controller
 {
     /**
-     * @Route("/consultation")
+     * @Route("/consultation", name="consultation")
      * @Template()
      */
     public function consultationAction()
