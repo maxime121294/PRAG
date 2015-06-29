@@ -111,7 +111,7 @@ class DefaultController extends Controller
         ->getManager()
         ->getRepository('GDIPGDIPBundle:Evaluation');
 
-      $entities = $repository->findAll();
+      $entities = $repository->findByEnabled(true);
 
         return array(
                 'user' => $user,
