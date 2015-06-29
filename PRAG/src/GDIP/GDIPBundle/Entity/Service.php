@@ -28,13 +28,6 @@ class Service
      */
     private $libelleService;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=255)
-     */
-    private $categorie;
-
 
     /**
      * Get id

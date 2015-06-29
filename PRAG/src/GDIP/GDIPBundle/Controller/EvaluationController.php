@@ -5,6 +5,7 @@ namespace GDIP\GDIPBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/evaluation")
@@ -15,18 +16,30 @@ class EvaluationController extends Controller
     /**
      * @Route("/consultation")
      * @Template()
+	 * @Security("has_role('ROLE_ADHERENT')")
      */
     public function consultationAction()
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        $entities = $em->getRepository('GDIPGDIPBundle:Evaluation')->findAll();
+        $evaluations = $em->getRepository('GDIPGDIPBundle:Evaluation')->findAll();
+		$domaines = $em->getRepository('GDIPGDIPBundle:Domaine')->findAll();
 
         return array(
-            'entities' => $entities,
+			'domaines' => $domaines,
+            'evaluations' => $evaluations,
             'user' => $user
         );
+    }
+	
+	/**
+     * @Route("/consultation/voir")
+     * @Template()
+     */
+    public function voirEvaluationAction()
+    {
+
     }
 
     /**

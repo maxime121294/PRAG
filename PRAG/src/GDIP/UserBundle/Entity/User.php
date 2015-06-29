@@ -65,7 +65,7 @@ class User extends BaseUser
     private $estAdherent;
 	
 	/**
-	 * @ORM\OneToMany(targetEntity="GDIP\GDIPBundle\Entity\Stage", mappedBy="utilisateurs")
+	 * @ORM\ManyToOne(targetEntity="GDIP\GDIPBundle\Entity\Stage")
 	 */
 	private $stages;
 	
