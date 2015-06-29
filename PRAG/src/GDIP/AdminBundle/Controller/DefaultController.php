@@ -102,14 +102,21 @@ class DefaultController extends Controller
      * @Route("/evaluation", name="evaluation")
      * @Template()
      */
-    public function evaluationAction()
+    public function gestionEvaluationAction()
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:Default:GestionEvaluation.html.twig',
-            array(
-                'user' => $user
-            ));
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('GDIPGDIPBundle:Evaluation');
+
+      $entities = $repository->findAll();
+
+        return array(
+                'user' => $user,
+                'entities' => $entities
+            );
     }
 
     /**
