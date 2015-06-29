@@ -28,7 +28,6 @@ class Question
      */
     private $libelleQuestion;
 
-
     /**
      * Get id
      *
