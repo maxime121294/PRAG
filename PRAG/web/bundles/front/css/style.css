@@ -505,3 +505,16 @@ h4 {
     display: inline;
     margin-right: 1em;
 }
+
+.admin-aside {
+    padding: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.admin-aside-contenu {
+    background-color: rgb(205, 71, 118);
+    text-align: center  ;
+    margin-right: 0%;
+    margin-left: 0%;
+}
