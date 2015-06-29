@@ -1,0 +1,58 @@
+{% extends 'GDIPGDIPBundle::layout.html.twig' %}
+
+{% block GDIP_body %}
+    <script type="text/javascript" src="{{asset('bundles/front/js/jquery-2.1.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/front/js/jquery-ui.min.js')}}"></script>
+    <div class="page-prechoix">
+        <div class="container">
+            <div class="col-md-5">
+                Autre colonne
+            </div>
+            <div class="col-md-6">
+                <div class="panel-title">
+                    <h2>Mes choix</h2>
+                    Faites glisser pour changer l'ordre
+                </div>
+
+
+                <script>
+    jQuery(function($) {
+        var panelList = $('#draggablePanelList');
+
+        panelList.sortable({
+            // Only make the .panel-heading child elements support dragging.
+            // Omit this to make then entire <li>...</li> draggable.
+            handle: '.panel-heading',
+            update: function() {
+                $('.panel', panelList).each(function(index, elem) {
+                     var $listItem = $(elem),
+                         newIndex = $listItem.index();
+
+                     // Persist the new indices.
+                });
+            }
+        });
+    });
+                </script>
+<ul id="draggablePanelList" class="list-unstyled">
+    <li class="panel panel-info">
+        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+        <div class="panel-body">
+            DES : BACTERIOLOGIE<br>
+            Hopital : Cochin<br>
+            Service : virologie<br>
+        </div>
+    </li>
+    <li class="panel panel-info">
+        <div class="panel-heading">Choix 2   <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+        <div class="panel-body">
+            DES : BACTERIOLOGIE<br>
+            Hopital : Cochin<br>
+            Service : virologie<br>
+</div>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

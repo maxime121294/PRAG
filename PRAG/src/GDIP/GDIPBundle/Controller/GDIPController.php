@@ -41,6 +41,6 @@ class GDIPController extends Controller
      */
     public function preChoixAction()
     {
-
+        return $this->render('GDIPGDIPBundle:GDIP:pre-choix.html.twig');
     }
 }

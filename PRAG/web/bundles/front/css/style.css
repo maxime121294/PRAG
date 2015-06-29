@@ -453,3 +453,7 @@ th {
     font-size: 25px;
     color: #fff;
 }
+
+#draggablePanelList .panel-heading {
+    cursor: move;
+}
