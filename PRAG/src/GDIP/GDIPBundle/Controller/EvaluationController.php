@@ -13,21 +13,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EvaluationController extends Controller
 {
     /**
-     * @Route("/index")
-     * @Template()
-     */
-    public function indexAction($name)
-    {
-        return array('name' => $name);
-    }
-
-    /**
      * @Route("/consultation")
      * @Template()
      */
-    public function consulterEvaluationAction()
+    public function consultationAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
+        $entities = $em->getRepository('GDIPGDIPBundle:Evaluation')->findAll();
+
+        return array(
+            'entities' => $entities,
+            'user' => $user
+        );
     }
 
     /**
