@@ -26,6 +26,7 @@ class Domaine
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	private $hopitaux;
+	
 
 
     /**
