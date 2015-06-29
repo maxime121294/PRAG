@@ -45,6 +45,12 @@ class Evaluation
 	*/
 	private $questions;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="enabled", type="boolean", options={"default":true})
+     */
+    private $enabled;
 
     /**
      * Get id
@@ -163,5 +169,28 @@ class Evaluation
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Evaluation
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }
