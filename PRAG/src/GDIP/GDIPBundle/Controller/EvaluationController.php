@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class EvaluationController extends Controller
 {
     /**
-     * @Route("/consultation")
+     * @Route("/consultation", name="consultation")
      * @Template()
 	 * @Security("has_role('ROLE_ADHERENT')")
      */
