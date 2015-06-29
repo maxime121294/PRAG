@@ -29,6 +29,13 @@ class PreChoix
     private $position;
 	
 	/**
+     * @var integer
+     *
+     * @ORM\Column(name="admisProd", type="boolean", options={"default":false})
+     */
+    private $admisProb;
+	
+	/**
 	 * @ORM\ManyToOne(targetEntity="Stage")
 	 * @ORM\JoinColumn(nullable=true)
 	 */
