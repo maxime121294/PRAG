@@ -41,6 +41,11 @@ class GDIPController extends Controller
      */
     public function preChoixAction()
     {
-        return $this->render('GDIPGDIPBundle:GDIP:pre-choix.html.twig');
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('GDIPGDIPBundle:GDIP:pre-choix.html.twig',
+            array(
+                'user' => $user
+            ));
     }
 }
