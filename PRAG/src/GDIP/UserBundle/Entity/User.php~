@@ -252,6 +252,29 @@ class User extends BaseUser
     }
 
     /**
+     * Set account
+     *
+     * @param \GDIP\UserBundle\Entity\Account $account
+     * @return User
+     */
+    public function setAccount(\GDIP\UserBundle\Entity\Account $account)
+    {
+        $this->account = $account;
+
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return \GDIP\UserBundle\Entity\Account 
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
      * Set droitAcces
      *
      * @param boolean $droitAcces
@@ -356,10 +379,10 @@ class User extends BaseUser
     /**
      * Add actualites
      *
-     * @param \GDIP\AdminBundle\Entity\Actualite $actualites
+     * @param \GDIP\UserBundle\Entity\Actualite $actualites
      * @return User
      */
-    public function addActualite(\GDIP\AdminBundle\Entity\Actualite $actualites)
+    public function addActualite(\GDIP\UserBundle\Entity\Actualite $actualites)
     {
         $this->actualites[] = $actualites;
 
@@ -369,9 +392,9 @@ class User extends BaseUser
     /**
      * Remove actualites
      *
-     * @param \GDIP\AdminBundle\Entity\Actualite $actualites
+     * @param \GDIP\UserBundle\Entity\Actualite $actualites
      */
-    public function removeActualite(\GDIP\AdminBundle\Entity\Actualite $actualites)
+    public function removeActualite(\GDIP\UserBundle\Entity\Actualite $actualites)
     {
         $this->actualites->removeElement($actualites);
     }
@@ -407,84 +430,5 @@ class User extends BaseUser
     public function getFiliere()
     {
         return $this->filiere;
-    }
-
-    /**
-     * Set stages
-     *
-     * @param \GDIP\GDIPBundle\Entity\Stage $stages
-     * @return User
-     */
-    public function setStages(\GDIP\GDIPBundle\Entity\Stage $stages = null)
-    {
-        $this->stages = $stages;
-
-        return $this;
-    }
-
-    /**
-     * Add listePreChoix
-     *
-     * @param \GDIP\GDIPBundle\Entity\PreChoix $listePreChoix
-     * @return User
-     */
-    public function addListePreChoix(\GDIP\GDIPBundle\Entity\PreChoix $listePreChoix)
-    {
-        $this->listePreChoix[] = $listePreChoix;
-
-        return $this;
-    }
-
-    /**
-     * Remove listePreChoix
-     *
-     * @param \GDIP\GDIPBundle\Entity\PreChoix $listePreChoix
-     */
-    public function removeListePreChoix(\GDIP\GDIPBundle\Entity\PreChoix $listePreChoix)
-    {
-        $this->listePreChoix->removeElement($listePreChoix);
-    }
-
-    /**
-     * Get listePreChoix
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getListePreChoix()
-    {
-        return $this->listePreChoix;
-    }
-
-    /**
-     * Add listeEvaluation
-     *
-     * @param \GDIP\GDIPBundle\Entity\Evaluation $listeEvaluation
-     * @return User
-     */
-    public function addListeEvaluation(\GDIP\GDIPBundle\Entity\Evaluation $listeEvaluation)
-    {
-        $this->listeEvaluation[] = $listeEvaluation;
-
-        return $this;
-    }
-
-    /**
-     * Remove listeEvaluation
-     *
-     * @param \GDIP\GDIPBundle\Entity\Evaluation $listeEvaluation
-     */
-    public function removeListeEvaluation(\GDIP\GDIPBundle\Entity\Evaluation $listeEvaluation)
-    {
-        $this->listeEvaluation->removeElement($listeEvaluation);
-    }
-
-    /**
-     * Get listeEvaluation
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getListeEvaluation()
-    {
-        return $this->listeEvaluation;
     }
 }

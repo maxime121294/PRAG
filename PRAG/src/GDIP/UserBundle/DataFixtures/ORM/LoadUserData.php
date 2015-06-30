@@ -2,11 +2,12 @@
 
 namespace GDIP\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use GDIP\UserBundle\Entity\User;
 
-class LoadUserData implements FixtureInterface
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -38,9 +39,19 @@ class LoadUserData implements FixtureInterface
         $userAdh->setDateReussiteMembre(new \DateTime("now"));
         $userAdh->setEmail('useradherent@gmail.com');
         $userAdh->setRoles(array('ROLE_USER'));
+        $this->addReference('userAdh', $userAdh);
 
         $manager->persist($userAdmin);
 		$manager->persist($userAdh);
         $manager->flush();
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 4;
     }
 }

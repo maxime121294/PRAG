@@ -14,17 +14,10 @@ class LoadFiliereData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $filiere1 = new Filiere();
-        $filiere1->setLibelleFiliere('Biologie médicale');
-        $this->addReference('filiere1', $filiere1);
-        $manager->persist($filiere1);
-/*
-
-        $filiere2 = new Filiere();
-        $filiere2->setLibelleFiliere('Pharmacie hospitalière');
-        $this->addReference('filiere2', $filiere2);
-        $manager->persist($filiere2);
-*/
+        $fil1 = new Filiere();
+        $fil1->setLibelleFiliere('Biologie médicale');
+        $this->addReference('fil1', $fil1);
+        $manager->persist($fil1);
 
         $manager->flush();
     }
@@ -35,6 +28,6 @@ class LoadFiliereData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 4;
+        return 1;
     }
 }
