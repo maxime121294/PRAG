@@ -1,8 +1,6 @@
 {% extends 'GDIPGDIPBundle::layout.html.twig' %}
 
 {% block GDIP_body %}
-    <script type="text/javascript" src="{{asset('bundles/front/js/jquery-2.1.4.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('bundles/front/js/jquery-ui.min.js')}}"></script>
     <div class="page-prechoix">
         <div class="container-fluid">
             <div class="col-md-5">
@@ -55,7 +53,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
+    <script type="text/javascript" src="{{asset('bundles/front/js/jquery-ui.min.js')}}"></script>
+    <script type="text/javascript">
         $(function(){
             $("#sortable").sortable();
             var idArr=$( ".myList" ).sortable( "toArray" );
@@ -73,6 +72,7 @@
         $('#submit').click(function(event) {
             event.preventDefault();
             $('#submit').css("opacity", 0.3);
+            $('#submit').attr('value', 'Patientez...');
             var ordrePreChoixString = $('#ordreChoix').text();
             $.ajax({
                 url: '{{ path("validationPreChoix") }}',
@@ -81,6 +81,7 @@
                 success: function()
                 {
                     $('#submit').css("opacity", 1);
+                    $('#submit').attr('value', 'Valider');
                 }
             });
             // Réattribution des id
