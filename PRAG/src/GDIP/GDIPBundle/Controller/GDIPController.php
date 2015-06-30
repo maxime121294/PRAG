@@ -36,7 +36,7 @@ class GDIPController extends Controller
     }
 
     /**
-     * @Route("/pre-choix")
+     * @Route("/pre-choix", name="prechoix")
      * @Template()
      */
     public function preChoixAction()
