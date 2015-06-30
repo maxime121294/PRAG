@@ -31,8 +31,7 @@
                         <span class="label label-info">Info</span>400 utilisateurs mieux placés ont déjà choisi</div>
 
                     <h2>Ordre des voeux</h2>
-                    <div id="ordreChoix" class="IdList"></div><br />
-                    <span></span>
+                    <div id="ordreChoix" class="hidden"></div>
                 </div>
 
 
@@ -60,11 +59,11 @@
         $(function(){
             $("#sortable").sortable();
             var idArr=$( ".myList" ).sortable( "toArray" );
-            jQuery(".IdList").text(idArr.join());
+            jQuery("#ordreChoix").text(idArr.join());
             $( ".myList" ).sortable({
                 stop: function( event, ui ) {
                     var idArr=$( ".myList" ).sortable( "toArray" );
-                    jQuery(".IdList").text(idArr.join());//Génère la chaîne de caractères
+                    jQuery("#ordreChoix").text(idArr.join());//Génère la chaîne de caractères
                 }
             });
         });
