@@ -45,4 +45,50 @@ class Domaine
     {
         return $this->id;
     }
+
+    /**
+     * Set libelleDomaine
+     *
+     * @param string $libelleDomaine
+     * @return Domaine
+     */
+    public function setLibelleDomaine($libelleDomaine)
+    {
+        $this->libelleDomaine = $libelleDomaine;
+
+        return $this;
+    }
+
+    /**
+     * Get libelleDomaine
+     *
+     * @return string 
+     */
+    public function getLibelleDomaine()
+    {
+        return $this->libelleDomaine;
+    }
+
+    /**
+     * Set hopital
+     *
+     * @param \GDIP\GDIPBundle\Entity\Hopital $hopital
+     * @return Domaine
+     */
+    public function setHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
+    {
+        $this->hopital = $hopital;
+
+        return $this;
+    }
+
+    /**
+     * Get hopital
+     *
+     * @return \GDIP\GDIPBundle\Entity\Hopital 
+     */
+    public function getHopital()
+    {
+        return $this->hopital;
+    }
 }
