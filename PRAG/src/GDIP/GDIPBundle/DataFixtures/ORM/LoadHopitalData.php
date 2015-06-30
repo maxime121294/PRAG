@@ -21,15 +21,6 @@ class LoadHopitalData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('hop1', $hop1);
         $manager->persist($hop1);
 
-/*
-        $hop2 = new Hopital();
-        $hop2->setLibelleHopital('Cochin');
-        $hop2->setLieuHopital('Saint');
-        $hop2->setDeptHopital('94');
-        $this->addReference('hop2', $hop2);
-        $manager->persist($hop2);
-*/
-
         $manager->flush();
     }
 
@@ -39,6 +30,6 @@ class LoadHopitalData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 }

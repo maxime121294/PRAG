@@ -16,19 +16,11 @@ class LoadServiceData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $serv1 = new Service();
-        $serv1->setLibelleService('Service bio');
-        $serv1->setDomaine($this->getReference('dom1'));
-        $this->addReference('serv1', $serv1);
-        $manager->persist($serv1);
-
-/*
-        $serv2 = new Service();
-        $serv2>setLibelleService('Service viro');
-        $serv2->setDomaine($this->getReference('dom2'));
-        $this->addReference('serv2', $serv2);
-        $manager->persist($serv2);
-        */
+        $ser1 = new Service();
+        $ser1->setLibelleService('Service bio');
+        $ser1->setDomaine($this->getReference('dom1'));
+        $this->addReference('ser1', $ser1);
+        $manager->persist($ser1);
 
         $manager->flush();
     }
@@ -39,6 +31,6 @@ class LoadServiceData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 3;
+        return 6;
     }
 }
