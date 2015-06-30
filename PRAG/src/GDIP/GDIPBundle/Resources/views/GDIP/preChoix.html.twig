@@ -59,12 +59,10 @@
     <script type="text/javascript">
         $(function(){
             $("#sortable").sortable();
-            var idArr=$( ".myList" ).sortable( "toArray" );
-            jQuery("#ordreChoix").text(idArr.join());
+            MAJListe();
             $( ".myList" ).sortable({
                 stop: function( event, ui ) {
-                    var idArr=$( ".myList" ).sortable( "toArray" );
-                    jQuery("#ordreChoix").text(idArr.join());//Génère la chaîne de caractères
+                    MAJListe();
                 }
             });
         });
@@ -90,6 +88,14 @@
             $( ".choice" ).each(function( index ) {
                 $( this ).attr("id", index+1);;
             });
+            MAJListe();
         });
+    </script>
+
+    <script type="text/javascript">
+        function MAJListe() {
+            var idArr=$( ".myList" ).sortable( "toArray" );
+            jQuery("#ordreChoix").text(idArr.join());//Génère la chaîne de caractères
+        }
     </script>
 {% endblock %}
