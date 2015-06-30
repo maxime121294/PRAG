@@ -5,21 +5,21 @@ namespace GDIP\UserBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use GDIP\GDIPBundle\Entity\Hopital;
+use GDIP\GDIPBundle\Entity\Poste;
 
-class LoadHopitalData extends AbstractFixture implements OrderedFixtureInterface
+class LoadPosteData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-        $hop1 = new Hopital();
-        $hop1->setLibelleHopital('Trousseau');
-        $hop1->setLieuHopital('Paris');
-        $hop1->setDeptHopital('75');
-        $this->addReference('hop1', $hop1);
-        $manager->persist($hop1);
+        $pos1 = new Poste();
+        $pos1->setLibellePoste('Infirmier');
+        $pos1->setHopital($this->getReference('hop1'));
+        $pos1->setService($this->getReference('ser1'));
+        $this->addReference('pos1', $pos1);
+        $manager->persist($pos1);
 
         $manager->flush();
     }
@@ -30,6 +30,6 @@ class LoadHopitalData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 2;
+        return 7;
     }
 }

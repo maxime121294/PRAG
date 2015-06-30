@@ -90,4 +90,27 @@ class Service
     {
         return $this->categorie;
     }
+
+    /**
+     * Set domaine
+     *
+     * @param \GDIP\GDIPBundle\Entity\Domaine $domaine
+     * @return Service
+     */
+    public function setDomaine(\GDIP\GDIPBundle\Entity\Domaine $domaine)
+    {
+        $this->domaine = $domaine;
+
+        return $this;
+    }
+
+    /**
+     * Get domaine
+     *
+     * @return \GDIP\GDIPBundle\Entity\Domaine 
+     */
+    public function getDomaine()
+    {
+        return $this->domaine;
+    }
 }

@@ -5,6 +5,9 @@ namespace GDIP\GDIPBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class GDIPController extends Controller
 {
@@ -44,7 +47,11 @@ class GDIPController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')->findByUtilisateur($user->getId());
+        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
+        ->findBy(
+            array('utilisateur' => $user->getId()),
+            array('position' => 'asc')
+        );
 
         return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
 			array(
@@ -52,5 +59,34 @@ class GDIPController extends Controller
             'user' => $user
 			)
         );
+    }
+
+    /**
+     * @Route("/pre-choix/ordre/valider", name="validationPreChoix")
+     * @Method({"GET", "POST"})
+     */
+    public function validerOrdrePreChoixAction(Request $request)
+    {
+        $ordrePreChoixString = $request->get("ordrePreChoixString");
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $ordrePreChoixString=str_replace(' ','',$ordrePreChoixString); //enleve les espaces
+        $ordrePreChoixArray = explode(",", $ordrePreChoixString); //convertit en tableau avec les virgules comme separateur
+
+        $repository = $em->getRepository('GDIPGDIPBundle:PreChoix');
+
+        $position = 1;
+
+        foreach ($ordrePreChoixArray as $positionPreChoix) {
+            $preChoix = $repository->getPreChoixByPosition($user->getId(), $positionPreChoix);
+            $preChoix = $repository->setPositionPreChoix($em, $preChoix, $position);
+            $position++;
+        }
+
+        $repository->setAllPreChoixTraiteNull($em);
+
+        $success['success'] = "success"; 
+
+        return new JsonResponse($success);
     }
 }

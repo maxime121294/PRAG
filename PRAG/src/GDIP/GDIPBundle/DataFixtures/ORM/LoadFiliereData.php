@@ -2,29 +2,32 @@
 
 namespace GDIP\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use GDIP\GDIPBundle\Entity\Filiere;
 
-class LoadFiliereData implements FixtureInterface
+class LoadFiliereData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-        $filiereBio = new Filiere();
-        $filiereBio->setLibelleFiliere('Biologie médicale');
-        $manager->persist($filiereBio);
-
-        $filierePharma = new Filiere();
-        $filierePharma->setLibelleFiliere('Pharmacie hospitalière');
-        $manager->persist($filierePharma);
-
-        $filiereIPR = new Filiere();
-        $filiereIPR->setLibelleFiliere('IPR');
-        $manager->persist($filiereIPR);
+        $fil1 = new Filiere();
+        $fil1->setLibelleFiliere('Biologie médicale');
+        $this->addReference('fil1', $fil1);
+        $manager->persist($fil1);
 
         $manager->flush();
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 1;
     }
 }

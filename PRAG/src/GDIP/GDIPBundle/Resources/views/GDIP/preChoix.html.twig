@@ -4,67 +4,85 @@
     <script type="text/javascript" src="{{asset('bundles/front/js/jquery-2.1.4.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('bundles/front/js/jquery-ui.min.js')}}"></script>
     <div class="page-prechoix">
-        <div class="container">
+        <div class="container-fluid">
             <div class="col-md-5">
-                Autre colonne
+                <h2>Rechercher un choix</h2>
+                <input type="text" placeholder="DES" class="input-border full-width"/>
+                <br /><br />
+                <input type="text" placeholder="Hôpital" class="input-border full-width"/>
+                <br /><br />
+                <ul id="resultatprechoix" class="list-unstyled">
+                <li class="panel panel-info">
+                    <div class="panel-heading">Résultat  <span class="pull-right clickable"></span>   </div>
+                    <div class="panel-body">
+                        DES : BACTERIOLOGIE<br>
+                        Hopital : Cochin<br>
+                        Service : virologie<br>
+                    </div>
+                </li>
+                <input type="submit" class="btn btn-sm pull-right red_button" value="Enregistrer" />
             </div>
             <div class="col-md-6">
                 <div class="panel-title">
                     <h2>Mes choix</h2>
                     Faites glisser pour changer l'ordre
+
+                    <div class="alert alert-info" role="alert"><span class="label label-info">Info</span>360 utilisateurs n'ont pas encore choisi <br>
+                        <span class="label label-info">Info</span>400 utilisateurs mieux placés ont déjà choisi</div>
+
+                    <h2>Ordre des voeux</h2>
+                    <div id="ordreChoix" class="hidden"></div>
                 </div>
 
 
-                <script>
-    jQuery(function($) {
-        var panelList = $('#draggablePanelList');
-
-        panelList.sortable({
-            // Only make the .panel-heading child elements support dragging.
-            // Omit this to make then entire <li>...</li> draggable.
-            handle: '.panel-heading',
-            update: function() {
-                $('.panel', panelList).each(function(index, elem) {
-                     var $listItem = $(elem),
-                         newIndex = $listItem.index();
-
-                     // Persist the new indices.
-                });
-            }
-        });
-    });
-                </script>
-<ul id="draggablePanelList" class="list-unstyled">
-
-	{% for prechoix in entities %}
-		<li class="panel panel-info">
-        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
-        <div class="panel-body">
-            DES : BACTERIOLOGIE<br>
-            Hopital : Cochin<br>
-            Service : virologie<br>
-			Admission Possible : {{ prechoix.admisProb }}
-        </div>
-    </li>
-    {% endfor %}
-    <li class="panel panel-info">
-        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
-        <div class="panel-body">
-            DES : BACTERIOLOGIE<br>
-            Hopital : Cochin<br>
-            Service : virologie<br>
-        </div>
-    </li>
-    <li class="panel panel-info">
-        <div class="panel-heading">Choix 2   <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
-        <div class="panel-body">
-            DES : BACTERIOLOGIE<br>
-            Hopital : Cochin<br>
-            Service : virologie<br>
-</div>
-    </li>
-</ul>
-                </div>
+                <ul id="sortable" class="list-unstyled myList">
+                    {% for prechoix in entities %}
+                        <li class="panel panel-info" id="{{ prechoix.position }}">
+                            <div class="panel-heading">Choix {{ prechoix.position }}  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+                            <div class="panel-body">
+                                DES : {{ prechoix.stage.poste.service.domaine.libelleDomaine }}<br>
+                                Hopital : {{ prechoix.stage.hopital.libelleHopital }}<br>
+                                Service : {{ prechoix.stage.poste.service.libelleService }}<br>
+                                Admission Possible : {% if prechoix.admisProb %}Oui{% else %}Non{% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <input id="submit" type="submit" class="btn btn-sm pull-right red_button" value="Valider" />
             </div>
         </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function(){
+            $("#sortable").sortable();
+            var idArr=$( ".myList" ).sortable( "toArray" );
+            jQuery("#ordreChoix").text(idArr.join());
+            $( ".myList" ).sortable({
+                stop: function( event, ui ) {
+                    var idArr=$( ".myList" ).sortable( "toArray" );
+                    jQuery("#ordreChoix").text(idArr.join());//Génère la chaîne de caractères
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#submit').click(function(event) {
+            event.preventDefault();
+            $('#submit').css("opacity", 0.3);
+            var ordrePreChoixString = $('#ordreChoix').text();
+            $.ajax({
+                url: '{{ path("validationPreChoix") }}',
+                data: 'ordrePreChoixString=' + ordrePreChoixString,
+                dataType: 'json',
+                success: function()
+                {
+                    $('#submit').css("opacity", 1);
+                }
+            });
+        });
+    </script>
 {% endblock %}

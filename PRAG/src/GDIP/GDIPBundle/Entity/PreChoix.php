@@ -26,6 +26,13 @@ class PreChoix
      * @ORM\Column(name="admisProd", type="boolean", options={"default":false})
      */
     private $admisProb;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="traite", type="boolean", options={"default":false})
+     */
+    private $traite;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Stage")
@@ -144,5 +151,28 @@ class PreChoix
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set traite
+     *
+     * @param boolean $traite
+     * @return PreChoix
+     */
+    public function setTraite($traite)
+    {
+        $this->traite = $traite;
+
+        return $this;
+    }
+
+    /**
+     * Get traite
+     *
+     * @return boolean 
+     */
+    public function getTraite()
+    {
+        return $this->traite;
     }
 }

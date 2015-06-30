@@ -497,8 +497,26 @@ h4 {
     color: #9C2B53;
 }
 
-#draggablePanelList .panel-heading {
+#sortable .panel-heading {
     cursor: move;
+    color : white;
+    background : #9C2B53 !important;
+    font-weight : bold;
+    border-radius : 0;
+}
+
+#resultatprechoix .panel-heading {
+    cursor: move;
+    color : white;
+    background : #9C2B53 !important;
+    font-weight : bold;
+    border-radius : 0;
+}
+
+.panel-info {
+    border-radius : 0;
+    border : 1px solid #9C2B53;
+
 }
 
 .inline {
@@ -517,4 +535,24 @@ h4 {
     text-align: center  ;
     margin-right: 0%;
     margin-left: 0%;
+}
+
+#sortable {
+    cursor: move;
+}
+
+.alert-info {
+	background :#ECECEC;
+	border-radius : 0;
+	border : none;
+	box-shadow : 0;
+	color :#404040;
+}
+
+.label-info {
+	background :#404040;
+	border-radius : 0;
+	border : none;
+	box-shadow : 0;
+	text-shadow : 0;
 }
