@@ -497,8 +497,18 @@ h4 {
     color: #9C2B53;
 }
 
-#draggablePanelList .panel-heading {
+#sortable .panel-heading {
     cursor: move;
+    color : white;
+    background : #9C2B53 !important;
+    font-weight : bold;
+    border-radius : 0;
+}
+
+.panel-info {
+    border-radius : 0;
+    border : 1px solid #9C2B53;
+
 }
 
 .inline {
