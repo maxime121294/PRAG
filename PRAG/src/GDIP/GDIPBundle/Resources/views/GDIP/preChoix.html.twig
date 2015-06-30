@@ -26,26 +26,16 @@
                 <div class="panel-title">
                     <h2>Mes choix</h2>
                     Faites glisser pour changer l'ordre
+
+                    <div class="alert alert-info" role="alert"><span class="label label-info">Info</span>360 utilisateurs n'ont pas encore choisi <br>
+                        <span class="label label-info">Info</span>400 utilisateurs mieux placés ont déjà choisi</div>
+
                     <h2>Ordre des voeux</h2>
                     <div class="IdList"></div><br />
+                    <span></span>
                 </div>
 
 
-                <script>
-                    $(function(){
-
-                        $("#sortable").sortable();
-                        var idArr=$( ".myList" ).sortable( "toArray" );
-                        jQuery(".IdList").text(idArr.join());
-                        $( ".myList" ).sortable({
-                            stop: function( event, ui ) {
-                                var idArr=$( ".myList" ).sortable( "toArray" );
-                                jQuery(".IdList").text(idArr.join());//Génère la chaîne de caractères
-                            }
-                        });
-
-                    });
-                </script>
                 <ul id="sortable" class="list-unstyled myList">
                     {% for prechoix in entities %}
                         <li class="panel panel-info" id="1">
@@ -87,4 +77,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function(){
+
+            $("#sortable").sortable();
+            var idArr=$( ".myList" ).sortable( "toArray" );
+            jQuery(".IdList").text(idArr.join());
+            $( ".myList" ).sortable({
+                stop: function( event, ui ) {
+                    var idArr=$( ".myList" ).sortable( "toArray" );
+                    jQuery(".IdList").text(idArr.join());//Génère la chaîne de caractères
+                }
+            });
+
+        });
+    </script>
 {% endblock %}
