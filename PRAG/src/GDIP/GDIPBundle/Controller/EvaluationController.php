@@ -78,6 +78,10 @@ class EvaluationController extends Controller
      */
     public function saisirEvaluationAction()
     {
-
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        return $this->render('GDIPGDIPBundle:Evaluation:saisirEvaluation.html.twig',
+            array(
+                'user' => $user
+            ));
     }
 }
