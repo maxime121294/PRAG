@@ -78,9 +78,9 @@
                 url: '{{ path("validationPreChoix") }}',
                 data: 'ordrePreChoixString=' + ordrePreChoixString,
                 dataType: 'json',
-                success: function(data)
+                success: function()
                 {
-                    ('#submit').css("opacity", 1);
+                    $('#submit').css("opacity", 1);
                 }
             });
         });
