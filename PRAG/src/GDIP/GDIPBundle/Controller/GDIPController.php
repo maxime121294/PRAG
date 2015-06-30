@@ -78,30 +78,12 @@ class GDIPController extends Controller
         $position = 1;
 
         foreach ($ordrePreChoixArray as $positionPreChoix) {
-            $query = $repository->createQueryBuilder('p')
-                ->where("p.utilisateur = :user")
-                ->andWhere("p.position = :position")
-                ->andWhere("p.traite = false")
-                ->setParameter("user", $user->getId())
-                ->setParameter("position", $positionPreChoix);
-
-            $preChoix = $query->getQuery()->getSingleResult();
-
-            $preChoix->setPosition($position);
-            $preChoix->setTraite(true);
-            $em->persist($preChoix);
-            $em->flush();
-
+            $preChoix = $repository->getPreChoixByPosition($user->getId(), $positionPreChoix);
+            $preChoix = $repository->setPositionPreChoix($em, $preChoix, $position);
             $position++;
         }
 
-        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')->findAll();
-
-        foreach ($entities as $preChoix) {
-            $preChoix->setTraite(false);
-            $em->persist($preChoix);
-            $em->flush();
-        }
+        $repository->setAllPreChoixTraiteNull($em);
 
         $success['success'] = "success"; 
 

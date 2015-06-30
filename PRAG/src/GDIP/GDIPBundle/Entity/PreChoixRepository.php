@@ -12,4 +12,34 @@ use Doctrine\ORM\EntityRepository;
  */
 class PreChoixRepository extends EntityRepository
 {
+	public function getPreChoixByPosition($userId, $position)
+	{
+		$query = $this->createQueryBuilder('p')
+            ->where("p.utilisateur = :user")
+            ->andWhere("p.position = :position")
+            ->andWhere("p.traite = false")
+            ->setParameter("user", $userId)
+            ->setParameter("position", $position);
+
+        return $query->getQuery()->getSingleResult();
+	}
+
+	public function setAllPreChoixTraiteNull($em)
+	{
+		$entities = $this->findAll();
+
+        foreach ($entities as $preChoix) {
+            $preChoix->setTraite(false);
+            $em->persist($preChoix);
+            $em->flush();
+        }
+	}
+
+	public function setPositionPreChoix($em, $preChoix, $position)
+	{
+		$preChoix->setPosition($position);
+        $preChoix->setTraite(true);
+        $em->persist($preChoix);
+        $em->flush();
+	}
 }
