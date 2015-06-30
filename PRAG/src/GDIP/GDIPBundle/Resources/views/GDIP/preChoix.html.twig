@@ -6,7 +6,21 @@
     <div class="page-prechoix">
         <div class="container-fluid">
             <div class="col-md-5">
-                Autre colonne
+                <h2>Rechercher un choix</h2>
+                <input type="text" placeholder="DES"/>
+                <br /><br />
+                <input type="text" placeholder="Hôpital"/>
+                <br /><br />
+                <ul id="resultatprechoix" class="list-unstyled">
+                <li class="panel panel-info">
+                    <div class="panel-heading">Résultat  <span class="pull-right clickable"></span>   </div>
+                    <div class="panel-body">
+                        DES : BACTERIOLOGIE<br>
+                        Hopital : Cochin<br>
+                        Service : virologie<br>
+                    </div>
+                </li>
+                <input type="submit" class="btn btn-sm pull-right red_button" value="Enregistrer" />
             </div>
             <div class="col-md-6">
                 <div class="panel-title">
@@ -33,7 +47,6 @@
                     });
                 </script>
                 <ul id="sortable" class="list-unstyled myList">
-
                     {% for prechoix in entities %}
                         <li class="panel panel-info" id="1">
                             <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
@@ -70,6 +83,7 @@
                         </div>
                     </li>
                 </ul>
+                <input type="submit" class="btn btn-sm pull-right red_button" value="Valider" />
             </div>
         </div>
     </div>
