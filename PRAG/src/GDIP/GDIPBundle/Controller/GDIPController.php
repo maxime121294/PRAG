@@ -44,7 +44,11 @@ class GDIPController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')->findByUtilisateur($user->getId());
+        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
+        ->findBy(
+            array('utilisateur' => $user->getId()),
+            array('position' => 'asc')
+        );
 
         return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
 			array(
