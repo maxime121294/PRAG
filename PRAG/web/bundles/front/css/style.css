@@ -528,3 +528,7 @@ h4 {
     margin-right: 0%;
     margin-left: 0%;
 }
+
+#sortable {
+    cursor: move;
+}
