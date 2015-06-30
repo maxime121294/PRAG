@@ -48,7 +48,10 @@ class PreChoix
     */
     private $utilisateur;
 	
-	
+	public function __construct()
+    {
+        $this->traite = false;
+    }
 
 
     /**

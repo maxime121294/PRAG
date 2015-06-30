@@ -34,33 +34,24 @@ class EvaluationController extends Controller
     }
 	
 	/**
-     * @Route("/consultation/voir")
+     * @Route("/{idEval}/voir", name="voirEvaluation")
      * @Template()
      */
-    public function voirEvaluationAction($idEval)
+    public function voirAction($idEval)
     {
 		$em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $evaluation = $em->getRepository('GDIPGDIPBundle:Evaluation')->find($idEval);
+
+        if (!$evaluation) {
+            throw $this->createNotFoundException('Unable to find Evaluation entity.');
+        }
 		
 		return array(
             'evaluation' => $evaluation,
             'user' => $user
         );
-    }
-
-    /**
-     * @Route("/voir")
-     * @Template()
-     */
-    public function voirAction()
-    {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        return $this->render('GDIPGDIPBundle:Evaluation:voir.html.twig',
-            array(
-            'user' => $user
-        ));
     }
 
     /**
@@ -73,7 +64,7 @@ class EvaluationController extends Controller
     }
 
     /**
-     * @Route("/saisie")
+     * @Route("/saisie", name="saisie")
      * @Template()
      */
     public function saisirEvaluationAction()
