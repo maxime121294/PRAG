@@ -51,7 +51,7 @@
                                 {% for entity in entities|slice(0, 8) %}
                                     <tr>
                                         <td>Evaluation {{ loop.index }}</td>
-                                        <td><a href="">Voir</a></td>
+                                        <td><a href="{{ path('voirEvaluation', {'idEval': entity.id}) }}">Voir</a></td>
                                     </tr>
                                 {% endfor %}
                             {% endif %}
