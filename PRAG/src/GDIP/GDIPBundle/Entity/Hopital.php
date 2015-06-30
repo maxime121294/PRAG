@@ -41,6 +41,11 @@ class Hopital
      * @ORM\Column(name="deptHopital", type="smallint")
      */
     private $deptHopital;
+	
+	/**
+     * @ORM\ManyToMany(targetEntity="Service")
+     */
+    private $services;
 
 
     /**
@@ -120,5 +125,45 @@ class Hopital
     public function getDeptHopital()
     {
         return $this->deptHopital;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->services = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add services
+     *
+     * @param \GDIP\GDIPBundle\Entity\Service $services
+     * @return Hopital
+     */
+    public function addService(\GDIP\GDIPBundle\Entity\Service $services)
+    {
+        $this->services[] = $services;
+
+        return $this;
+    }
+
+    /**
+     * Remove services
+     *
+     * @param \GDIP\GDIPBundle\Entity\Service $services
+     */
+    public function removeService(\GDIP\GDIPBundle\Entity\Service $services)
+    {
+        $this->services->removeElement($services);
+    }
+
+    /**
+     * Get services
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getServices()
+    {
+        return $this->services;
     }
 }

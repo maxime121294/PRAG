@@ -27,6 +27,18 @@ class Poste
      * @ORM\Column(name="libellePoste", type="string", length=255)
      */
     private $libellePoste;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="Hopital")
+	* @ORM\JoinColumn(nullable=true)
+	*/
+	private $hopital;
+	
+	/**
+	* @ORM\ManyToOne(targetEntity="Service")
+	* @ORM\JoinColumn(nullable=true)
+	*/
+	private $service;
 
 
     /**
@@ -60,5 +72,51 @@ class Poste
     public function getLibellePoste()
     {
         return $this->libellePoste;
+    }
+
+    /**
+     * Set hopital
+     *
+     * @param \GDIP\GDIPBundle\Entity\Hopital $hopital
+     * @return Poste
+     */
+    public function setHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital = null)
+    {
+        $this->hopital = $hopital;
+
+        return $this;
+    }
+
+    /**
+     * Get hopital
+     *
+     * @return \GDIP\GDIPBundle\Entity\Hopital 
+     */
+    public function getHopital()
+    {
+        return $this->hopital;
+    }
+
+    /**
+     * Set service
+     *
+     * @param \GDIP\GDIPBundle\Entity\Service $service
+     * @return Poste
+     */
+    public function setService(\GDIP\GDIPBundle\Entity\Service $service = null)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    /**
+     * Get service
+     *
+     * @return \GDIP\GDIPBundle\Entity\Service 
+     */
+    public function getService()
+    {
+        return $this->service;
     }
 }

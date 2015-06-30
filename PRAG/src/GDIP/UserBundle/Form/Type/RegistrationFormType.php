@@ -29,7 +29,8 @@ class RegistrationFormType extends AbstractType
                 "label" => "Nombre de semestre valide",
                 "required" => true,
             ))
-            ->add('estAdherent', 'radio', array(
+            ->add('estAdherent', 'choice', array(
+                'choices'   => array(false => 'Non', true => 'Oui'),
                 "label" => "Est adhérent",
                 "required" => true,
             ))

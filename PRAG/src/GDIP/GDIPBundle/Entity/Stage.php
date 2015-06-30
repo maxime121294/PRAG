@@ -22,6 +22,13 @@ class Stage
     private $id;
 	
 	/**
+     * @var integer
+     *
+     * @ORM\Column(name="places", type="integer")
+     */
+    private $nbPlaces;
+	
+	/**
 	* @ORM\ManyToOne(targetEntity="Hopital")
 	* @ORM\JoinColumn(nullable=false)
 	*/
@@ -38,12 +45,6 @@ class Stage
 	* @ORM\JoinColumn(nullable=false)
 	*/
 	private $filiere;
-	
-	/**
-	 * @ORM\ManyToOne(targetEntity="GDIP\UserBundle\Entity\User", inversedBy="stages")
-	 * @ORM\JoinColumn(name="id_user", referencedColumnName="idUser")
-	 */
-	private $utilisateurs;
 
 
     /**
@@ -146,5 +147,28 @@ class Stage
     public function getUtilisateurs()
     {
         return $this->utilisateurs;
+    }
+
+    /**
+     * Set nbPlaces
+     *
+     * @param integer $nbPlaces
+     * @return Stage
+     */
+    public function setNbPlaces($nbPlaces)
+    {
+        $this->nbPlaces = $nbPlaces;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPlaces
+     *
+     * @return integer 
+     */
+    public function getNbPlaces()
+    {
+        return $this->nbPlaces;
     }
 }

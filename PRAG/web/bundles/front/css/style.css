@@ -3,6 +3,26 @@
     height: 125px;
 }
 
+#mainblock a {
+    color: #9C2B53;
+
+}
+
+#mainblock a:visited {
+    color: #9C2B53;
+
+}
+
+#mainblock a:hover {
+    color: #AB4A6C;
+
+}
+
+#mainblock a:active {
+    color: #5C0A26;
+
+}
+
 #footer a {
     color: #9C2B53;
     text-decoration: none;
@@ -17,7 +37,10 @@ header {
     vertical-align: middle;
 }
 
-html, body { height: 100%; background-color : #ECECEC; }
+html, body { 
+	height: 100%; 
+	background-color : #ECECEC; 
+}
 
 .vertical-bottom {
     width : 100%;
@@ -57,7 +80,7 @@ html, body { height: 100%; background-color : #ECECEC; }
 }
 
 #page-content {
-    padding-bottom : 60px;
+    padding-bottom : 3px;
 }
 
 #footer div{
@@ -65,6 +88,11 @@ html, body { height: 100%; background-color : #ECECEC; }
     line-height: 45px;
 }
 
+#blocgris {
+    position : relative;
+    padding-bottom  : 40px;
+    margin-bottom : -20px;
+}
 
 #social:hover {
     -webkit-transform:scale(1.1);
@@ -141,7 +169,7 @@ td {
     /*font-weight: bold;*/
 }
 
-.red_button {
+.red_button, .red_button:visited {
     background-color : #9D2B53;
     border : none;
     border-radius : 0;
@@ -278,6 +306,13 @@ fieldset legend {
     color: ivory;
 }
 
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0px;
+  /*border: 1px solid;*/
+}
+
 #navbar {
     background-color: #9D2B53;
 }
@@ -299,6 +334,11 @@ fieldset legend {
     background-color: #9D2B53;
 }
 
+.fond-gris {
+    background-color: #ECECEC;
+	height:600px;
+}
+
 .input-border {
     border-radius: 0px 0px 0px;
     border : solid 1px #ECECEC;
@@ -317,6 +357,7 @@ fieldset legend {
     width : 40px;
     height : 40px;
     font-size : 30px;
+    margin : 15px;
 }
 
 .red_circle i {
@@ -411,4 +452,69 @@ th {
     text-decoration: none;
     font-size: 25px;
     color: #fff;
+}
+
+h4 {
+    color: #9C2B53;
+}
+
+.gestion-admin-eval {
+    margin-top: 2em;
+}
+
+.gestion-admin-eval-gauche {
+    margin-left: 5em;
+}
+
+.selectpicker {
+    margin-bottom: 1em;
+}
+
+.gestion-admin-eval-service {
+    border-style: solid;
+    border-color: #9C2B53;
+    background-color: rgb(205, 71, 118);
+    margin-bottom: 1em;
+    width: 60%;
+    margin-left: 0%;
+}
+
+.gestion-admin-eval-service p {
+    color: #ffffff;
+    margin-top: .5em;
+}
+
+.white {
+    color:#ffffff !important;
+}
+
+.eval-categ-question {
+    background-color: rgb(205, 71, 118);
+    color: #ffffff;
+}
+
+.eval-question {
+    color: #9C2B53;
+}
+
+#draggablePanelList .panel-heading {
+    cursor: move;
+}
+
+.inline {
+    display: inline;
+    margin-right: 1em;
+}
+
+.admin-aside {
+    padding: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.admin-aside-contenu {
+    background-color: rgb(205, 71, 118);
+    text-align: center  ;
+    margin-right: 0%;
+    margin-left: 0%;
 }

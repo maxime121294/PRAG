@@ -15,18 +15,32 @@ class LoadUserData implements FixtureInterface
     {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
-        $userAdmin->setPrenomMembre('admin');
-        $userAdmin->setNomMembre('admin');
+        $userAdmin->setPrenomMembre('Super');
+        $userAdmin->setNomMembre('Admin');
         $userAdmin->setRangMembre(0);
-        $userAdmin->setNbSemestreValide(1);
+        $userAdmin->setNbSemestreValide(0);
         $userAdmin->setEstAdherent(true);
         $userAdmin->setEnabled(true);
         $userAdmin->setPlainPassword('gdip');
         $userAdmin->setDateReussiteMembre(new \DateTime("now"));
         $userAdmin->setEmail('noreply.siphif@gmail.com');
-        $userAdmin->setRoles(array('ROLE_ADMIN'));
+        $userAdmin->setRoles(array('ROLE_SUPER_ADMIN'));
+		
+		$userAdh = new User();
+        $userAdh->setUsername('adherent');
+        $userAdh->setPrenomMembre('User');
+        $userAdh->setNomMembre('Adherent');
+        $userAdh->setRangMembre(0);
+        $userAdh->setNbSemestreValide(0);
+        $userAdh->setEstAdherent(true);
+        $userAdh->setEnabled(true);
+        $userAdh->setPlainPassword('test');
+        $userAdh->setDateReussiteMembre(new \DateTime("now"));
+        $userAdh->setEmail('useradherent@gmail.com');
+        $userAdh->setRoles(array('ROLE_USER'));
 
         $manager->persist($userAdmin);
+		$manager->persist($userAdh);
         $manager->flush();
     }
 }

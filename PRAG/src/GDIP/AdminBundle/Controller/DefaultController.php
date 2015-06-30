@@ -30,14 +30,22 @@ class DefaultController extends Controller
 
     	$statAdherents = $nbAdherents/$nbMembers*100;
 
-        return $this->render('GDIPAdminBundle:Default:statistiques.html.twig',
-            array(
+        $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('GDIPGDIPBundle:Stage');
+
+        $stages = $repository->findAll();
+        $nbStages = count($stages);
+
+        return array(
                 'user' => $user,
                 'nbMembers' => $nbMembers,
                 'statAdherents' => $statAdherents,
                 'nbAdherents' => $nbAdherents,
                 'nbNonAdherents' => $nbNonAdherents,
-            ));
+                'nbStages' => $nbStages,
+            );
     }
 
     /**
@@ -81,12 +89,12 @@ class DefaultController extends Controller
     	  ->getManager()
     	  ->getRepository('GDIPUserBundle:User');
 
-    	$members = $repository->findAll();
+    	$entities = $repository->findAll();
 
         return $this->render('GDIPAdminBundle:Default:GestionUtilisateurs.html.twig',
             array(
                 'user' => $user,
-                'members' => $members
+                'entities' => $entities
             ));
     }
 
@@ -94,11 +102,32 @@ class DefaultController extends Controller
      * @Route("/evaluation", name="evaluation")
      * @Template()
      */
-    public function evaluationAction()
+    public function gestionEvaluationAction()
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('GDIPAdminBundle:Default:GestionEvaluation.html.twig',
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('GDIPGDIPBundle:Evaluation');
+
+      $entities = $repository->findByEnabled(true);
+
+        return array(
+                'user' => $user,
+                'entities' => $entities
+            );
+    }
+
+    /**
+     * @Route("/consulterEvaluation", name="consulterEvaluation")
+     * @Template()
+     */
+    public function evaluationConsultationAction()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('GDIPAdminBundle:Default:ConsultationEvaluation.html.twig',
             array(
                 'user' => $user
             ));

@@ -9,6 +9,8 @@
             <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap.css')}}">
             <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap-theme.css')}}">
             <link rel="stylesheet" href="{{asset('bundles/front/css/style.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/front/css/bootstrap-select.min.css')}}">
+
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico') }}" />
@@ -17,10 +19,11 @@
         {# <script type="text/javascript" src="https://code.jquery.com/jquery.js"></script> #}
         <script type="text/javascript" src="{{asset('bundles/front/js/jquery-2.1.4.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('bundles/front/js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/front/js/bootstrap-select.js')}}"></script>
     </head>
     <body>
     <div class="page">
-        <div class="bloc-principal">
+        <div class="bloc-principal" id="fullpage">
 
     <header>
         <div class="container-fluid" id="header">
@@ -33,7 +36,7 @@
                 </div>
             </div>
         </div>
-        {% if user is defined and is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if user is defined and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <div class="top-right-corner">{{ user.prenomMembre|capitalize }} {{ user.nomMembre|upper }} | {% if user.estAdherent %}Adhérent n°{{ user.id }} {% else %}Non-adhérent (<a href="#">Souscrire ?</a>){% endif %}  |  <a class="a-alternative" href= "{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i></a></div>
         {% endif %}
     </header>

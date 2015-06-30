@@ -1,20 +1,6 @@
-{% extends 'GDIPAdminBundle::layout.html.twig' %}
+{% extends 'GDIPGDIPBundle::layout.html.twig' %}
 
-{% block admin_aside %}
-    <div class="container-fluid admin-aside">
-        <p class="admin-aside-contenu" style="margin-top: 1em;">
-            <a class="white " href="">BIOLOGIE MEDICALE</a>
-        </p>
-        <p class="admin-aside-contenu">
-            <a class="white" href="">PHARMACIE HOSPITALIERE</a>
-        </p>
-        <p class="admin-aside-contenu">
-            <a class="white" href="">IPR</a>
-        </p>
-    </div>
-{% endblock %}
-
-{% block admin_body %}
+{% block GDIP_body %}
     <div class="container-fluid gestion-admin-eval">
         <div class="row">
             <div class="col-md-7">
@@ -58,18 +44,22 @@
                 <div class="container-fluid">
                     <h4>Liste des évaluations</h4>
                     <table class="table table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
                         <tbody>
-                            {% if not entities %}
-                                Aucune évaluation n'est présente sur la plateforme !
-                            {% else %}
-                                {% for entity in entities|slice(0, 8) %}
-                                    <tr>
-                                        <td>Evaluation {{ loop.index }}</td>
-                                        <td><a href="">Voir</a></td>
-                                        <td><a href="">Supprimer</a></td>
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
+                        <tr>
+                            <td>Evaluation 1</td>
+                            <td><a href="">Voir</a></td>
+                        </tr>
+                        <tr>
+                            <td>Evaluation 2</td>
+                            <td><a href="">Voir</a></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

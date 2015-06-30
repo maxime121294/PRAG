@@ -2,7 +2,7 @@
 
 {% block admin_body %}
 
-    <div class="container text-center">
+    <div class="text-center">
         <span class="stat_label">
         <canvas id="chart1" height="200" width="200">
             <div data-value="100">Oui</div>
@@ -27,7 +27,7 @@
         </canvas>
 
             <span>Nombre de lieux de stage</span><br/>
-            <span class="stat_value">94</span>
+            <span class="stat_value">{{ nbStages }}</span>
         </span>
         <br/>
         <span class="stat_label">
@@ -73,6 +73,5 @@
         })();
     </script>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <script src="../../../../../../web/bundles/front/js/jquery.donut.js"></script>
 {% endblock %}
 

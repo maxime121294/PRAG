@@ -35,10 +35,22 @@ class Evaluation
 	private $stage;
 	
 	/**
+     * @ORM\ManyToOne(targetEntity="GDIP\UserBundle\Entity\User", inversedBy="listeEvaluation")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="idUser")
+    */
+    private $utilisateur;
+	
+	/**
 	* @ORM\ManyToMany(targetEntity="Question")
 	*/
 	private $questions;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="enabled", type="boolean", options={"default":true})
+     */
+    private $enabled;
 
     /**
      * Get id
@@ -134,5 +146,51 @@ class Evaluation
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \GDIP\UserBundle\Entity\User $utilisateur
+     * @return Evaluation
+     */
+    public function setUtilisateur(\GDIP\UserBundle\Entity\User $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \GDIP\UserBundle\Entity\User 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Evaluation
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }
