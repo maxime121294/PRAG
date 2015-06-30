@@ -540,3 +540,19 @@ h4 {
 #sortable {
     cursor: move;
 }
+
+.alert-info {
+	background :#ECECEC;
+	border-radius : 0;
+	border : none;
+	box-shadow : 0;
+	color :#404040;
+}
+
+.label-info {
+	background :#404040;
+	border-radius : 0;
+	border : none;
+	box-shadow : 0;
+	text-shadow : 0;
+}
