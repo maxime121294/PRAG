@@ -20,12 +20,19 @@ class Domaine
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelleDomaine", type="string", length=255)
+     */
+    private $libelleDomaine;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Hopital")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
-	private $hopitaux;
+	private $hopital;
 	
 
 
