@@ -12,59 +12,65 @@
                 <div class="panel-title">
                     <h2>Mes choix</h2>
                     Faites glisser pour changer l'ordre
+                    <h2>Ordre des voeux</h2>
+                    <div class="IdList"></div><br />
                 </div>
 
 
                 <script>
-    jQuery(function($) {
-        var panelList = $('#draggablePanelList');
+                    $(function(){
 
-        panelList.sortable({
-            // Only make the .panel-heading child elements support dragging.
-            // Omit this to make then entire <li>...</li> draggable.
-            handle: '.panel-heading',
-            update: function() {
-                $('.panel', panelList).each(function(index, elem) {
-                     var $listItem = $(elem),
-                         newIndex = $listItem.index();
+                        $("#sortable").sortable();
+                        var idArr=$( ".myList" ).sortable( "toArray" );
+                        jQuery(".IdList").text(idArr.join());
+                        $( ".myList" ).sortable({
+                            stop: function( event, ui ) {
+                                var idArr=$( ".myList" ).sortable( "toArray" );
+                                jQuery(".IdList").text(idArr.join());//Génère la chaîne de caractères
+                            }
+                        });
 
-                     // Persist the new indices.
-                });
-            }
-        });
-    });
+                    });
                 </script>
-<ul id="draggablePanelList" class="list-unstyled">
+                <ul id="sortable" class="list-unstyled myList">
 
-	{% for prechoix in entities %}
-		<li class="panel panel-info">
-        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
-        <div class="panel-body">
-            DES : BACTERIOLOGIE<br>
-            Hopital : Cochin<br>
-            Service : virologie<br>
-			Admission Possible : {{ prechoix.admisProb }}
-        </div>
-    </li>
-    {% endfor %}
-    <li class="panel panel-info">
-        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
-        <div class="panel-body">
-            DES : BACTERIOLOGIE<br>
-            Hopital : Cochin<br>
-            Service : virologie<br>
-        </div>
-    </li>
-    <li class="panel panel-info">
-        <div class="panel-heading">Choix 2   <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
-        <div class="panel-body">
-            DES : BACTERIOLOGIE<br>
-            Hopital : Cochin<br>
-            Service : virologie<br>
-</div>
-    </li>
-</ul>
-                </div>
+                    {% for prechoix in entities %}
+                        <li class="panel panel-info" id="1">
+                            <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+                            <div class="panel-body">
+                                DES : BACTERIOLOGIE<br>
+                                Hopital : Cochin<br>
+                                Service : virologie<br>
+                                Admission Possible : {{ prechoix.admisProb }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                    <li class="panel panel-info" id="1">
+                        <div class="panel-heading">Choix 1  <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+                        <div class="panel-body">
+                            DES : BACTERIOLOGIE<br>
+                            Hopital : Cochin<br>
+                            Service : virologie<br>
+                        </div>
+                    </li>
+                    <li class="panel panel-info" id="2">
+                        <div class="panel-heading">Choix 2   <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+                        <div class="panel-body">
+                            DES : BACTERIOLOGIE<br>
+                            Hopital : Cochin<br>
+                            Service : virologie<br>
+                        </div>
+                    </li>
+                    <li class="panel panel-info" id="3">
+                        <div class="panel-heading">Choix 3   <span class="pull-right clickable"><i class="fa fa-times"></i></span>   </div>
+                        <div class="panel-body">
+                            DES : BACTERIOLOGIE<br>
+                            Hopital : Cochin<br>
+                            Service : virologie<br>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 {% endblock %}
