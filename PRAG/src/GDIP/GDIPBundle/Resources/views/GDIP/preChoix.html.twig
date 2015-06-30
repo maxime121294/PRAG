@@ -82,13 +82,14 @@
                 {
                     $('#submit').css("opacity", 1);
                     $('#submit').attr('value', 'Valider');
+                    
+                    // Réattribution des id
+                    $( ".choice" ).each(function( index ) {
+                        $( this ).attr("id", index+1);;
+                    });
+                    MAJListe();
                 }
             });
-            // Réattribution des id
-            $( ".choice" ).each(function( index ) {
-                $( this ).attr("id", index+1);;
-            });
-            MAJListe();
         });
     </script>
 
