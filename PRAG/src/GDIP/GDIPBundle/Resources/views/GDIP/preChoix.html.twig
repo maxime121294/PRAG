@@ -31,7 +31,7 @@
                         <span class="label label-info">Info</span>400 utilisateurs mieux placés ont déjà choisi</div>
 
                     <h2>Ordre des voeux</h2>
-                    <div class="IdList"></div><br />
+                    <div id="ordreChoix" class="IdList"></div><br />
                     <span></span>
                 </div>
 
@@ -49,14 +49,15 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <input type="submit" class="btn btn-sm pull-right red_button" value="Valider" />
+                <input id="submit" type="submit" class="btn btn-sm pull-right red_button" value="Valider" />
             </div>
         </div>
     </div>
+{% endblock %}
 
+{% block javascripts %}
     <script>
         $(function(){
-
             $("#sortable").sortable();
             var idArr=$( ".myList" ).sortable( "toArray" );
             jQuery(".IdList").text(idArr.join());
@@ -66,7 +67,23 @@
                     jQuery(".IdList").text(idArr.join());//Génère la chaîne de caractères
                 }
             });
+        });
+    </script>
 
+    <script type="text/javascript">
+        $('#submit').click(function(event) {
+            event.preventDefault();
+            $('#submit').css("opacity", 0.3);
+            var ordrePreChoixString = $('#ordreChoix').text();
+            $.ajax({
+                url: '{{ path("validationPreChoix") }}',
+                data: 'ordrePreChoixString=' + ordrePreChoixString,
+                dataType: 'json',
+                success: function(data)
+                {
+                    ('#submit').css("opacity", 1);
+                }
+            });
         });
     </script>
 {% endblock %}
