@@ -73,7 +73,7 @@ class EvaluationController extends Controller
     }
 
     /**
-     * @Route("/saisie")
+     * @Route("/saisie", name="saisie")
      * @Template()
      */
     public function saisirEvaluationAction()
