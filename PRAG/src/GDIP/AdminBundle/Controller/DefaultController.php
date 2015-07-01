@@ -5,6 +5,9 @@ namespace GDIP\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DefaultController extends Controller
 {
@@ -117,6 +120,29 @@ class DefaultController extends Controller
                 'user' => $user,
                 'entities' => $entities
             );
+    }
+
+    /**
+     * Deletes an Evaluation entity.
+     *
+     * @Route("{id}/delete", name="evaluation_delete")
+     * @Method({"GET", "POST"})
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('GDIPGDIPBundle:Evaluation')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Evaluation entity.');
+        }
+
+        $entity->SetEnabled(false);
+        $em->persist($entity);
+        $em->flush();
+
+        $success['success'] = "success";
+        return new JsonResponse($success);
     }
 
     /**
