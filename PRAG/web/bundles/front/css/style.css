@@ -498,7 +498,6 @@ h4 {
 }
 
 #sortable .panel-heading {
-    cursor: move;
     color : white;
     background : #9C2B53 !important;
     font-weight : bold;
@@ -506,7 +505,6 @@ h4 {
 }
 
 #resultatprechoix .panel-heading {
-    cursor: move;
     color : white;
     background : #9C2B53 !important;
     font-weight : bold;
