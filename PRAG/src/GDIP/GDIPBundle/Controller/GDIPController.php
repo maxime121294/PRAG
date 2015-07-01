@@ -60,13 +60,19 @@ class GDIPController extends Controller
             array('position' => 'asc')
         );
 
-        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
-			array(
+        $domaines = $em->getRepository('GDIPGDIPBundle:Domaine')
+        ->findBy(
+            array(),
+            array('libelleDomaine' => 'asc')
+        );
+
+        return array(
             'entities' => $entities,
             'user' => $user,
             'nbNotChosen'=> $nbNotChosen,
-            'nbBetterChosen' => $nbBetterChosen
-			));
+            'nbBetterChosen' => $nbBetterChosen,
+            'domaines' => $domaines
+		);
     }
 
     /**
@@ -101,6 +107,69 @@ class GDIPController extends Controller
         $repository->setAllPreChoixTraiteNull($em);
 
         $success['success'] = "success"; 
+
+        return new JsonResponse($success);
+    }
+	
+	/**
+     * Creates a new PreChoix entity.
+     *
+     * @Route("/pre-choix/new", name="createPrechoix")
+     */
+    public function createPreChoixAction($idStage)
+    {
+		$em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+		$stage = $em->getRepository('GDIPGDIPBundle:Stage')->find($idStage);
+		
+		$prechoix  = new PreChoix();
+		$prechoix->setUtilisateur($user);
+		$prechoix->setStage($stage);
+		
+        $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
+																->findBy(
+																	array('utilisateur' => $user->getId()),
+																	array('position' => 'asc')
+																);
+		$dernierePosition = count($entities)+1;
+		$prechoix->setPosition($dernierePosition);
+		$em->persist($prechoix);
+		$em->flush();
+		
+		array_push($entities, $prechoix);
+		
+		$nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
+        $nbBetter =  $em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetter($user->getId());
+        $nbBetterChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetterChosen($nbBetter));
+		
+        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
+			array(
+            'entities' => $entities,
+            'user' => $user,
+            'nbNotChosen'=> $nbNotChosen,
+            'nbBetterChosen' => $nbBetterChosen
+			));
+    }
+
+    /**
+     * @Route("/pre-choix/hopitaux", name="getHopitaux")
+     * @Method({"GET", "POST"})
+     */
+    public function getHopitauxByDomaineAction(Request $request)
+    {
+        $idDomaine = $request->get("idDomaine");
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $domaine = $em->getRepository('GDIPGDIPBundle:Domaine')->find($idDomaine);
+
+        $hopitaux = $domaine->getHopitaux();
+
+        $success = array();
+
+        foreach ($hopitaux as $hopital) {
+            $success['hopitaux'][$hopital->getId()] = $hopital->getLibelleHopital();
+        }
 
         return new JsonResponse($success);
     }

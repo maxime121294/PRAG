@@ -47,7 +47,6 @@ class Hopital
      */
     private $services;
 
-
     /**
      * Get id
      *

@@ -27,12 +27,11 @@ class Domaine
      * @ORM\Column(name="libelleDomaine", type="string", length=255)
      */
     private $libelleDomaine;
-	
-	/**
-	 * @ORM\ManyToMany(targetEntity="Hopital")
-	 * @ORM\JoinColumn(nullable=false)
-	 */
-	private $hopitaux;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Hopital")
+     */
+    private $hopitaux;
 
     /**
      * Get id
@@ -66,7 +65,6 @@ class Domaine
     {
         return $this->libelleDomaine;
     }
-    
     /**
      * Constructor
      */
@@ -81,7 +79,7 @@ class Domaine
      * @param \GDIP\GDIPBundle\Entity\Hopital $hopitaux
      * @return Domaine
      */
-    public function addHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
+    public function addHopital(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
     {
         $this->hopitaux[] = $hopital;
 
@@ -93,7 +91,7 @@ class Domaine
      *
      * @param \GDIP\GDIPBundle\Entity\Hopital $hopitaux
      */
-    public function removeHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
+    public function removeHopital(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
     {
         $this->hopitaux->removeElement($hopital);
     }

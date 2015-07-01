@@ -42,7 +42,7 @@ class Stage
 
     /**
     * @ORM\OneToOne(targetEntity="Service")
-    * @ORM\JoinColumn(referencedColumnName="id")
+    * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
     */
     private $service;
 
