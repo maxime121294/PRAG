@@ -17,7 +17,6 @@ class LoadStageData extends AbstractFixture implements OrderedFixtureInterface
         $sta1 = new Stage();
         $sta1->setNbPlaces(2);
         $sta1->setHopital($this->getReference('hop1'));
-        $sta1->setPoste($this->getReference('pos1'));
         $sta1->setFiliere($this->getReference('fil1'));
         $this->addReference('sta1', $sta1);
         $manager->persist($sta1);
@@ -31,6 +30,6 @@ class LoadStageData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 8;
+        return 7;
     }
 }

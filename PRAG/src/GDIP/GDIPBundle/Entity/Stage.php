@@ -75,29 +75,6 @@ class Stage
     }
 
     /**
-     * Set poste
-     *
-     * @param \GDIP\GDIPBundle\Entity\Poste $poste
-     * @return Stage
-     */
-    public function setPoste(\GDIP\GDIPBundle\Entity\Poste $poste)
-    {
-        $this->poste = $poste;
-
-        return $this;
-    }
-
-    /**
-     * Get poste
-     *
-     * @return \GDIP\GDIPBundle\Entity\Poste 
-     */
-    public function getPoste()
-    {
-        return $this->poste;
-    }
-
-    /**
      * Set filiere
      *
      * @param \GDIP\GDIPBundle\Entity\Filiere $filiere

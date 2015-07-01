@@ -38,7 +38,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userAdh->setPlainPassword('test');
         $userAdh->setDateReussiteMembre(new \DateTime("now"));
         $userAdh->setEmail('useradherent@gmail.com');
-        $userAdh->setRoles(array('ROLE_USER'));
+        $userAdh->setRoles(array('ROLE_ADHERENT'));
         $this->addReference('userAdh', $userAdh);
 
         $manager->persist($userAdmin);
