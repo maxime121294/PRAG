@@ -48,6 +48,29 @@ class PreChoixRepository extends EntityRepository
         return $query->getResult();
     }
 
+    public function getNumberBetter($userId)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT DISTINCT u
+                            FROM GDIPUserBundle:User u1, GDIPUserBundle:User u
+                            WHERE u1 = :user
+                            AND u.rangMembre > u1.rangMembre')
+            ->setParameter('user', $userId);
+
+        return $query->getResult();
+    }
+
+    public function getNumberBetterChosen($users)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT DISTINCT p
+                            FROM GDIPGDIPBundle:PreChoix p
+                            WHERE p.utilisateur NOT IN(:users)')
+            ->setParameter('users', $users);
+
+        return $query->getResult();
+    }
+
 	public function setAllPreChoixTraiteNull($em)
 	{
 		$entities = $this->findAll();

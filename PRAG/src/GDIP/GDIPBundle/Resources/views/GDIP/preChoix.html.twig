@@ -25,8 +25,8 @@
                     <h2>Mes choix</h2>
 
                     <div class="alert alert-info" role="alert">
-                        <span class="label label-info">Info</span> {{ nbNotChosen }} utilisateur{% if nbNotChosen>0 %}s{% endif %} n'ont pas encore choisi. <br>
-                        <span class="label label-info">Info</span> 400 utilisateurs mieux placés ont déjà choisi.
+                        <span class="label label-info">Info</span> {{ nbNotChosen }} utilisateur{% if nbNotChosen>1 %}s{% endif %} n'{% if nbNotChosen>1 %}ont{% else %}a{% endif %} pas encore choisi. <br>
+                        <span class="label label-info">Info</span> {{ nbBetterChosen }} utilisateur{% if nbBetterChosen>1 %}s{% endif %} mieux placé{% if nbBetterChosen>0 %}s{% endif %} {% if nbBetterChosen>1 %}ont{% else %}a{% endif %} déjà choisi.
                     </div>
 
                     Faites glisser pour changer l'ordre <br>
