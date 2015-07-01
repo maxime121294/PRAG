@@ -125,6 +125,7 @@
                     dataType: 'json',
                     success: function(data)
                     {
+                        $('#hopitaux').html("<option value='0'>Selectionnez un hopital</option>");
                         $.each(data["hopitaux"],function(key, value) {
                             $("#hopitaux").append("<option value='" + key + "'>" + value + "</option>");
                         });
