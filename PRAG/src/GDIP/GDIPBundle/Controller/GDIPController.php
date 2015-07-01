@@ -18,7 +18,6 @@ class GDIPController extends Controller
     public function indexAction()
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
 
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             return $this->redirect($this->generateUrl('statistiques'));
