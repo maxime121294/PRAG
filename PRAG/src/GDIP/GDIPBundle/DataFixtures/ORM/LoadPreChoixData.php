@@ -15,7 +15,7 @@ class LoadPreChoixData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         $prech1 = new PreChoix();
-        $prech1->setAdmisProb(true);
+        $prech1->setAdmisProb(false);
         $prech1->setPosition(1);
         $prech1->setStage($this->getReference('sta1'));
         $prech1->setUtilisateur($this->getReference('userAdh'));
