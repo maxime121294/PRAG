@@ -23,8 +23,12 @@ class GDIPController extends Controller
             return $this->redirect($this->generateUrl('statistiques'));
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('GDIPAdminBundle:Actualite')->findAll();
+
         return $this->render('GDIPGDIPBundle:GDIP:index.html.twig',
             array(
+                'entities' => $entities,
                 'user' => $user
             ));
     }
@@ -46,7 +50,6 @@ class GDIPController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
 
         $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
         ->findBy(
@@ -54,11 +57,12 @@ class GDIPController extends Controller
             array('position' => 'asc')
         );
 
-        return array(
+        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
+			array(
             'entities' => $entities,
-            'user' => $user,
-            'nbNotChosen'=> $nbNotChosen
-			);
+            'user' => $user
+			)
+        );
     }
 
     /**
