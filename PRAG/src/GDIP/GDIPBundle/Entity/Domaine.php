@@ -76,26 +76,26 @@ class Domaine
     }
 
     /**
-     * Add hopitaux
+     * Add hopital
      *
      * @param \GDIP\GDIPBundle\Entity\Hopital $hopitaux
      * @return Domaine
      */
-    public function addHopitaux(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
+    public function addHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
     {
-        $this->hopitaux[] = $hopitaux;
+        $this->hopitaux[] = $hopital;
 
         return $this;
     }
 
     /**
-     * Remove hopitaux
+     * Remove hopital
      *
      * @param \GDIP\GDIPBundle\Entity\Hopital $hopitaux
      */
-    public function removeHopitaux(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
+    public function removeHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
     {
-        $this->hopitaux->removeElement($hopitaux);
+        $this->hopitaux->removeElement($hopital);
     }
 
     /**
