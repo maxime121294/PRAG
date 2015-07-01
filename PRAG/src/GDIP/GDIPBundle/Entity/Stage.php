@@ -35,12 +35,6 @@ class Stage
 	private $hopital;
 	
 	/**
-	* @ORM\ManyToOne(targetEntity="Poste")
-	* @ORM\JoinColumn(nullable=false)
-	*/
-	private $poste;
-	
-	/**
 	* @ORM\ManyToOne(targetEntity="Filiere")
 	* @ORM\JoinColumn(nullable=false)
 	*/
