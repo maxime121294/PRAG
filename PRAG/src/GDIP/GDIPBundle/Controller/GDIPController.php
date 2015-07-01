@@ -18,6 +18,7 @@ class GDIPController extends Controller
     public function indexAction()
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
 
         if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
             return $this->redirect($this->generateUrl('statistiques'));
@@ -50,6 +51,7 @@ class GDIPController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
 
         $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
         ->findBy(
@@ -58,10 +60,11 @@ class GDIPController extends Controller
         );
 
         return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
-			array(
-            'entities' => $entities,
-            'user' => $user
-			)
+            array(
+                'entities' => $entities,
+                'user' => $user,
+                'nbNotChosen'=> $nbNotChosen
+            )
         );
     }
 
