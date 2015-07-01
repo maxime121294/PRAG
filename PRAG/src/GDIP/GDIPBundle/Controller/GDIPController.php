@@ -75,6 +75,13 @@ class GDIPController extends Controller
 
         $repository = $em->getRepository('GDIPGDIPBundle:PreChoix');
 
+
+        $missingPreChoix = $repository->getMissingPreChoix($user->getId(), $ordrePreChoixArray);
+        foreach ($missingPreChoix as $missPreChoix) {
+            $em->remove($missPreChoix);
+            $em->flush();
+        }
+
         $position = 1;
 
         foreach ($ordrePreChoixArray as $positionPreChoix) {

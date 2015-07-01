@@ -24,6 +24,19 @@ class PreChoixRepository extends EntityRepository
         return $query->getQuery()->getSingleResult();
 	}
 
+    public function getMissingPreChoix($userId, $position)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT p
+                            FROM GDIPGDIPBundle:PreChoix p
+                            WHERE p.position NOT IN (:position)
+                            AND p.utilisateur = :user')
+            ->setParameter('user', $userId)
+            ->setParameter('position', $position);
+
+        return $query->getResult();
+    }
+
 	public function setAllPreChoixTraiteNull($em)
 	{
 		$entities = $this->findAll();
