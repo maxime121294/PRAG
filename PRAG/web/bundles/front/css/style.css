@@ -528,6 +528,10 @@ h4 {
     margin-right: 0%;
 }
 
+.clickable {
+    cursor : pointer;
+}
+
 .admin-aside-contenu {
     background-color: rgb(205, 71, 118);
     text-align: center  ;
