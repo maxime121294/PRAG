@@ -123,7 +123,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes a Actualite entity.
+     * Deletes an Evaluation entity.
      *
      * @Route("{id}/delete", name="evaluation_delete")
      * @Method({"GET", "POST"})
@@ -140,13 +140,6 @@ class DefaultController extends Controller
         $entity->SetEnabled(false);
         $em->persist($entity);
         $em->flush();
-
-            // $entity Repository getrepository('nj") -> find($id)
-            // ->SetEnabled(false);
-            // em->Persist($variableàchangerEnBase);
-            // em->flush();
-        //$em->remove($entity);
-        //$em->flush();
 
         $success['success'] = "success";
         return new JsonResponse($success);
