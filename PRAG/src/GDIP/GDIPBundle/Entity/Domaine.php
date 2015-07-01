@@ -29,12 +29,10 @@ class Domaine
     private $libelleDomaine;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Hopital")
+	 * @ORM\ManyToMany(targetEntity="Hopital")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
-	private $hopital;
-	
-
+	private $hopitaux;
 
     /**
      * Get id
@@ -68,27 +66,45 @@ class Domaine
     {
         return $this->libelleDomaine;
     }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hopitaux = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set hopital
+     * Add hopitaux
      *
-     * @param \GDIP\GDIPBundle\Entity\Hopital $hopital
+     * @param \GDIP\GDIPBundle\Entity\Hopital $hopitaux
      * @return Domaine
      */
-    public function setHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
+    public function addHopitaux(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
     {
-        $this->hopital = $hopital;
+        $this->hopitaux[] = $hopitaux;
 
         return $this;
     }
 
     /**
-     * Get hopital
+     * Remove hopitaux
      *
-     * @return \GDIP\GDIPBundle\Entity\Hopital 
+     * @param \GDIP\GDIPBundle\Entity\Hopital $hopitaux
      */
-    public function getHopital()
+    public function removeHopitaux(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
     {
-        return $this->hopital;
+        $this->hopitaux->removeElement($hopitaux);
+    }
+
+    /**
+     * Get hopitaux
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHopitaux()
+    {
+        return $this->hopitaux;
     }
 }
