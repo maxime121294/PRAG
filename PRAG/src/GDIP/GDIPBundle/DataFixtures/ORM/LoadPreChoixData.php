@@ -31,6 +31,6 @@ class LoadPreChoixData extends AbstractFixture implements OrderedFixtureInterfac
      */
     public function getOrder()
     {
-        return 9;
+        return 8;
     }
 }

@@ -35,17 +35,16 @@ class Stage
 	private $hopital;
 	
 	/**
-	* @ORM\ManyToOne(targetEntity="Poste")
-	* @ORM\JoinColumn(nullable=false)
-	*/
-	private $poste;
-	
-	/**
 	* @ORM\ManyToOne(targetEntity="Filiere")
 	* @ORM\JoinColumn(nullable=false)
 	*/
 	private $filiere;
 
+    /**
+    * @ORM\OneToOne(targetEntity="Service")
+    * @ORM\JoinColumn(referencedColumnName="id")
+    */
+    private $service;
 
     /**
      * Get id
@@ -78,29 +77,6 @@ class Stage
     public function getHopital()
     {
         return $this->hopital;
-    }
-
-    /**
-     * Set poste
-     *
-     * @param \GDIP\GDIPBundle\Entity\Poste $poste
-     * @return Stage
-     */
-    public function setPoste(\GDIP\GDIPBundle\Entity\Poste $poste)
-    {
-        $this->poste = $poste;
-
-        return $this;
-    }
-
-    /**
-     * Get poste
-     *
-     * @return \GDIP\GDIPBundle\Entity\Poste 
-     */
-    public function getPoste()
-    {
-        return $this->poste;
     }
 
     /**
@@ -170,5 +146,28 @@ class Stage
     public function getNbPlaces()
     {
         return $this->nbPlaces;
+    }
+
+    /**
+     * Set service
+     *
+     * @param \GDIP\GDIPBundle\Entity\Service $service
+     * @return Stage
+     */
+    public function setService(\GDIP\GDIPBundle\Entity\Service $service = null)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    /**
+     * Get service
+     *
+     * @return \GDIP\GDIPBundle\Entity\Service 
+     */
+    public function getService()
+    {
+        return $this->service;
     }
 }

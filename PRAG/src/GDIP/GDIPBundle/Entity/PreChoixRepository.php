@@ -24,6 +24,53 @@ class PreChoixRepository extends EntityRepository
         return $query->getQuery()->getSingleResult();
 	}
 
+    public function getMissingPreChoix($userId, $position)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT p
+                            FROM GDIPGDIPBundle:PreChoix p
+                            WHERE p.position NOT IN (:position)
+                            AND p.utilisateur = :user')
+            ->setParameter('user', $userId)
+            ->setParameter('position', $position);
+
+        return $query->getResult();
+    }
+
+    public function getNumberNotChosen()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT DISTINCT u
+                            FROM GDIPUserBundle:User u
+                            JOIN GDIPGDIPBundle:PreChoix p
+                            WHERE u <> p.utilisateur');
+
+        return $query->getResult();
+    }
+
+    public function getNumberBetter($userId)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT DISTINCT u
+                            FROM GDIPUserBundle:User u1, GDIPUserBundle:User u
+                            WHERE u1 = :user
+                            AND u.rangMembre > u1.rangMembre')
+            ->setParameter('user', $userId);
+
+        return $query->getResult();
+    }
+
+    public function getNumberBetterChosen($users)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT DISTINCT p
+                            FROM GDIPGDIPBundle:PreChoix p
+                            WHERE p.utilisateur NOT IN(:users)')
+            ->setParameter('users', $users);
+
+        return $query->getResult();
+    }
+
 	public function setAllPreChoixTraiteNull($em)
 	{
 		$entities = $this->findAll();

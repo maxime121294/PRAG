@@ -16,7 +16,7 @@ class LoadDomaineData extends AbstractFixture implements OrderedFixtureInterface
     {
         $dom1 = new Domaine();
         $dom1->setLibelleDomaine("Biochimie");
-        $dom1->setHopital($this->getReference('hop1'));
+        $dom1->addHopital($this->getReference('hop1'));
         $this->addReference('dom1', $dom1);
         $manager->persist($dom1);
 

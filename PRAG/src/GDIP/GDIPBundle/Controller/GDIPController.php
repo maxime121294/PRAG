@@ -23,9 +23,13 @@ class GDIPController extends Controller
             return $this->redirect($this->generateUrl('statistiques'));
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('GDIPAdminBundle:Actualite')->findAll();
+
         return $this->render('GDIPGDIPBundle:GDIP:index.html.twig',
             array(
-                'user' => $user 
+                'entities' => $entities,
+                'user' => $user
             ));
     }
 
@@ -46,6 +50,9 @@ class GDIPController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
+        $nbBetter =  $em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetter($user->getId());
+        $nbBetterChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetterChosen($nbBetter));
 
         $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
         ->findBy(
@@ -56,9 +63,10 @@ class GDIPController extends Controller
         return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
 			array(
             'entities' => $entities,
-            'user' => $user
-			)
-        );
+            'user' => $user,
+            'nbNotChosen'=> $nbNotChosen,
+            'nbBetterChosen' => $nbBetterChosen
+			));
     }
 
     /**
@@ -74,6 +82,13 @@ class GDIPController extends Controller
         $ordrePreChoixArray = explode(",", $ordrePreChoixString); //convertit en tableau avec les virgules comme separateur
 
         $repository = $em->getRepository('GDIPGDIPBundle:PreChoix');
+
+
+        $missingPreChoix = $repository->getMissingPreChoix($user->getId(), $ordrePreChoixArray);
+        foreach ($missingPreChoix as $missPreChoix) {
+            $em->remove($missPreChoix);
+            $em->flush();
+        }
 
         $position = 1;
 
