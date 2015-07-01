@@ -25,7 +25,7 @@
                     <h2>Mes choix</h2>
 
                     <div class="alert alert-info" role="alert">
-                        <span class="label label-info">Info</span> 360 utilisateurs n'ont pas encore choisi. <br>
+                        <span class="label label-info">Info</span> {{ nbNotChosen }} utilisateur{% if nbNotChosen>0 %}s{% endif %} n'ont pas encore choisi. <br>
                         <span class="label label-info">Info</span> 400 utilisateurs mieux placés ont déjà choisi.
                     </div>
 

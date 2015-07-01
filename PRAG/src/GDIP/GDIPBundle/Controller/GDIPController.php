@@ -25,7 +25,7 @@ class GDIPController extends Controller
 
         return $this->render('GDIPGDIPBundle:GDIP:index.html.twig',
             array(
-                'user' => $user 
+                'user' => $user
             ));
     }
 
@@ -46,6 +46,7 @@ class GDIPController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
 
         $entities = $em->getRepository('GDIPGDIPBundle:PreChoix')
         ->findBy(
@@ -53,12 +54,11 @@ class GDIPController extends Controller
             array('position' => 'asc')
         );
 
-        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
-			array(
+        return array(
             'entities' => $entities,
-            'user' => $user
-			)
-        );
+            'user' => $user,
+            'nbNotChosen'=> $nbNotChosen
+			);
     }
 
     /**
