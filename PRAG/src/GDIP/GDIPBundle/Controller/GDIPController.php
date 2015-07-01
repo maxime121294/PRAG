@@ -114,7 +114,7 @@ class GDIPController extends Controller
 	/**
      * Creates a new PreChoix entity.
      *
-     * @Route("/pre-choix", name="prechoix")
+     * @Route("/pre-choix/new", name="createPrechoix")
      */
     public function createPreChoixAction($idStage)
     {
@@ -149,5 +149,28 @@ class GDIPController extends Controller
             'nbNotChosen'=> $nbNotChosen,
             'nbBetterChosen' => $nbBetterChosen
 			));
+    }
+
+    /**
+     * @Route("/pre-choix/hopitaux", name="getHopitaux")
+     * @Method({"GET", "POST"})
+     */
+    public function getHopitauxByDomaineAction(Request $request)
+    {
+        $idDomaine = $request->get("idDomaine");
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $domaine = $em->getRepository('GDIPGDIPBundle:Domaine')->find($idDomaine);
+
+        $hopitaux = $domaine->getHopitaux();
+
+        $success = array();
+
+        foreach ($hopitaux as $hopital) {
+            $success['hopitaux'][$hopital->getId()] = $hopital->getLibelleHopital();
+        }
+
+        return new JsonResponse($success);
     }
 }

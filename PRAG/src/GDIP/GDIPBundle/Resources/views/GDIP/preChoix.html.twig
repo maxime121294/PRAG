@@ -5,13 +5,16 @@
         <div class="container-fluid">
             <div class="col-md-5">
                 <h2>Rechercher un choix</h2>
-                <select name="" id="">
+                <select name="" id="domaines">
                     <option value="0">Selectionnez un domaine</option>
                     {% for domaine in domaines %}
                         <option value="{{ domaine.id }}">{{ domaine.libelleDomaine }}</option>
                     {% endfor %}
                 </select>
-                <input type="text" placeholder="Hôpital" class="input-border full-width"/>
+                <br>
+                <select name="" id="hopitaux" class="hidden">
+                    <option value="0">Selectionnez un hopital</option>
+                </select>
                 <br /><br />
                 <ul id="resultatprechoix" class="list-unstyled">
                 <li class="panel panel-info">
@@ -107,5 +110,28 @@
             var idArr=$( ".myList" ).sortable( "toArray" );
             jQuery("#ordreChoix").text(idArr.join());//Génère la chaîne de caractères
         }
+    </script>
+
+    <script>
+        $('#domaines').change(function(){
+            var idDomaine = $("#domaines option:selected" ).val();
+            if(idDomaine == 0){
+                $('#hopitaux').addClass("hidden");
+            }
+            else{
+                $.ajax({
+                    url: '{{ path("getHopitaux") }}',
+                    data: 'idDomaine=' + idDomaine,
+                    dataType: 'json',
+                    success: function(data)
+                    {
+                        $.each(data["hopitaux"],function(key, value) {
+                            $("#hopitaux").append("<option value='" + key + "'>" + value + "</option>");
+                        });
+                        $('#hopitaux').removeClass("hidden");
+                    }
+                });
+            }
+        });
     </script>
 {% endblock %}
