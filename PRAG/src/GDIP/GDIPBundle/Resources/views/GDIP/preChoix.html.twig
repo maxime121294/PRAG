@@ -5,8 +5,12 @@
         <div class="container-fluid">
             <div class="col-md-5">
                 <h2>Rechercher un choix</h2>
-                <input type="text" placeholder="DES" class="input-border full-width"/>
-                <br /><br />
+                <select name="" id="">
+                    <option value="0">Selectionnez un domaine</option>
+                    {% for domaine in domaines %}
+                        <option value="{{ domaine.id }}">{{ domaine.libelleDomaine }}</option>
+                    {% endfor %}
+                </select>
                 <input type="text" placeholder="Hôpital" class="input-border full-width"/>
                 <br /><br />
                 <ul id="resultatprechoix" class="list-unstyled">
