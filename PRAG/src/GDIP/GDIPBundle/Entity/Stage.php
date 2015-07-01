@@ -40,6 +40,11 @@ class Stage
 	*/
 	private $filiere;
 
+    /**
+    * @ORM\OneToOne(targetEntity="Service")
+    * @ORM\JoinColumn(referencedColumnName="id")
+    */
+    private $service;
 
     /**
      * Get id
@@ -141,5 +146,28 @@ class Stage
     public function getNbPlaces()
     {
         return $this->nbPlaces;
+    }
+
+    /**
+     * Set service
+     *
+     * @param \GDIP\GDIPBundle\Entity\Service $service
+     * @return Stage
+     */
+    public function setService(\GDIP\GDIPBundle\Entity\Service $service = null)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    /**
+     * Get service
+     *
+     * @return \GDIP\GDIPBundle\Entity\Service 
+     */
+    public function getService()
+    {
+        return $this->service;
     }
 }
