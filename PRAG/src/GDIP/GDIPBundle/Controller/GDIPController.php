@@ -60,13 +60,19 @@ class GDIPController extends Controller
             array('position' => 'asc')
         );
 
-        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
-			array(
+        $domaines = $em->getRepository('GDIPGDIPBundle:Domaine')
+        ->findBy(
+            array(),
+            array('libelleDomaine' => 'asc')
+        );
+
+        return array(
             'entities' => $entities,
             'user' => $user,
             'nbNotChosen'=> $nbNotChosen,
-            'nbBetterChosen' => $nbBetterChosen
-			));
+            'nbBetterChosen' => $nbBetterChosen,
+            'domaines' => $domaines
+		);
     }
 
     /**
