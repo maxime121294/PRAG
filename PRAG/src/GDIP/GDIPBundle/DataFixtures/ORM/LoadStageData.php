@@ -18,6 +18,7 @@ class LoadStageData extends AbstractFixture implements OrderedFixtureInterface
         $sta1->setNbPlaces(2);
         $sta1->setHopital($this->getReference('hop1'));
         $sta1->setFiliere($this->getReference('fil1'));
+        $sta1->setService($this->getReference('ser1'));
         $this->addReference('sta1', $sta1);
         $manager->persist($sta1);
 
