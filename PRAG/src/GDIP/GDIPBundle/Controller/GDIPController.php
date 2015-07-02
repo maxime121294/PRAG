@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class GDIPController extends Controller
 {
@@ -172,5 +173,23 @@ class GDIPController extends Controller
         }
 
         return new JsonResponse($success);
+    }
+
+    /**
+     * @Route("/pre-choix/stages", name="getStages")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function getStagesByHopitalAction(Request $request)
+    {
+        $idHopital = $request->get("idHopital");
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $hopital = $em->getRepository('GDIPGDIPBundle:Hopital')->find($idHopital);
+
+        return array(
+                'hopital' => $hopital
+            );
     }
 }

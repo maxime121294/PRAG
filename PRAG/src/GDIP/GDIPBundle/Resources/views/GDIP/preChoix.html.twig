@@ -16,16 +16,8 @@
                     <option value="0">Selectionnez un hopital</option>
                 </select>
                 <br /><br />
-                <ul id="resultatprechoix" class="list-unstyled">
-                <li class="panel panel-info">
-                    <div class="panel-heading">Résultat  <span class="pull-right clickable"></span>   </div>
-                    <div class="panel-body">
-                        DES : BACTERIOLOGIE<br>
-                        Hopital : Cochin<br>
-                        Service : virologie<br>
-                    </div>
-                </li>
-                <input type="submit" class="btn btn-sm pull-right red_button" value="Enregistrer" />
+                <ul id="resultatPreChoix" class="list-unstyled">
+                </ul>
             </div>
             <div class="col-md-6">
                 <div class="panel-title">
@@ -47,7 +39,7 @@
                         <li class="panel panel-info choice" id="{{ prechoix.position }}">
                             <div class="panel-heading">Choix {{ prechoix.position }}  <span class="pull-right clickable delete"><i class="fa fa-times" ></i></span>   </div>
                             <div class="panel-body">
-                                DES : {{ prechoix.stage.service.domaine.libelleDomaine }}<br>
+                                Domaine : {{ prechoix.stage.service.domaine.libelleDomaine }}<br>
                                 Hopital : {{ prechoix.stage.hopital.libelleHopital }}<br>
                                 Service : {{ prechoix.stage.service.libelleService }}<br>
                                 Admission Possible : {% if prechoix.admisProb %}Oui{% else %}Non{% endif %}
@@ -130,6 +122,26 @@
                             $("#hopitaux").append("<option value='" + key + "'>" + value + "</option>");
                         });
                         $('#hopitaux').removeClass("hidden");
+                        $('#resultatPreChoix').html("Aucun stage disponible pour cet hopital !");
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $('#hopitaux').change(function(){
+            var idHopital = $("#hopitaux option:selected" ).val();
+            if(idHopital == 0){
+                $('#resultatPreChoix').html("Aucun stage disponible pour cet hopital !");
+            }
+            else{
+                $.ajax({
+                    url: '{{ path("getStages") }}',
+                    data: 'idHopital=' + idHopital,
+                    success: function(data)
+                    {
+                        $('#resultatPreChoix').html(data);
                     }
                 });
             }
