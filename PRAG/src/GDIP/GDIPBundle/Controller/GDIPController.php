@@ -149,6 +149,11 @@ class GDIPController extends Controller
                 array(),
                 array('libelleDomaine' => 'asc')
             );
+
+        $this->get('session')->getFlashBag()->add(
+            'notice',
+            'Le stage a été ajouté à votre liste de pré-choix avec succès !'
+        );
 		
         return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
 			array(
