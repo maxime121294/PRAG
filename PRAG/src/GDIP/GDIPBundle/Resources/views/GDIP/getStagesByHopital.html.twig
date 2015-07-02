@@ -2,7 +2,7 @@
     {% for stage in hopital.stages %}
         {% if stage.nbPlaces > 0 %}
             <li class="panel panel-info choice" id="stage{{ stage.id }}">
-                <div class="panel-heading">Stage {{ loop.index }}  <span class="pull-right clickable glyphicon glyphicon-plus" aria-hidden="true"></span>   </div>
+                <div class="panel-heading">Stage {{ loop.index }}  <a href="{{ path('createPrechoix', { 'idStage': stage.id }) }}"><span class="pull-right clickable glyphicon glyphicon-plus" aria-hidden="true"></span></a></div>
                 <div class="panel-body">
                     Domaine : {{ stage.service.domaine.libelleDomaine }}<br>
                     Hopital : {{ stage.hopital.libelleHopital }}<br>
