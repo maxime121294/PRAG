@@ -123,6 +123,7 @@ class GDIPController extends Controller
 		$em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 		$stage = $em->getRepository('GDIPGDIPBundle:Stage')->find($idStage);
+        $stage->setNbPlaces(($stage->getNbPlaces())-1); // on retire une place de diponible pour ce stage
 		
 		$prechoix  = new PreChoix();
 		$prechoix->setUtilisateur($user);
