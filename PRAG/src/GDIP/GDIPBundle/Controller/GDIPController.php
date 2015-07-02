@@ -138,32 +138,13 @@ class GDIPController extends Controller
 		$prechoix->setPosition($dernierePosition);
 		$em->persist($prechoix);
 		$em->flush();
-		
-		array_push($entities, $prechoix);
-		
-		$nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
-        $nbBetter =  $em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetter($user->getId());
-        $nbBetterChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetterChosen($nbBetter));
-
-        $domaines = $em->getRepository('GDIPGDIPBundle:Domaine')
-            ->findBy(
-                array(),
-                array('libelleDomaine' => 'asc')
-            );
 
         $this->get('session')->getFlashBag()->add(
             'notice',
             'Le stage a été ajouté à votre liste de pré-choix avec succès !'
         );
 		
-        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
-			array(
-                'entities' => $entities,
-                'user' => $user,
-                'nbNotChosen'=> $nbNotChosen,
-                'nbBetterChosen' => $nbBetterChosen,
-                'domaines' => $domaines
-			));
+        return $this->redirect($this->generateUrl('prechoix'));
     }
 
     /**
