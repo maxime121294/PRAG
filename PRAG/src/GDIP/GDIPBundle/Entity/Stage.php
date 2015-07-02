@@ -29,7 +29,7 @@ class Stage
     private $nbPlaces;
 	
 	/**
-	* @ORM\ManyToOne(targetEntity="Hopital")
+	* @ORM\ManyToOne(targetEntity="Hopital", inversedBy="stages")
 	* @ORM\JoinColumn(nullable=false)
 	*/
 	private $hopital;
@@ -54,29 +54,6 @@ class Stage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set hopital
-     *
-     * @param \GDIP\GDIPBundle\Entity\Hopital $hopital
-     * @return Stage
-     */
-    public function setHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
-    {
-        $this->hopital = $hopital;
-
-        return $this;
-    }
-
-    /**
-     * Get hopital
-     *
-     * @return \GDIP\GDIPBundle\Entity\Hopital 
-     */
-    public function getHopital()
-    {
-        return $this->hopital;
     }
 
     /**
@@ -169,5 +146,28 @@ class Stage
     public function getService()
     {
         return $this->service;
+    }
+
+    /**
+     * Set hopital
+     *
+     * @param \GDIP\GDIPBundle\Entity\Hopital $hopital
+     * @return Stage
+     */
+    public function setHopital(\GDIP\GDIPBundle\Entity\Hopital $hopital)
+    {
+        $this->hopital = $hopital;
+
+        return $this;
+    }
+
+    /**
+     * Get hopital
+     *
+     * @return \GDIP\GDIPBundle\Entity\Hopital 
+     */
+    public function getHopital()
+    {
+        return $this->hopital;
     }
 }
