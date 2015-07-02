@@ -48,6 +48,11 @@ class Hopital
     private $services;
 
     /**
+    * @ORM\OneToMany(targetEntity="Stage", mappedBy="hopital")
+    */
+    private $stages;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -164,5 +169,38 @@ class Hopital
     public function getServices()
     {
         return $this->services;
+    }
+
+    /**
+     * Add stages
+     *
+     * @param \GDIP\GDIPBundle\Entity\Stage $stages
+     * @return Hopital
+     */
+    public function addStage(\GDIP\GDIPBundle\Entity\Stage $stages)
+    {
+        $this->stages[] = $stages;
+
+        return $this;
+    }
+
+    /**
+     * Remove stages
+     *
+     * @param \GDIP\GDIPBundle\Entity\Stage $stages
+     */
+    public function removeStage(\GDIP\GDIPBundle\Entity\Stage $stages)
+    {
+        $this->stages->removeElement($stages);
+    }
+
+    /**
+     * Get stages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStages()
+    {
+        return $this->stages;
     }
 }

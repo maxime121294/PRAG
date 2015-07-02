@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use GDIP\GDIPBundle\Entity\PreChoix;
 
 class GDIPController extends Controller
 {
@@ -114,13 +116,14 @@ class GDIPController extends Controller
 	/**
      * Creates a new PreChoix entity.
      *
-     * @Route("/pre-choix/new", name="createPrechoix")
+     * @Route("/pre-choix/stage/{idStage}/new", name="createPrechoix")
      */
     public function createPreChoixAction($idStage)
     {
 		$em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 		$stage = $em->getRepository('GDIPGDIPBundle:Stage')->find($idStage);
+        $stage->setNbPlaces(($stage->getNbPlaces())-1); // on retire une place de diponible pour ce stage
 		
 		$prechoix  = new PreChoix();
 		$prechoix->setUtilisateur($user);
@@ -135,20 +138,13 @@ class GDIPController extends Controller
 		$prechoix->setPosition($dernierePosition);
 		$em->persist($prechoix);
 		$em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'notice',
+            'Le stage a été ajouté à votre liste de pré-choix avec succès !'
+        );
 		
-		array_push($entities, $prechoix);
-		
-		$nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
-        $nbBetter =  $em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetter($user->getId());
-        $nbBetterChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetterChosen($nbBetter));
-		
-        return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
-			array(
-            'entities' => $entities,
-            'user' => $user,
-            'nbNotChosen'=> $nbNotChosen,
-            'nbBetterChosen' => $nbBetterChosen
-			));
+        return $this->redirect($this->generateUrl('prechoix'));
     }
 
     /**
@@ -172,5 +168,23 @@ class GDIPController extends Controller
         }
 
         return new JsonResponse($success);
+    }
+
+    /**
+     * @Route("/pre-choix/stages", name="getStages")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function getStagesByHopitalAction(Request $request)
+    {
+        $idHopital = $request->get("idHopital");
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $hopital = $em->getRepository('GDIPGDIPBundle:Hopital')->find($idHopital);
+
+        return array(
+            'hopital' => $hopital
+        );
     }
 }

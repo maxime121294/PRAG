@@ -5,6 +5,13 @@
         <div class="container-fluid">
             <div class="col-md-5">
                 <h2>Rechercher un choix</h2>
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
                 <select name="" id="domaines">
                     <option value="0">Selectionnez un domaine</option>
                     {% for domaine in domaines %}
@@ -16,16 +23,8 @@
                     <option value="0">Selectionnez un hopital</option>
                 </select>
                 <br /><br />
-                <ul id="resultatprechoix" class="list-unstyled">
-                <li class="panel panel-info">
-                    <div class="panel-heading">Résultat  <span class="pull-right clickable"></span>   </div>
-                    <div class="panel-body">
-                        DES : BACTERIOLOGIE<br>
-                        Hopital : Cochin<br>
-                        Service : virologie<br>
-                    </div>
-                </li>
-                <input type="submit" class="btn btn-sm pull-right red_button" value="Enregistrer" />
+                <ul id="resultatPreChoix" class="list-unstyled">
+                </ul>
             </div>
             <div class="col-md-6">
                 <div class="panel-title">
@@ -36,18 +35,24 @@
                         <span class="label label-info">Info</span> {% if nbBetterChosen>0 %}{{ nbBetterChosen }}{% else %}Aucun{% endif %} utilisateur{% if nbBetterChosen>1 %}s{% endif %} mieux placé{% if nbBetterChosen>0 %}s{% endif %} {% if nbBetterChosen==0 %}n'{% endif %}{% if nbBetterChosen>1 %}ont{% else %}a{% endif %} déjà choisi.
                     </div>
 
-                    Faites glisser pour changer l'ordre <br>
+                    <div>
+                        Faites glisser pour changer l'ordre
+                    </div>
+                    <div class="alert alert-success alert-dismissible fade in hidden" role="alert" id="alertSuccess">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        L'ordre de vos pré-choix a été mis à jour avec succès !
+                    </div>
 
                     <div id="ordreChoix" class="hidden"></div>
                 </div>
-
 
                 <ul id="sortable" class="list-unstyled myList">
                     {% for prechoix in entities %}
                         <li class="panel panel-info choice" id="{{ prechoix.position }}">
                             <div class="panel-heading">Choix {{ prechoix.position }}  <span class="pull-right clickable delete"><i class="fa fa-times" ></i></span>   </div>
                             <div class="panel-body">
-                                DES : {{ prechoix.stage.service.domaine.libelleDomaine }}<br>
+                                Domaine : {{ prechoix.stage.service.domaine.libelleDomaine }}<br>
                                 Hopital : {{ prechoix.stage.hopital.libelleHopital }}<br>
                                 Service : {{ prechoix.stage.service.libelleService }}<br>
                                 Admission Possible : {% if prechoix.admisProb %}Oui{% else %}Non{% endif %}
@@ -78,6 +83,7 @@
     <script type="text/javascript">
         $('#submit').click(function(event) {
             event.preventDefault();
+            $('#alertSuccess').addClass('hidden');
             $('#submit').css("opacity", 0.3);
             $('#submit').attr('value', 'Patientez...');
             var ordrePreChoixString = $('#ordreChoix').text();
@@ -89,7 +95,7 @@
                 {
                     $('#submit').css("opacity", 1);
                     $('#submit').attr('value', 'Valider');
-                    
+                    $('#alertSuccess').removeClass('hidden');
                     // Réattribution des id
                     $( ".choice" ).each(function( index ) {
                         $( this ).attr("id", index+1);;
@@ -112,7 +118,7 @@
         }
     </script>
 
-    <script>
+    <script type="text/javascript">
         $('#domaines').change(function(){
             var idDomaine = $("#domaines option:selected" ).val();
             if(idDomaine == 0){
@@ -125,10 +131,31 @@
                     dataType: 'json',
                     success: function(data)
                     {
+                        $('#hopitaux').html("<option value='0'>Selectionnez un hopital</option>");
                         $.each(data["hopitaux"],function(key, value) {
                             $("#hopitaux").append("<option value='" + key + "'>" + value + "</option>");
                         });
                         $('#hopitaux').removeClass("hidden");
+                        $('#resultatPreChoix').html("Aucun stage disponible pour cet hopital !");
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#hopitaux').change(function(){
+            var idHopital = $("#hopitaux option:selected" ).val();
+            if(idHopital == 0){
+                $('#resultatPreChoix').html("Aucun stage disponible pour cet hopital !");
+            }
+            else{
+                $.ajax({
+                    url: '{{ path("getStages") }}',
+                    data: 'idHopital=' + idHopital,
+                    success: function(data)
+                    {
+                        $('#resultatPreChoix').html(data);
                     }
                 });
             }

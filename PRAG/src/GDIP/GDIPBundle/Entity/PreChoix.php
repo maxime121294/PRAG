@@ -51,6 +51,7 @@ class PreChoix
 	public function __construct()
     {
         $this->traite = false;
+        $this->admisProb = false;
     }
 
 
