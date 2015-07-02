@@ -8,6 +8,7 @@
                 {% for flashMessage in app.session.flashbag.get('notice') %}
                     <div class="alert alert-success alert-dismissible fade in" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         {{ flashMessage }}
                     </div>
                 {% endfor %}
@@ -34,7 +35,14 @@
                         <span class="label label-info">Info</span> {% if nbBetterChosen>0 %}{{ nbBetterChosen }}{% else %}Aucun{% endif %} utilisateur{% if nbBetterChosen>1 %}s{% endif %} mieux placé{% if nbBetterChosen>0 %}s{% endif %} {% if nbBetterChosen==0 %}n'{% endif %}{% if nbBetterChosen>1 %}ont{% else %}a{% endif %} déjà choisi.
                     </div>
 
-                    Faites glisser pour changer l'ordre <br>
+                    <div>
+                        Faites glisser pour changer l'ordre
+                    </div>
+                    <div class="alert alert-success alert-dismissible fade in hidden" role="alert" id="alertSuccess">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        L'ordre de vos pré-choix a été mis à jour avec succès !
+                    </div>
 
                     <div id="ordreChoix" class="hidden"></div>
                 </div>
@@ -75,6 +83,7 @@
     <script type="text/javascript">
         $('#submit').click(function(event) {
             event.preventDefault();
+            $('#alertSuccess').addClass('hidden');
             $('#submit').css("opacity", 0.3);
             $('#submit').attr('value', 'Patientez...');
             var ordrePreChoixString = $('#ordreChoix').text();
@@ -86,7 +95,7 @@
                 {
                     $('#submit').css("opacity", 1);
                     $('#submit').attr('value', 'Valider');
-                    
+                    $('#alertSuccess').removeClass('hidden');
                     // Réattribution des id
                     $( ".choice" ).each(function( index ) {
                         $( this ).attr("id", index+1);;
