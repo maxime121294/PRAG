@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use GDIP\GDIPBundle\Entity\PreChoix;
 
 class GDIPController extends Controller
 {
@@ -115,7 +116,7 @@ class GDIPController extends Controller
 	/**
      * Creates a new PreChoix entity.
      *
-     * @Route("/pre-choix/new", name="createPrechoix")
+     * @Route("/pre-choix/stage/{idStage}/new", name="createPrechoix")
      */
     public function createPreChoixAction($idStage)
     {
@@ -142,13 +143,20 @@ class GDIPController extends Controller
 		$nbNotChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberNotChosen());
         $nbBetter =  $em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetter($user->getId());
         $nbBetterChosen =  count($em->getRepository('GDIPGDIPBundle:PreChoix')->getNumberBetterChosen($nbBetter));
+
+        $domaines = $em->getRepository('GDIPGDIPBundle:Domaine')
+            ->findBy(
+                array(),
+                array('libelleDomaine' => 'asc')
+            );
 		
         return $this->render('GDIPGDIPBundle:GDIP:preChoix.html.twig',
 			array(
-            'entities' => $entities,
-            'user' => $user,
-            'nbNotChosen'=> $nbNotChosen,
-            'nbBetterChosen' => $nbBetterChosen
+                'entities' => $entities,
+                'user' => $user,
+                'nbNotChosen'=> $nbNotChosen,
+                'nbBetterChosen' => $nbBetterChosen,
+                'domaines' => $domaines
 			));
     }
 
@@ -189,7 +197,7 @@ class GDIPController extends Controller
         $hopital = $em->getRepository('GDIPGDIPBundle:Hopital')->find($idHopital);
 
         return array(
-                'hopital' => $hopital
-            );
+            'hopital' => $hopital
+        );
     }
 }
