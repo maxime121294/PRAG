@@ -81,7 +81,7 @@ class Domaine
      */
     public function addHopital(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
     {
-        $this->hopitaux[] = $hopital;
+        $this->hopitaux[] = $hopitaux;
 
         return $this;
     }
@@ -93,7 +93,7 @@ class Domaine
      */
     public function removeHopital(\GDIP\GDIPBundle\Entity\Hopital $hopitaux)
     {
-        $this->hopitaux->removeElement($hopital);
+        $this->hopitaux->removeElement($hopitaux);
     }
 
     /**
