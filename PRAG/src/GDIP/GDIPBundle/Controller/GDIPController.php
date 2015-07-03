@@ -41,7 +41,11 @@ class GDIPController extends Controller
      */
     public function adhererAction()
     {
-        return $this->render('GDIPGDIPBundle:GDIP:adhesion.html.twig');
+		$user = $this->container->get('security.token_storage')->getToken()->getUser();
+        return $this->render('GDIPGDIPBundle:GDIP:adhesion.html.twig',
+			array(
+                'user' => $user
+            ));
     }
 
     /**
