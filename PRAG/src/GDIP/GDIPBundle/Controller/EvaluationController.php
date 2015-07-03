@@ -26,7 +26,12 @@ class EvaluationController extends Controller
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $entities = $em->getRepository('GDIPGDIPBundle:Evaluation')->findAll();
-		$domaines = $em->getRepository('GDIPGDIPBundle:Domaine')->findAll();
+		
+		$domaines = $em->getRepository('GDIPGDIPBundle:Domaine')
+        ->findBy(
+            array(),
+            array('libelleDomaine' => 'asc')
+        );
 
         return array(
 			'domaines' => $domaines,
@@ -76,5 +81,23 @@ class EvaluationController extends Controller
             array(
                 'user' => $user
             ));
+    }
+	
+	/**
+     * @Route("/recherche", name="getEvals")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function getEvalByHopitalAction(Request $request)
+    {
+        $idHopital = $request->get("idHopital");
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $hopital = $em->getRepository('GDIPGDIPBundle:Hopital')->find($idHopital);
+
+        return array(
+            'hopital' => $hopital
+        );
     }
 }

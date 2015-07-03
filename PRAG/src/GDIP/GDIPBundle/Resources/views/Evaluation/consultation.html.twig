@@ -1,72 +1,123 @@
 {% extends 'GDIPGDIPBundle::layout.html.twig' %}
 
 {% block GDIP_body %}
-    <div class="container-fluid gestion-admin-eval">
-        <div class="row">
-            <div class="col-md-7">
-                <div class="container-fluid gestion-admin-eval-gauche">
-                    <div class="bs-docs-example select-style">
-                        <select data-size="3" style="display: block">
-                            <!-- trié dans ordre alpha -->
-                            <option>Bactériologie</option>
-                            <option>Biochimie</option>
-                            <option>Urologie</option>
-                            <option>Virologie</option>
-                        </select>
-                    </div>
-                    <br/>
-                    <div class="bs-docs-example select-style">
-                        <select data-size="3" style="display: block">
-                            <!-- trié dans ordre alpha -->
-                            <option>Cochin</option>
-                            <option>Pierre et Marie Curie</option>
-                            <option>Trousseau</option>
-                            <option>Lariboisière</option>
-                            <option>Saint-Louis</option>
-                            <option>Américain</option>
-                        </select>
-                    </div>
-                    <h4>Résultats :</h4>
-                    <div class="container-fluid">
-                        <div class="container-fluid gestion-admin-eval-service">
-                            <p>
-                                Service : <a class="white" href="">Virologie</a>
-                            </p>
-                        </div>
-                        <div class="container-fluid gestion-admin-eval-service">
-                            <p>
-                                Service : <a class="white" href="">Biochimie</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="container-fluid">
-                    <h4>Liste des évaluations</h4>
-                    <table class="table table-striped table-condensed">
-                        <tbody>
-                            {% if not entities %}
-                                Aucune évaluation n'est présente sur la plateforme !
-                            {% else %}
-                                {% for entity in entities|slice(0, 8) %}
-                                    <tr>
-                                        <td>Evaluation {{ loop.index }}</td>
-                                        <td><a href="{{ path('voirEvaluation', {'idEval': entity.id}) }}">Voir</a></td>
-                                    </tr>
-                                {% endfor %}
-                            {% endif %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="gestion-admin-eval">
+		<div class="container-fluid">
+		
+			<div class="col-md-5">
+				<h2> Filtrer les évaluations </h2>
+				{% for flashMessage in app.session.flashbag.get('notice') %}
+					<div class="alert alert-success alert-dismissible fade in" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+						{{ flashMessage }}
+					</div>
+				{% endfor %}
+
+				<div class="select-style"  id="domaine-container">
+					<select  name="" id="domaines">
+						<option value="0">Sélectionnez un domaine</option>
+						{% for domaine in domaines %}
+							<option value="{{ domaine.id }}">{{ domaine.libelleDomaine }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<br/>
+				<div class="select-style hidden"  id="hopital-container">
+					<select  name="" id="hopitaux">
+					</select>
+				</div>
+				
+				<br /><br />
+				<ul id="resultatEvals" class="list-unstyled">
+				</ul>
+				
+				<h4>Résultats :</h4>
+				<div class="container-fluid">
+					<div class="container-fluid gestion-admin-eval-service">
+						<p>
+							Service : <a class="white" href="">Virologie</a>
+						</p>
+					</div>
+					<div class="container-fluid gestion-admin-eval-service">
+						<p>
+							Service : <a class="white" href="">Biochimie</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<h4>Liste des évaluations</h4>
+				<table class="table table-striped table-condensed">
+					<tbody>
+						{% if not entities %}
+							Aucune évaluation n'est présente sur la plateforme !
+						{% else %}
+							{% for entity in entities|slice(0, 8) %}
+								<tr>
+									<td>Evaluation {{ loop.index }}</td>
+									<td><a href="{{ path('voirEvaluation', {'idEval': entity.id}) }}">Voir</a></td>
+								</tr>
+							{% endfor %}
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+			
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
     <script type="text/javascript">
         window.onload=function(){
             $('.selectpicker').selectpicker();
             $('.scrollMe .dropdown-menu').scrollyou();
             prettyPrint();
         };
+    </script>
+	
+	<script type="text/javascript">
+        $('#domaines').change(function(){
+            var idDomaine = $("#domaines option:selected" ).val();
+            if(idDomaine == 0){
+                $('#hopital-container').addClass("hidden");
+            }
+            else{
+                $.ajax({
+                    url: '{{ path("getHopitaux") }}',
+                    data: 'idDomaine=' + idDomaine,
+                    dataType: 'json',
+                    success: function(data)
+                    {
+                        $('#hopitaux').html("<option value='0'>Selectionnez un hopital</option>");
+                        $.each(data["hopitaux"],function(key, value) {
+                            $("#hopitaux").append("<option value='" + key + "'>" + value + "</option>");
+                        });
+                        $('#hopital-container').removeClass("hidden");
+                        $('#resultatEvals').html("Aucune evaluation disponible pour cet hopital !");
+                    }
+                });
+            }
+        });
+    </script>
+	
+	<script type="text/javascript">
+        $('#hopitaux').change(function(){
+            var idHopital = $("#hopitaux option:selected" ).val();
+            if(idHopital == 0){
+                $('#resultatEvals').html("Aucune evalutaion disponible pour cet hopital !");
+            }
+            else{
+                $.ajax({
+                    url: '{{ path("getEvals") }}',
+                    data: 'idHopital=' + idHopital,
+                    success: function(data)
+                    {
+                        $('#resultatEvals').html(data);
+                    }
+                });
+            }
+        });
     </script>
 {% endblock %}
