@@ -8,6 +8,10 @@
 
 }
 
+a.white {
+	color: white;
+}
+
 #mainblock a:visited {
     color: #9C2B53;
 
@@ -341,7 +345,7 @@ fieldset legend {
 
 .input-border {
     border-radius: 0px 0px 0px;
-    border : solid 1px #ECECEC;
+    border : solid 1px #aaa;
     background-color : white;
     box-shadow : 0 0 0;
 }
@@ -459,11 +463,11 @@ h4 {
 }
 
 .gestion-admin-eval {
-    margin-top: 2em;
+    margin-top: 0em;
 }
 
 .gestion-admin-eval-gauche {
-    margin-left: 5em;
+    margin-left: 0em;
 }
 
 .selectpicker {
@@ -557,4 +561,33 @@ h4 {
 	border : none;
 	box-shadow : 0;
 	text-shadow : 0;
+}
+
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #aaa;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+
+    background: #fff url("../img/arrowdown.gif") no-repeat 99% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 100.5%;
+    position : relative;
+    left : -1px;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
 }
