@@ -8,6 +8,10 @@
 
 }
 
+a.white {
+	color: white;
+}
+
 #mainblock a:visited {
     color: #9C2B53;
 
