@@ -341,7 +341,7 @@ fieldset legend {
 
 .input-border {
     border-radius: 0px 0px 0px;
-    border : solid 1px #ECECEC;
+    border : solid 1px #aaa;
     background-color : white;
     box-shadow : 0 0 0;
 }
