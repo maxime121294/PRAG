@@ -36,7 +36,7 @@ class GDIPController extends Controller
     }
 
     /**
-     * @Route("/adhesion")
+     * @Route("/adhesion", name="adhesion")
      * @Template()
      */
     public function adhererAction()
