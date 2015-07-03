@@ -12,16 +12,24 @@
                         {{ flashMessage }}
                     </div>
                 {% endfor %}
-                <select name="" id="domaines">
-                    <option value="0">Selectionnez un domaine</option>
-                    {% for domaine in domaines %}
-                        <option value="{{ domaine.id }}">{{ domaine.libelleDomaine }}</option>
-                    {% endfor %}
-                </select>
-                <br>
-                <select name="" id="hopitaux" class="hidden">
-                    <option value="0">Selectionnez un hopital</option>
-                </select>
+
+                <div class="select-style"  id="domaine-container">
+                    <select  name="" id="domaines">
+                        <option value="0">Sélectionnez un domaine</option>
+                        {% for domaine in domaines %}
+                            <option value="{{ domaine.id }}">{{ domaine.libelleDomaine }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br/>
+                <div class="select-style hidden"  id="hopital-container">
+                    <select  name="" id="hopitaux">
+                        <option value="0">Selectionnez un domaine</option>
+                        {% for domaine in domaines %}
+                            <option value="{{ domaine.id }}">{{ domaine.libelleDomaine }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 <br /><br />
                 <ul id="resultatPreChoix" class="list-unstyled">
                 </ul>
@@ -122,7 +130,7 @@
         $('#domaines').change(function(){
             var idDomaine = $("#domaines option:selected" ).val();
             if(idDomaine == 0){
-                $('#hopitaux').addClass("hidden");
+                $('#hopital-container').addClass("hidden");
             }
             else{
                 $.ajax({
@@ -135,7 +143,7 @@
                         $.each(data["hopitaux"],function(key, value) {
                             $("#hopitaux").append("<option value='" + key + "'>" + value + "</option>");
                         });
-                        $('#hopitaux').removeClass("hidden");
+                        $('#hopital-container').removeClass("hidden");
                         $('#resultatPreChoix').html("Aucun stage disponible pour cet hopital !");
                     }
                 });
