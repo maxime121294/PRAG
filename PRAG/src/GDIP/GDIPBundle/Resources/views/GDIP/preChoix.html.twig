@@ -54,7 +54,7 @@
                 <ul id="sortable" class="list-unstyled myList">
                     {% for prechoix in entities %}
                         <li class="panel panel-info choice" id="{{ prechoix.position }}">
-                            <div class="panel-heading">Choix {{ prechoix.position }}  <span class="pull-right clickable delete"><i class="fa fa-times" ></i></span>   </div>
+                            <div class="panel-heading"><span class="position">Choix {{ prechoix.position }} </span> <span class="pull-right clickable delete"><i class="fa fa-times" ></i></span>   </div>
                             <div class="panel-body">
                                 Domaine : {{ prechoix.stage.service.domaine.libelleDomaine }}<br>
                                 Hopital : {{ prechoix.stage.hopital.libelleHopital }}<br>
@@ -119,6 +119,10 @@
         function MAJListe() {
             var idArr=$( ".myList" ).sortable( "toArray" );
             jQuery("#ordreChoix").text(idArr.join());//Génère la chaîne de caractères
+            // Réattribution des positions
+            $( ".position" ).each(function( index ) {
+                $( this ).html("Choix " + (index+1));
+            });
         }
     </script>
 
